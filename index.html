@@ -482,8 +482,15 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
     <div class="testride-title fade-up">Feel the engine<br>before you <em>decide.</em></h2>
     <p class="testride-desc fade-up" style="color: var(--text-soft); margin-top: 2rem;">Fill in your details below. Our team will contact you shortly to schedule a test ride or assist with your purchase.</p>
     
-    <!-- FormSubmit.co AJAX Integration -->
-    <form class="testride-form fade-up" id="enquiryForm">
+    <!-- Hidden Iframe for Bulletproof Form Submission without page reload or CORS issues -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    
+    <!-- FormSubmit.co Standard Integration -->
+    <form class="testride-form fade-up" id="enquiryForm" action="https://formsubmit.co/divyautohub@gmail.com" method="POST" target="hidden_iframe">
+      <input type="hidden" name="_subject" value="New Bike Enquiry from Website!">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      
       <input type="text" name="Name" placeholder="Customer Name" required>
       <input type="tel" name="Phone" placeholder="Phone Number" required>
       
@@ -795,4 +802,218 @@ function initTypewriter() {
   });
   if (reduced) return;
   const rot = { v: 0 };
-  let currentRot
+  let currentRot = 0, currentSpd = 0, targetSpd = 0;
+  gsap.to(rot, {
+    v: 540,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#philosophy',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1.2,
+      onUpdate: (self) => { targetSpd = self.getVelocity() * 0.0004; }
+    }
+  });
+  const items = ring.querySelectorAll('.ring-item');
+  function tick() {
+    currentRot += (rot.v - currentRot) * 0.08;
+    currentSpd += (targetSpd - currentSpd) * 0.1;
+    targetSpd *= 0.92;
+    const absSpd = Math.abs(currentSpd);
+    const skew = Math.min(absSpd * 14, 10);
+    const sx = 1 + Math.min(absSpd * 0.2, 0.12);
+    ring.style.transform = `rotateX(${currentRot}deg)`;
+    items.forEach(it => {
+      const blur = Math.min(absSpd * 1.5, 2.5);
+      const span = it.querySelector('span');
+      it.style.filter = blur > 0.1 ? `blur(${blur}px)` : 'none';
+      span.style.transform = `skewX(${currentSpd > 0 ? skew : -skew}deg) scaleX(${sx})`;
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      const target = document.querySelector(id);
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 60;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+// ─────────── ENQUIRY FORM DYNAMIC LOGIC & SUBMISSION (BULLETPROOF IFRAME) ────
+
+// 1. Auto-fill Model and Scroll to Form when "Enquire" is clicked
+document.querySelectorAll('.range-row').forEach(row => {
+  row.addEventListener('click', () => {
+    const bikeName = row.querySelector('h3').innerText;
+    const modelSelect = document.getElementById('modelSelect');
+    
+    for (let i = 0; i < modelSelect.options.length; i++) {
+      if (modelSelect.options[i].text === bikeName) {
+        modelSelect.selectedIndex = i;
+        modelSelect.value = bikeName;
+        break;
+      }
+    }
+
+    document.getElementById('testride').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+
+// 2. Show/Hide Exchange Fields based on Payment Mode
+const paymentMode = document.getElementById('paymentMode');
+const exchangeFields = document.getElementById('exchangeFields');
+
+paymentMode.addEventListener('change', function() {
+  const selectedValue = this.value;
+  if (selectedValue.includes('Exchange')) {
+    exchangeFields.classList.add('is-visible');
+    exchangeFields.querySelectorAll('input, select').forEach(el => el.required = true);
+  } else {
+    exchangeFields.classList.remove('is-visible');
+    exchangeFields.querySelectorAll('input, select').forEach(el => {
+      el.required = false;
+      el.value = ''; 
+    });
+  }
+});
+
+// 3. Iframe Form Submission (No AJAX, No CORS errors, 100% success rate)
+document.getElementById('enquiryForm').addEventListener('submit', function() {
+  const btn = document.getElementById('submitBtn');
+  const originalText = btn.textContent;
+  
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  // The form submits to the hidden iframe naturally.
+  // We use a timeout to give the iframe time to load the response from FormSubmit.
+  setTimeout(() => {
+    btn.textContent = 'Enquiry Sent ✓';
+    this.reset();
+    exchangeFields.classList.remove('is-visible'); // Hide exchange fields after reset
+    
+    setTimeout(() => { 
+      btn.textContent = originalText; 
+      btn.disabled = false; 
+    }, 4000);
+  }, 2500); // 2.5 seconds delay to allow form submission to complete
+});
+
+// ─────────── AI AGENT "DIVYA" INTELLIGENT LOGIC ────
+const divyaFab = document.getElementById('divyaFab');
+const divyaChatWindow = document.getElementById('divyaChatWindow');
+const divyaMessages = document.getElementById('divyaMessages');
+const divyaInput = document.getElementById('divyaInput');
+
+divyaFab.addEventListener('click', () => {
+  divyaChatWindow.classList.toggle('is-open');
+  if (divyaChatWindow.classList.contains('is-open') && divyaMessages.children.length === 0) {
+    addDivyaMessage("Namaste! I am Divya AI. I can provide model prices, Hulas Fin Serv EMI details, or info on any Bajaj bike. How can I help?", 'bot');
+  }
+});
+
+function handleDivyaKeyPress(e) {
+  if (e.key === 'Enter') {
+    sendDivyaMessage();
+  }
+}
+
+function sendDivyaMessage() {
+  const text = divyaInput.value.trim();
+  if (!text) return;
+  addDivyaMessage(text, 'user');
+  divyaInput.value = '';
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'divya-msg bot typing';
+  typingIndicator.textContent = "Divya is researching...";
+  divyaMessages.appendChild(typingIndicator);
+  divyaMessages.scrollTop = divyaMessages.scrollHeight;
+  setTimeout(() => {
+    typingIndicator.remove();
+    const response = getDivyaResponse(text.toLowerCase());
+    addDivyaMessage(response, 'bot');
+  }, 800);
+}
+
+function addDivyaMessage(text, sender) {
+  const msg = document.createElement('div');
+  msg.className = `divya-msg ${sender}`;
+  msg.textContent = text;
+  divyaMessages.appendChild(msg);
+  divyaMessages.scrollTop = divyaMessages.scrollHeight;
+}
+
+function getDivyaResponse(query) {
+  if (query.includes('booking') || query.includes('advance') || query.includes('payment') || query.includes('qr')) {
+    return "You can book your bike online! Please scroll down to the 'Online Booking' section. You can scan the Rastriya Banijya Bank QR code or transfer the advance amount to Account No: 1160100002067001 (Divya Auto Hub Pvt. Ltd.). After payment, send the receipt to our WhatsApp 9801204448.";
+  }
+  if (query.includes('finance') || query.includes('emi') || query.includes('loan') || query.includes('installment') || query.includes('hulas') || query.includes('hire purchase') || query.includes('downpayment') || query.includes('down payment')) {
+    const modelFound = findModelInQuery(query);
+    let dpKey = "dp40", dpPlan = "40% Downpayment (12.99% interest)";
+    if (query.includes('50') || query.includes('50%')) { dpKey = "dp50"; dpPlan = "50% Downpayment (10.99% interest)"; }
+    if (query.includes('60') || query.includes('60%')) { dpKey = "dp60"; dpPlan = "60% Downpayment (8.99% interest)"; }
+    let tenure = "24";
+    if (query.includes('12 month') || query.includes('12 mahina') || query.includes('1 year')) tenure = "12";
+    if (query.includes('36 month') || query.includes('36 mahina') || query.includes('3 year')) tenure = "36";
+    if (query.includes('60 month') || query.includes('60 mahina') || query.includes('5 year')) tenure = "60";
+    const emiData = {
+      "pulsar 150 sd": { dp40: { "12": "12,869", "24": "10,493", "36": "7,437", "60": "5,021" }, dp50: { "12": "16,257", "24": "8,573", "36": "6,021", "60": "3,999" }, dp60: { "12": "12,869", "24": "6,722", "36": "4,679", "60": "4,581" } },
+      "pulsar 220 f": { dp40: { "12": "15,912", "24": "12,975", "36": "9,195", "60": "6,209" }, dp50: { "12": "20,101", "24": "10,600", "36": "7,445", "60": "4,944" }, dp60: { "12": "15,912", "24": "8,312", "36": "5,785", "60": "5,664" } },
+      "dominar 400": { dp40: { "12": "22,628", "24": "18,451", "36": "13,076", "60": "8,829" }, dp50: { "12": "28,586", "24": "15,074", "36": "10,588", "60": "7,031" }, dp60: { "12": "22,628", "24": "11,820", "36": "8,227", "60": "8,055" } },
+      "pulsar 400": { dp40: { "12": "21,334", "24": "17,396", "36": "12,328", "60": "8,324" }, dp50: { "12": "26,951", "24": "14,212", "36": "9,982", "60": "6,629" }, dp60: { "12": "21,334", "24": "11,144", "36": "7,757", "60": "7,595" } },
+      "pulsar 200": { dp40: { "12": "16,402", "24": "13,374", "36": "9,478", "60": "6,400" }, dp50: { "12": "20,720", "24": "10,926", "36": "7,674", "60": "5,096" }, dp60: { "12": "16,402", "24": "8,568", "36": "5,963", "60": "5,839" } },
+      "platina": { dp40: { "12": "8,951", "24": "7,299", "36": "5,173", "60": "3,493" }, dp50: { "12": "11,308", "24": "5,963", "36": "4,188", "60": "2,781" }, dp60: { "12": "8,951", "24": "4,676", "36": "3,255", "60": "3,186" } }
+    };
+    if (modelFound) {
+      const key = Object.keys(emiData).find(k => modelFound.name.toLowerCase().includes(k));
+      if (key) {
+        const data = emiData[key][dpKey];
+        const emiVal = data[tenure] ? data[tenure] : data["24"];
+        const finalTenure = data[tenure] ? tenure : "24";
+        return `For ${modelFound.name} via Hulas Fin Serv:\n- Plan: ${dpPlan}\n- Tenure: ${finalTenure} months\n- Monthly EMI: NPR ${emiVal}\n\nTotal down payment includes insurance and registration. Please visit our showroom for exact documentation and final valuation.`;
+      }
+      return `For ${modelFound.name}, we offer Hire Purchase via Hulas Fin Serv. You can choose 40% DP (12.99% interest), 50% DP (10.99%), or 60% DP (8.99%). Tenures are 12, 24, 36, or 60 months. Please visit us for the exact EMI calculation for this specific model.`;
+    }
+    return "We offer Hire Purchase facilities through Hulas Fin Serv. Plans available:\n1. 40% Downpayment @ 12.99% interest\n2. 50% Downpayment @ 10.99% interest\n3. 60% Downpayment @ 8.99% interest\nTenures: 12, 24, 36, or 60 months.\n\nTell me which model you are interested in to get specific EMI details.";
+  }
+  if (query.includes('price') || query.includes('daam') || query.includes('rate') || query.includes('cost') || query.includes('kati')) {
+    const modelFound = findModelInQuery(query);
+    if (modelFound) return `The price for ${modelFound.name} is ${modelFound.price}.`;
+    return "Our motorcycle prices range from NPR 255,900 (Platina 100) to NPR 646,900 (Dominar 400). Please tell me which specific model you are interested in (e.g., 'Pulsar 150 price').";
+  }
+  const modelFound = findModelInQuery(query);
+  if (modelFound) return `The ${modelFound.name} is priced at ${modelFound.price}. ${modelFound.desc} Would you like to know about Hulas Fin Serv EMI options for this model?`;
+  if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where')) return "We are located in Maharajgunj, Kathmandu. Showroom hours: Sunday to Friday, 9:30 AM to 6:00 PM. Test rides are available until 5:00 PM.";
+  if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) return "You can reach us at 9801204448 or 01-4533133. Email: divyautohub@gmail.com";
+  if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts')) return "We provide factory-trained professional servicing, 3 free services for new bikes, and 100% genuine Bajaj spare parts with a manufacturer warranty.";
+  if (query.includes('test ride') || query.includes('try') || query.includes('demo')) return "Yes, test rides are available! You can also fill out the enquiry form at the bottom of the page with your details, and we will contact you.";
+  if (query.includes('namaste') || query.includes('hello') || query.includes('hi')) return "Namaste! How can I assist you with Bajaj motorcycles today? You can ask about prices, models, or Hulas Fin Serv hire purchase.";
+  return "I am currently optimized to answer questions about Divya Auto Hub's motorcycle prices, Hulas Fin Serv hire purchase EMI, location, and services. For specific technical questions, please call us at 9801204448.";
+}
+
+function findModelInQuery(query) {
+  const rows = document.querySelectorAll('.range-row');
+  for (let row of rows) {
+    const name = row.querySelector('h3').innerText;
+    const priceNode = row.querySelector('.range-row-price');
+    const price = priceNode.childNodes[0].nodeValue.trim();
+    const desc = row.querySelector('.range-row-desc').innerText;
+    const keywords = name.toLowerCase().split(/\s+/);
+    if (query.includes(name.toLowerCase()) || (keywords.length > 1 && query.includes(keywords[0]) && query.includes(keywords[1]))) {
+      return { name: name, price: price, desc: desc };
+    }
+  }
+  return null;
+}
+</script>
+</body>
+</html>

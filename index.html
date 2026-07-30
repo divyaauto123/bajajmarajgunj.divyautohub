@@ -446,7 +446,7 @@ elevenlabs-convai {
         <p class="headline-enter">The purchase is the first chapter, not the last. Our service floor handles scheduled maintenance, accidental repairs, genuine spare parts, insurance claims and annual renewals — all from the same address you bought the motorcycle from.</p>
       </div>
       <div class="right">
-        <div class="service-item fade-up"><div class="service-num">01</div><div class="service-content"><h3>Hire Purchase via Hulas Fin Serv</h3><p>We offer easy Hire Purchase facilities through Hulas Fin Serv. Choose from 40% Downpayment (12.99% interest), 50% Downpayment (11.99% interest), or 60% Downpayment (8.99% interest). Tenures available for 12, 24, or 36 months. Approval typically within 48 hours.</p><div class="service-meta"><span>40% / 50% / 60% DP</span><span>8.99% - 12.99% Interest</span><span>Up to 36 months</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">01</div><div class="service-content"><h3>Hire Purchase via Hulas Fin Serv</h3><p>We offer easy Hire Purchase facilities through Hulas Fin Serv. Choose from 40% Downpayment (12.99% interest), 50% Downpayment (10.99% interest), or 60% Downpayment (8.99% interest). Tenures available for 12, 24, 36, or 60 months. Approval typically within 48 hours.</p><div class="service-meta"><span>40% / 50% / 60% DP</span><span>8.99% - 12.99% Interest</span><span>Up to 60 months</span></div></div></div>
         <div class="service-item fade-up"><div class="service-num">02</div><div class="service-content"><h3>Bike exchange services</h3><p>Bring your current motorcycle for an on-the-spot valuation. The exchange value is adjusted against the new purchase, with the paperwork handled by our team — including ownership transfer of your previous bike.</p><div class="service-meta"><span>On-spot valuation</span><span>Transfer handled</span></div></div></div>
         <div class="service-item fade-up"><div class="service-num">03</div><div class="service-content"><h3>Genuine spare parts</h3><p>Only Bajaj-original parts — engine, electrical, body, and consumables. Each part carries the manufacturer warranty. We do not stock, fit, or recommend aftermarket substitutes.</p><div class="service-meta"><span>100% genuine</span><span>Manufacturer warranty</span></div></div></div>
         <div class="service-item fade-up"><div class="service-num">04</div><div class="service-content"><h3>Professional servicing</h3><p>Factory-trained mechanics, the full Bajaj tooling suite, and service intervals as per the owner's manual. Free first three services on every new motorcycle purchased from us.</p><div class="service-meta"><span>Factory-trained</span><span>3 free services</span></div></div></div>
@@ -788,7 +788,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ─────────── AI AGENT "DIVYA" INTELLIGENT LOGIC WITH HULAS FIN SERV DATA ────
+// ─────────── AI AGENT "DIVYA" INTELLIGENT LOGIC WITH HULAS FIN SERV DATA (UPDATED 2082-83) ────
 const divyaFab = document.getElementById('divyaFab');
 const divyaChatWindow = document.getElementById('divyaChatWindow');
 const divyaMessages = document.getElementById('divyaMessages');
@@ -836,47 +836,104 @@ function addDivyaMessage(text, sender) {
 }
 
 function getDivyaResponse(query) {
+  // 1. Check for Finance / EMI / Hulas Fin Serv specific queries
   if (query.includes('finance') || query.includes('emi') || query.includes('loan') || query.includes('installment') || query.includes('hulas') || query.includes('hire purchase') || query.includes('downpayment') || query.includes('down payment')) {
     const modelFound = findModelInQuery(query);
+    
+    // Determine Downpayment % and Interest Rate
+    let dpKey = "dp40";
     let dpPlan = "40% Downpayment (12.99% interest)";
-    if (query.includes('50') || query.includes('50%')) dpPlan = "50% Downpayment (11.99% interest)";
-    if (query.includes('60') || query.includes('60%')) dpPlan = "60% Downpayment (8.99% interest)";
-    let tenure = "24 months";
-    if (query.includes('12 month') || query.includes('1 year')) tenure = "12 months";
-    if (query.includes('36 month') || query.includes('3 year')) tenure = "36 months";
+    if (query.includes('50') || query.includes('50%')) {
+      dpKey = "dp50";
+      dpPlan = "50% Downpayment (10.99% interest)";
+    }
+    if (query.includes('60') || query.includes('60%')) {
+      dpKey = "dp60";
+      dpPlan = "60% Downpayment (8.99% interest)";
+    }
+    
+    // Determine Tenure
+    let tenure = "24";
+    if (query.includes('12 month') || query.includes('12 mahina') || query.includes('1 year')) tenure = "12";
+    if (query.includes('36 month') || query.includes('36 mahina') || query.includes('3 year')) tenure = "36";
+    if (query.includes('60 month') || query.includes('60 mahina') || query.includes('5 year')) tenure = "60";
+
+    // Hardcoded data based on Hulas Excel Sheet 2082-83 for specific models
     const emiData = {
-      "pulsar 150 sd": { dp40_24m: "10,493", dp50_24m: "8,658", dp60_24m: "6,722", dp40_36m: "7,437", dp50_36m: "6,109", dp60_36m: "4,679" },
-      "pulsar 220 f": { dp40_24m: "12,975", dp50_24m: "10,706", dp60_24m: "8,312", dp40_36m: "9,195", dp50_36m: "7,554", dp60_36m: "5,785" },
-      "dominar 400": { dp40_24m: "18,451", dp50_24m: "15,224", dp60_24m: "11,820", dp40_36m: "13,076", dp50_36m: "10,742", dp60_36m: "8,227" },
-      "pulsar 400": { dp40_24m: "17,396", dp50_24m: "14,354", dp60_24m: "11,144", dp40_36m: "12,328", dp50_36m: "10,127", dp60_36m: "7,757" },
-      "pulsar 200": { dp40_24m: "13,374", dp50_24m: "11,035", dp60_24m: "8,568", dp40_36m: "9,478", dp50_36m: "7,786", dp60_36m: "5,963" },
-      "platina": { dp40_24m: "~7,327", dp50_24m: "~6,046", dp60_24m: "~4,694", dp40_36m: "~5,193", dp50_36m: "~4,266", dp60_36m: "~3,267" }
+      "pulsar 150 sd": {
+        dp40: { "12": "12,869", "24": "10,493", "36": "7,437", "60": "5,021" },
+        dp50: { "12": "16,257", "24": "8,573", "36": "6,021", "60": "3,999" },
+        dp60: { "12": "12,869", "24": "6,722", "36": "4,679", "60": "4,581" }
+      },
+      "pulsar 220 f": {
+        dp40: { "12": "15,912", "24": "12,975", "36": "9,195", "60": "6,209" },
+        dp50: { "12": "20,101", "24": "10,600", "36": "7,445", "60": "4,944" },
+        dp60: { "12": "15,912", "24": "8,312", "36": "5,785", "60": "5,664" }
+      },
+      "dominar 400": {
+        dp40: { "12": "22,628", "24": "18,451", "36": "13,076", "60": "8,829" },
+        dp50: { "12": "28,586", "24": "15,074", "36": "10,588", "60": "7,031" },
+        dp60: { "12": "22,628", "24": "11,820", "36": "8,227", "60": "8,055" }
+      },
+      "pulsar 400": {
+        dp40: { "12": "21,334", "24": "17,396", "36": "12,328", "60": "8,324" },
+        dp50: { "12": "26,951", "24": "14,212", "36": "9,982", "60": "6,629" },
+        dp60: { "12": "21,334", "24": "11,144", "36": "7,757", "60": "7,595" }
+      },
+      "pulsar 200": {
+        dp40: { "12": "16,402", "24": "13,374", "36": "9,478", "60": "6,400" },
+        dp50: { "12": "20,720", "24": "10,926", "36": "7,674", "60": "5,096" },
+        dp60: { "12": "16,402", "24": "8,568", "36": "5,963", "60": "5,839" }
+      },
+      "platina": {
+        dp40: { "12": "8,951", "24": "7,299", "36": "5,173", "60": "3,493" },
+        dp50: { "12": "11,308", "24": "5,963", "36": "4,188", "60": "2,781" },
+        dp60: { "12": "8,951", "24": "4,676", "36": "3,255", "60": "3,186" }
+      }
     };
+
     if (modelFound) {
       const key = Object.keys(emiData).find(k => modelFound.name.toLowerCase().includes(k));
       if (key) {
-        const data = emiData[key];
-        let emiKey = `dp${dpPlan.match(/\d+/)[0]}_${tenure.match(/\d+/)[0]}m`;
-        let emiVal = data[emiKey] ? data[emiKey] : data[`${emiKey.split('_')[0]}_24m`];
-        let finalTenure = data[emiKey] ? tenure : "24 months";
-        return `For ${modelFound.name} via Hulas Fin Serv:\n- Plan: ${dpPlan}\n- Tenure: ${finalTenure}\n- Monthly EMI: NPR ${emiVal}\n\nTotal down payment includes insurance and registration. Please visit our showroom for exact documentation and final valuation.`;
+        const data = emiData[key][dpKey];
+        const emiVal = data[tenure] ? data[tenure] : data["24"]; // fallback to 24m
+        const finalTenure = data[tenure] ? tenure : "24";
+        
+        return `For ${modelFound.name} via Hulas Fin Serv:\n- Plan: ${dpPlan}\n- Tenure: ${finalTenure} months\n- Monthly EMI: NPR ${emiVal}\n\nTotal down payment includes insurance and registration. Please visit our showroom for exact documentation and final valuation.`;
       }
-      return `For ${modelFound.name}, we offer Hire Purchase via Hulas Fin Serv. You can choose 40% DP (12.99% interest), 50% DP (11.99%), or 60% DP (8.99%). Tenures are 12, 24, or 36 months. Please visit us for the exact EMI calculation for this specific model.`;
+      return `For ${modelFound.name}, we offer Hire Purchase via Hulas Fin Serv. You can choose 40% DP (12.99% interest), 50% DP (10.99%), or 60% DP (8.99%). Tenures are 12, 24, 36, or 60 months. Please visit us for the exact EMI calculation for this specific model.`;
     }
-    return "We offer Hire Purchase facilities through Hulas Fin Serv. Plans available:\n1. 40% Downpayment @ 12.99% interest\n2. 50% Downpayment @ 11.99% interest\n3. 60% Downpayment @ 8.99% interest\nTenures: 12, 24, or 36 months.\n\nTell me which model you are interested in to get specific EMI details.";
+
+    return "We offer Hire Purchase facilities through Hulas Fin Serv. Plans available:\n1. 40% Downpayment @ 12.99% interest\n2. 50% Downpayment @ 10.99% interest\n3. 60% Downpayment @ 8.99% interest\nTenures: 12, 24, 36, or 60 months.\n\nTell me which model you are interested in to get specific EMI details.";
   }
+
+  // 2. Check for general Price queries
   if (query.includes('price') || query.includes('daam') || query.includes('rate') || query.includes('cost') || query.includes('kati')) {
     const modelFound = findModelInQuery(query);
     if (modelFound) return `The price for ${modelFound.name} is ${modelFound.price}.`;
     return "Our motorcycle prices range from NPR 255,900 (Platina 100) to NPR 646,900 (Dominar 400). Please tell me which specific model you are interested in (e.g., 'Pulsar 150 price').";
   }
+
+  // 3. Check if a specific model is mentioned without the word 'price'
   const modelFound = findModelInQuery(query);
   if (modelFound) return `The ${modelFound.name} is priced at ${modelFound.price}. ${modelFound.desc} Would you like to know about Hulas Fin Serv EMI options for this model?`;
+  
+  // 4. Address / Location
   if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where')) return "We are located in Maharajgunj, Kathmandu. Showroom hours: Sunday to Friday, 9:30 AM to 6:00 PM. Test rides are available until 5:00 PM.";
+  
+  // 5. Contact / Phone
   if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) return "You can reach us at 9801204448 or 01-4533133. Email: divyautohub@gmail.com";
+  
+  // 6. Service
   if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts')) return "We provide factory-trained professional servicing, 3 free services for new bikes, and 100% genuine Bajaj spare parts with a manufacturer warranty.";
+  
+  // 7. Test ride
   if (query.includes('test ride') || query.includes('try') || query.includes('demo')) return "Yes, test rides are available! Please bring your driving license to our Maharajgunj showroom. Test rides run daily from 9:30 AM to 5:00 PM.";
+  
+  // 8. Greetings
   if (query.includes('namaste') || query.includes('hello') || query.includes('hi')) return "Namaste! How can I assist you with Bajaj motorcycles today? You can ask about prices, models, or Hulas Fin Serv hire purchase.";
+  
+  // 9. Fallback
   return "I am currently optimized to answer questions about Divya Auto Hub's motorcycle prices, Hulas Fin Serv hire purchase EMI, location, and services. For specific technical questions, please call us at 9801204448.";
 }
 

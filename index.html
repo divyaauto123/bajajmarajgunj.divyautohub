@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO META TAGS -->
+<title>Divya Auto Hub | Authorised Bajaj Motorcycle Dealer in Kathmandu</title>
+<meta name="title" content="Divya Auto Hub | Authorised Bajaj Motorcycle Dealer in Kathmandu">
+<meta name="description" content="Authorised Bajaj dealership in Maharajgunj, Kathmandu. Buy Pulsar, Dominar, Avenger, Platina & Chetak at the best prices. Easy finance via Hulas Fin Serv, exchange, servicing & spare parts.">
+<meta name="keywords" content="Bajaj dealer Kathmandu, Bajaj motorcycle Nepal, Pulsar price Nepal, Hulas Fin Serv, Divya Auto Hub, hire purchase Nepal">
+<meta name="author" content="Divya Auto Hub Pvt. Ltd.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.divyaautohub.com.np/" />
+
+<!-- GEO TAGS -->
+<meta name="geo.region" content="NP-P3" />
+<meta name="geo.placename" content="Maharajgunj, Kathmandu" />
+<meta name="geo.position" content="27.7172;85.3240" />
+<meta name="ICBM" content="27.7172, 85.3240" />
+
+<!-- FONTS & SCRIPTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;800;900&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<style>
+:root {
+  --bg: #051030;
+  --text: #ffffff;
+  --text-soft: #c4d4f0;
+  --accent: rgba(230, 180, 50, 1);
+  --accent-soft: rgba(230, 180, 50, 0.25);
+  --line: rgba(255,255,255,0.12);
+  --line-soft: rgba(255,255,255,0.06);
+  --ease-quiet: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400; line-height: 1.6; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: var(--bg); }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(5,16,48,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--line-soft); }
+.nav-logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.7rem; }
+.nav-logo-mark { width: 10px; height: 10px; background: var(--accent); flex-shrink: 0; }
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+.nav-logo-text small { font-size: 0.6rem; color: var(--text-soft); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 2px; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { color: var(--text-soft); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 400ms var(--ease-quiet); }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bg); background: var(--accent); padding: 0.7rem 1.2rem; transition: opacity 400ms var(--ease-quiet); }
+.nav-cta:hover { opacity: 0.85; }
+@media (max-width: 860px) { .nav-links { display: none; } .nav { padding: 1rem 1.5rem; } }
+
+/* HERO */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 9rem 2rem 5rem; overflow: hidden; }
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.4; pointer-events: none; }
+.hero-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, transparent 0%, var(--bg) 95%); }
+.hero-content { position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; width: 100%; }
+.hero-meta { display: flex; justify-content: space-between; margin-bottom: 4.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-soft); flex-wrap: wrap; gap: 1rem; }
+.hero-meta-left { color: var(--accent); }
+.hero-meta-right { display: flex; gap: 2rem; }
+#hero-title { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: clamp(2.6rem, 9vw, 8.5rem); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 2.5rem; }
+#hero-title.is-decoding { text-shadow: 0 0 30px var(--accent-soft); }
+.hero-typewriter-wrap { max-width: 620px; margin-bottom: 3rem; }
+.hero-subtitle { font-family: 'JetBrains Mono', monospace; font-size: clamp(0.82rem, 1.05vw, 0.95rem); line-height: 1.85; color: var(--text-soft); white-space: pre-wrap; min-height: 220px; }
+.caret { display: inline-block; width: 8px; height: 1.05em; background: var(--accent); vertical-align: text-bottom; margin-left: 2px; transform: translateY(2px); }
+.caret.is-hidden { opacity: 0; }
+.hero-cta-wrap { opacity: 0; transform: translateY(20px); transition: opacity 800ms var(--ease-quiet), transform 800ms var(--ease-quiet); }
+.hero-cta-wrap.is-shown { opacity: 1; transform: none; }
+.hero-cta-row { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+.btn-primary { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bg); background: var(--accent); padding: 1rem 1.75rem; display: inline-flex; align-items: center; gap: 0.8rem; transition: opacity 400ms var(--ease-quiet); }
+.btn-primary:hover { opacity: 0.85; }
+.btn-primary .arrow { transition: transform 400ms var(--ease-quiet); display: inline-block; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+.btn-ghost { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); border-bottom: 1px solid var(--accent); padding-bottom: 0.3rem; transition: color 400ms var(--ease-quiet); }
+.btn-ghost:hover { color: var(--accent); }
+.hero-scroll-hint { position: absolute; bottom: 2rem; left: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-soft); opacity: 0.55; z-index: 2; display: flex; align-items: center; gap: 0.6rem; }
+.hero-scroll-hint::after { content: ''; display: inline-block; width: 30px; height: 1px; background: var(--accent); animation: scrollLine 2.4s var(--ease-quiet) infinite; }
+@keyframes scrollLine { 0%, 100% { transform: scaleX(0.3); transform-origin: left; } 50% { transform: scaleX(1); transform-origin: left; } }
+
+/* SECTIONS */
+section { position: relative; padding: 8rem 2rem; }
+.container { max-width: 1400px; margin: 0 auto; width: 100%; }
+.eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); opacity: 0; transform: translateY(16px); transition: opacity 600ms var(--ease-quiet), transform 600ms var(--ease-quiet); }
+.eyebrow::after { content: ''; display: inline-block; width: 0; height: 1px; margin-left: 0.75rem; vertical-align: middle; background: currentColor; transition: width 800ms var(--ease-quiet) 400ms; }
+.is-in .eyebrow { opacity: 1; transform: none; transition-delay: 100ms; }
+.is-in .eyebrow::after { width: 2rem; }
+.section-title { font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(2rem, 4.5vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; margin: 1.5rem 0 0; }
+.section-title em { font-style: normal; color: var(--accent); }
+.headline-enter { opacity: 0; transform: translateY(40px); transition: opacity 1000ms var(--ease-quiet), transform 1000ms var(--ease-quiet); }
+.is-in .headline-enter { opacity: 1; transform: none; }
+
+/* INTRO */
+.intro { border-top: 1px solid var(--line); }
+.intro-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+.intro-left { position: sticky; top: 8rem; }
+.intro-right p { font-size: 1.15rem; line-height: 1.7; color: var(--text-soft); margin-bottom: 2rem; max-width: 560px; }
+.intro-right p:first-of-type { font-size: 1.5rem; line-height: 1.5; color: var(--text); margin-bottom: 3rem; }
+.intro-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--line); }
+.stat-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+.stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); line-height: 1.4; }
+@media (max-width: 860px) { .intro-grid { grid-template-columns: 1fr; gap: 3rem; } .intro-left { position: static; } .intro-stats { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+/* RANGE */
+.range { border-top: 1px solid var(--line); }
+.range-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; flex-wrap: wrap; gap: 2rem; }
+.range-header-left { max-width: 720px; }
+.range-header-right { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); text-align: right; line-height: 1.8; }
+.range-header-right strong { color: var(--accent); font-weight: 400; }
+.range-list { border-top: 1px solid var(--line); }
+.range-row { position: relative; display: grid; grid-template-columns: 60px 2fr 1.3fr 1.5fr 100px; gap: 2rem; align-items: center; padding: 2.5rem 1.5rem; border-bottom: 1px solid var(--line); cursor: pointer; transition: background 600ms var(--ease-quiet); }
+.range-row::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--accent); transition: height 600ms var(--ease-quiet); }
+.range-row:hover::before { height: 100%; }
+.range-row:hover { background: rgba(230, 180, 50, 0.03); }
+.range-row-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-soft); transition: color 600ms var(--ease-quiet); }
+.range-row:hover .range-row-num { color: var(--accent); }
+.range-row-name h3 { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 0.4rem; transition: color 600ms var(--ease-quiet); }
+.range-row:hover .range-row-name h3 { color: var(--accent); }
+.range-row-name span { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); }
+.range-row-price { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--text); transition: color 600ms var(--ease-quiet); }
+.range-row:hover .range-row-price { color: var(--accent); }
+.range-row-price small { display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-soft); margin-top: 0.3rem; opacity: 0.7; }
+.range-row-desc { font-size: 0.85rem; line-height: 1.55; color: var(--text-soft); opacity: 0.5; transition: opacity 600ms var(--ease-quiet); }
+.range-row:hover .range-row-desc { opacity: 1; }
+.range-row-arrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); text-align: right; transition: color 600ms var(--ease-quiet), transform 600ms var(--ease-quiet); }
+.range-row:hover .range-row-arrow { color: var(--accent); transform: translateX(8px); }
+@media (max-width: 1100px) { .range-row { grid-template-columns: 40px 1fr 1fr; grid-template-areas: "num name price" "num desc desc" "num arrow arrow"; gap: 1rem 1.5rem; padding: 2rem 1rem; } .range-row-num { grid-area: num; } .range-row-name { grid-area: name; } .range-row-price { grid-area: price; text-align: right; } .range-row-desc { grid-area: desc; } .range-row-arrow { grid-area: arrow; text-align: left; } }
+
+/* METAL GRID */
+.metal { border-top: 1px solid var(--line); }
+.metal-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; flex-wrap: wrap; gap: 2rem; }
+.metal-header-left { max-width: 720px; }
+.metal-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.metal-item { position: relative; overflow: hidden; background: var(--line-soft); border: 1px solid var(--line-soft); }
+.metal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1500ms var(--ease-quiet), filter 600ms var(--ease-quiet); filter: grayscale(0.2) contrast(1.1); }
+.metal-item:hover img { transform: scale(1.04); filter: grayscale(0) contrast(1.15); }
+.metal-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(5,16,48,0.85) 100%); pointer-events: none; }
+.metal-item-label { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; z-index: 2; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); }
+.metal-item-label span { color: var(--accent); display: block; margin-bottom: 0.4rem; }
+.metal-item-label strong { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.2rem; text-transform: none; display: block; }
+.m-item-1 { grid-column: 1 / 7; aspect-ratio: 4/3; } .m-item-2 { grid-column: 7 / 13; aspect-ratio: 4/3; } .m-item-3 { grid-column: 1 / 5; aspect-ratio: 1/1; } .m-item-4 { grid-column: 5 / 9; aspect-ratio: 1/1; } .m-item-5 { grid-column: 9 / 13; aspect-ratio: 1/1; } .m-item-6 { grid-column: 1 / 5; aspect-ratio: 4/5; } .m-item-7 { grid-column: 5 / 13; aspect-ratio: 16/9; } .m-item-8 { grid-column: 1 / 7; aspect-ratio: 16/9; } .m-item-9 { grid-column: 7 / 13; aspect-ratio: 16/9; }
+@media (max-width: 1100px) { .m-item-1, .m-item-2, .m-item-3, .m-item-4, .m-item-5, .m-item-6, .m-item-7, .m-item-8, .m-item-9 { grid-column: 1 / -1; aspect-ratio: 16/9; } }
+
+/* STICKY PAIR */
+.sticky-pair { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+.sticky-pair .left { position: sticky; top: 8rem; }
+.sticky-pair .left p { font-size: 1.1rem; line-height: 1.7; color: var(--text-soft); margin-top: 2rem; max-width: 480px; }
+@media (max-width: 860px) { .sticky-pair { grid-template-columns: 1fr; gap: 3rem; } .sticky-pair .left { position: static; } }
+
+/* SERVICES */
+.services { border-top: 1px solid var(--line); }
+.service-item { padding: 3rem 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 60px 1fr; gap: 2rem; }
+.service-item:first-child { border-top: 1px solid var(--line); }
+.service-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); padding-top: 0.5rem; }
+.service-content h3 { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 0.75rem; }
+.service-content p { font-size: 0.95rem; line-height: 1.65; color: var(--text-soft); max-width: 520px; margin-bottom: 1.25rem; }
+.service-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-soft); }
+.service-meta span { display: flex; align-items: center; gap: 0.4rem; }
+.service-meta span::before { content: ''; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
+
+/* PHILOSOPHY */
+.philosophy { border-top: 1px solid var(--line); padding: 8rem 2rem; overflow: hidden; }
+.philosophy .sticky-pair { grid-template-columns: 1fr 1fr; gap: 4rem; }
+.ring-stage { perspective: 1000px; height: 100vh; min-height: 600px; position: relative; display: flex; align-items: center; justify-content: center; }
+.ring { position: relative; width: 1px; height: 1px; transform-style: preserve-3d; will-change: transform; }
+.ring-item { position: absolute; top: 0; left: 0; white-space: nowrap; }
+.ring-item span { display: inline-block; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.6rem); color: var(--text); padding: 0 1rem; }
+.ring-item.accent span { color: var(--accent); }
+.ring-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-soft); text-align: center; z-index: 2; }
+.ring-center::before { content: ''; display: block; width: 1px; height: 30px; background: var(--accent); margin: 0 auto 1rem; }
+
+/* SHOWROOM */
+.showroom { border-top: 1px solid var(--line); }
+.showroom-info { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 3rem; }
+.info-row { display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line-soft); }
+.info-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-soft); padding-top: 0.2rem; }
+.info-value { font-size: 1rem; line-height: 1.55; }
+.info-value a:hover { color: var(--accent); }
+.info-value .accent { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: block; margin-top: 0.4rem; }
+.showroom-img-wrap { position: relative; overflow: hidden; background: var(--line-soft); }
+.showroom-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--ease-quiet); filter: grayscale(0.3) contrast(1.05); }
+.showroom-img-wrap:hover img { transform: scale(1.03); }
+.showroom-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(5,16,48,0.85) 100%); pointer-events: none; }
+.showroom-img-label { position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 2; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text); }
+.showroom-img-label span { color: var(--accent); }
+.showroom-img-wrap.tall { aspect-ratio: 4/3; } .showroom-img-wrap.wide { aspect-ratio: 16/9; }
+
+/* CTA */
+.testride { border-top: 1px solid var(--line); text-align: center; padding: 10rem 2rem; position: relative; overflow: hidden; }
+.testride-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 7vw, 6rem); margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+.testride-title em { font-style: normal; color: var(--accent); }
+.testride-desc { font-size: 1.1rem; line-height: 1.65; color: var(--text-soft); max-width: 540px; margin: 0 auto 3rem; }
+.testride-form { max-width: 540px; margin: 0 auto; display: flex; border: 1px solid var(--line); background: rgba(255,255,255,0.05); }
+.testride-form input { flex: 1; background: transparent; border: none; padding: 1.1rem 1.25rem; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; outline: none; }
+.testride-form button { background: var(--accent); color: var(--bg); border: none; padding: 1.1rem 1.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; transition: opacity 400ms var(--ease-quiet); }
+.testride-form button:hover { opacity: 0.85; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
+.footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--line); }
+.footer-brand h4 { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.footer-brand h4::before { content: ''; width: 10px; height: 10px; background: var(--accent); }
+.footer-brand p { font-size: 0.9rem; line-height: 1.65; color: var(--text-soft); max-width: 320px; }
+.footer-col h5 { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; font-weight: 400; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.75rem; font-size: 0.9rem; color: var(--text-soft); }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom { max-width: 1400px; margin: 2rem auto 0; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-soft); flex-wrap: wrap; gap: 1rem; }
+.footer-bottom .accent { color: var(--accent); }
+@media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; } .footer-brand { grid-column: 1 / -1; } }
+
+/* UTILITIES */
+.fade-up { opacity: 0; transform: translateY(40px); transition: opacity 1000ms var(--ease-quiet), transform 1000ms var(--ease-quiet); }
+.fade-up.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .hero-canvas { display: none; } .ring { transform: none !important; } }
+
+/* ─────────── FLOATING BUTTONS STYLES ──── */
+.fab-wrapper {
+  position: fixed; bottom: 24px; right: 24px; z-index: 998;
+  display: flex; flex-direction: column; gap: 12px; align-items: center;
+}
+
+/* WhatsApp Floating Button */
+.wa-fab {
+  width: 52px; height: 52px;
+  background: #25D366; color: #ffffff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 999;
+  transition: transform 400ms var(--ease-quiet);
+  order: 2; /* Positions it above the AI button */
+}
+.wa-fab:hover { transform: scale(1.05); }
+.wa-fab svg { width: 28px; height: 28px; fill: #ffffff; }
+
+/* AI AGENT DIVYA STYLES */
+.divya-fab {
+  width: 60px; height: 60px;
+  background: var(--accent); color: var(--bg); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.5rem;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 999;
+  transition: transform 400ms var(--ease-quiet);
+  order: 1; /* Positions it below the WA button */
+}
+.divya-fab:hover { transform: scale(1.05); }
+.divya-fab svg { width: 28px; height: 28px; fill: var(--bg); }
+
+.divya-chat-window {
+  position: fixed; bottom: 100px; right: 24px; width: 360px; max-width: calc(100vw - 48px);
+  height: 500px; max-height: calc(100vh - 140px);
+  background: #081535; border: 1px solid var(--line); border-radius: 8px;
+  display: none; flex-direction: column; overflow: hidden; z-index: 999;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+.divya-chat-window.is-open { display: flex; }
+
+.divya-chat-header {
+  padding: 1rem 1.25rem; background: #0a1c4d; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.divya-avatar {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--accent);
+  color: var(--bg); display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.2rem;
+}
+.divya-chat-header-text h4 { font-size: 0.9rem; margin: 0; }
+.divya-chat-header-text span { font-size: 0.7rem; color: #4ade80; display: flex; align-items: center; gap: 0.3rem; }
+.divya-chat-header-text span::before { content: ''; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
+
+.divya-messages {
+  flex: 1; padding: 1.25rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.divya-messages::-webkit-scrollbar { width: 4px; }
+.divya-messages::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+
+.divya-msg {
+  max-width: 85%; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.85rem;
+  line-height: 1.5; opacity: 0; transform: translateY(10px);
+  animation: divyaFadeIn 0.4s var(--ease-quiet) forwards;
+}
+@keyframes divyaFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+.divya-msg.bot { background: #10224f; color: var(--text-soft); border-top-left-radius: 2px; align-self: flex-start; white-space: pre-line; }
+.divya-msg.user { background: var(--accent); color: var(--bg); border-top-right-radius: 2px; align-self: flex-end; font-weight: 500; }
+.divya-msg.typing { background: #10224f; color: var(--text-soft); border-top-left-radius: 2px; align-self: flex-start; font-style: italic; opacity: 0.7; }
+
+.divya-input-area {
+  padding: 1rem; border-top: 1px solid var(--line); background: #0a1c4d;
+  display: flex; gap: 0.75rem;
+}
+.divya-input-area input {
+  flex: 1; background: #051030; border: 1px solid var(--line); border-radius: 4px;
+  padding: 0.75rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.85rem; outline: none;
+}
+.divya-input-area input:focus { border-color: var(--accent); }
+.divya-input-area button {
+  background: var(--accent); color: var(--bg); border: none; border-radius: 4px;
+  padding: 0 1rem; cursor: pointer; transition: opacity 0.3s;
+}
+.divya-input-area button:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-mark"></span>
+    <span class="nav-logo-text">Divya Auto Hub<small>Bajaj Authorised · Kathmandu</small></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#range">Price List</a></li>
+    <li><a href="#metal">In the metal</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#showroom">Showroom</a></li>
+  </ul>
+  <a href="#testride" class="nav-cta">Book a test ride</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas class="hero-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-meta">
+      <span class="hero-meta-left">AUTHORISED DEALER · EST. MAHARAJGUNJ</span>
+      <div class="hero-meta-right"><span>27.7172° N</span><span>85.3240° E</span></div>
+    </div>
+    <h1 id="hero-title">DIVYA AUTO HUB</h1>
+    <div class="hero-typewriter-wrap"><div class="hero-subtitle" id="hero-subtitle"></div></div>
+    <div class="hero-cta-wrap" id="hero-cta">
+      <div class="hero-cta-row">
+        <a href="#range" class="btn-primary">View price list <span class="arrow">→</span></a>
+        <a href="#showroom" class="btn-ghost">Visit showroom</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">Scroll to begin</div>
+</section>
+
+<!-- INTRO -->
+<section class="intro" data-observe>
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-left">
+        <span class="eyebrow">Authorised Dealer · Kathmandu</span>
+        <h2 class="section-title headline-enter">A Bajaj for every road,<br>every rider, every reason.</h2>
+      </div>
+      <div class="intro-right">
+        <p class="headline-enter">Divya Auto Hub Pvt. Ltd. is the authorised Bajaj Motorcycle dealership in Maharajgunj, Kathmandu — stocking the complete Bajaj range, from the daily-workhorse Platina to the dominant NS400.</p>
+        <p class="headline-enter">Our showroom is a single point of contact for the purchase, finance, exchange, servicing, insurance and spare parts of every Bajaj motorcycle sold in Nepal. The team behind the counter has been with the brand for over a decade — they know the differences between an NS200 and an N250, and they will tell you which one fits your commute.</p>
+        <p class="headline-enter">Whether you are buying your first motorcycle or your fifth, the brief is the same: a hassle-free experience, transparent pricing, and after-sales support that does not disappear the moment the registration plate is fitted.</p>
+        <div class="intro-stats">
+          <div><div class="stat-num">13+</div><div class="stat-label">Models<br>in stock</div></div>
+          <div><div class="stat-num">06</div><div class="stat-label">Model<br>families</div></div>
+          <div><div class="stat-num">10+</div><div class="stat-label">Years of<br>Bajaj experience</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RANGE / PRICE LIST -->
+<section class="range" id="range" data-observe>
+  <div class="container">
+    <div class="range-header">
+      <div class="range-header-left">
+        <span class="eyebrow">The Price List</span>
+        <h2 class="section-title headline-enter">Transparent pricing.<br>No hidden <em>margins.</em></h2>
+      </div>
+      <div class="range-header-right headline-enter">
+        <strong>All prices in NPR</strong><br>BS6 models available<br>Updated for 2025
+      </div>
+    </div>
+
+    <div class="range-list">
+      <div class="range-row fade-up"><div class="range-row-num">01</div><div class="range-row-name"><h3>Platina 100 ES BS6</h3><span>Commuter · Economy</span></div><div class="range-row-price">NPR 255,900<small>EMI fr. 6,119/mo</small></div><div class="range-row-desc">The no-nonsense daily. Cushioned suspension, frugal engine, and a price tag that respects the monthly budget.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">02</div><div class="range-row-name"><h3>Pulsar 125 Neon BS6</h3><span>Commuter · Entry Sport</span></div><div class="range-row-price">NPR 304,900</div><div class="range-row-desc">The gateway to the Pulsar family. Neon accents, comfortable upright stance, and an incredibly frugal engine.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">03</div><div class="range-row-name"><h3>Pulsar 125 NS ABS FI BS6</h3><span>Sport · Streetfighter</span></div><div class="range-row-price">NPR 342,900</div><div class="range-row-desc">Naked sport styling in a 125cc package. Fuel-injected, single-channel ABS, and a chassis built for the city.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">04</div><div class="range-row-name"><h3>Pulsar N 125 BS6</h3><span>Sport · Premium Commuter</span></div><div class="range-row-price">NPR 316,900</div><div class="range-row-desc">A refined step up. Premium fit-and-finish, precise handling, and an engine that feels unstressed at highway speeds.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">05</div><div class="range-row-name"><h3>Pulsar 150 SD BS6</h3><span>Sport · Commuter</span></div><div class="range-row-price">NPR 367,900</div><div class="range-row-desc">The legendary workhorse. Single-disc brake, classic Pulsar styling, and an engine that outlasts the decade.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">06</div><div class="range-row-name"><h3>Pulsar 150 TD BS6</h3><span>Sport · Twin Disc</span></div><div class="range-row-price">NPR 380,900</div><div class="range-row-desc">The 150 SD with added front and rear disc brakes for riders who demand sharper stopping power in city traffic.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">07</div><div class="range-row-name"><h3>Pulsar N 150 BS6</h3><span>Sport · Streetfighter</span></div><div class="range-row-price">NPR 392,900</div><div class="range-row-desc">The new generation N-series. Aggressive tank extensions, brighter headlamp, and a punchy mid-range.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">08</div><div class="range-row-name"><h3>Pulsar N 160 DC ABS BS6 (UG2)</h3><span>Sport · Premium</span></div><div class="range-row-price">NPR 435,900</div><div class="range-row-desc">Dual-channel ABS, updated ergonomics, and a torque-heavy engine. A serious motorcycle for serious riders.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">09</div><div class="range-row-name"><h3>Pulsar 220 F ABS FI BS6</h3><span>Sport · Semi-Faired</span></div><div class="range-row-price">NPR 454,900</div><div class="range-row-desc">The iconic "Pulsar 220". Semi-faired for highway stability, fuel-injected, and still the king of the 200cc commute.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">10</div><div class="range-row-name"><h3>Pulsar 200 NS FI DC ABS BS6</h3><span>Sport · Naked Street</span></div><div class="range-row-price">NPR 468,900</div><div class="range-row-desc">Raw, aggressive, and built for the canyon. Liquid-cooled performance with streetfighter ergonomics.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">11</div><div class="range-row-name"><h3>Pulsar N 250 DC ABS BS6</h3><span>Sport · Premium</span></div><div class="range-row-price">NPR 519,900</div><div class="range-row-desc">The 250cc sweet spot. Smooth power delivery, premium suspension, and the kind of braking hardware usually reserved for bigger bikes.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">12</div><div class="range-row-name"><h3>Pulsar 400 NS BS6</h3><span>Performance · Naked</span></div><div class="range-row-price">NPR 609,900</div><div class="range-row-desc">The flagship Pulsar. 373cc, 35 PS, and a chassis that thrives on aggressive riding. A true performance flagship.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">13</div><div class="range-row-name"><h3>Dominar 400 ABS BS6</h3><span>Touring · Highway</span></div><div class="range-row-price">NPR 646,900</div><div class="range-row-desc">Built for the long stretch. Triple-spark ignition, comfortable touring ergonomics, and a tank that goes the distance.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">14</div><div class="range-row-name"><h3>Avenger · Chetak</h3><span>Cruiser · Electric</span></div><div class="range-row-price">On Enquiry</div><div class="range-row-desc">The Avenger cruiser line and the Chetak electric scooter are available to order. Pricing on request.</div><div class="range-row-arrow">Enquire →</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- IN THE METAL -->
+<section class="metal" id="metal" data-observe>
+  <div class="container">
+    <div class="metal-header">
+      <div class="metal-header-left">
+        <span class="eyebrow">In the metal</span>
+        <h2 class="section-title headline-enter">Engineering, up close.<br>No gloss, <em>just the parts.</em></h2>
+      </div>
+    </div>
+    <div class="metal-grid">
+      <div class="metal-item m-item-1 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/c53bfcab-ebfe-4fde-b897-e16329f4ddb0.png?auth_key=1884178406-8614dbe6a6d44eaf8d260777983733a6-0-138c77875428eb126ac0564db6d256fa" alt="Motorcycle front headlight close-up"><div class="metal-item-label"><span>01 — Front</span><strong>Headlight & Windshield</strong></div></div>
+      <div class="metal-item m-item-2 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/625deb20-4396-4e66-a954-fcd9ddb40327.png?auth_key=1884178406-40a1f4ecc2cc475fb722bbab2ed1eaac-0-8be8dda04aeac1b430c65c296e1f4ce3" alt="Motorcycle engine close-up"><div class="metal-item-label"><span>02 — Powertrain</span><strong>Engine & Transmission</strong></div></div>
+      <div class="metal-item m-item-3 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/81f8a539-6c75-4b39-a95d-00af9ccc2076.png?auth_key=1884178406-28e66c1d480f413ca82bad15162acb6b-0-a7e24efe2d9395401cee90b74edbb646" alt="Front brake and disc"><div class="metal-item-label"><span>03 — Braking</span><strong>Front Disc</strong></div></div>
+      <div class="metal-item m-item-4 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/3a7ed70e-f7ff-45ae-8d66-06edc5193d83.png?auth_key=1884178406-51f793ea5c7d479aa9c422836952b2d5-0-bc959f8c80c988a7b4bda7fb2f4c7890" alt="Motorcycle suspension and forks"><div class="metal-item-label"><span>04 — Suspension</span><strong>Front Forks</strong></div></div>
+      <div class="metal-item m-item-5 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/1daf35d4-0b45-4759-af1e-0337a14a8452.png?auth_key=1884178406-ed5c3504ec0c48efa9bbad4b0a3d8075-0-fc3b7a6f9e7a605617a3ddc5faeb6a37" alt="Front tyre and MRF rubber"><div class="metal-item-label"><span>05 — Rubber</span><strong>Front Tyre (MRF)</strong></div></div>
+      <div class="metal-item m-item-6 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/b0ad3b63-7677-42f1-b2bc-739d36c2deca.png?auth_key=1884178406-2fe0c9b86ebf4d82b3122c045ec514c8-0-392ed9fde3a2d59b96b9b3de922476b9" alt="Exhaust and rear mechanicals"><div class="metal-item-label"><span>06 — Exhaust</span><strong>Rear & Muffler</strong></div></div>
+      <div class="metal-item m-item-7 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/e56693fe-aa1c-49e0-b492-add0613c7c73.png?auth_key=1884178406-953e676ad0334619bf222f9adb45d4f3-0-4928afd081d26581648dbc00fb549429" alt="NS400 ridden in the mountains"><div class="metal-item-label"><span>07 — Pulsar NS400</span><strong>373cc · 35 PS · 35 Nm</strong></div></div>
+      <div class="metal-item m-item-8 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/a8e595f0-ca5f-4e71-b533-a142356df6b6.jpeg?auth_key=1884178406-4a02595362924066ac958a70c14aefa7-0-ca953420414045ba87681626da40a581" alt="Avenger ridden in the mountains"><div class="metal-item-label"><span>08 — Avenger</span><strong>219.89cc · 19.03 PS · 17.5 Nm</strong></div></div>
+      <div class="metal-item m-item-9 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/7c0e16bb-197a-4797-ab16-e71e2ec309e3.png?auth_key=1884178406-9800f736c5cf452684ff46121dd8daba-0-9341cc393be827de1d1208bba94636cb" alt="Bajaj brand logo"><div class="metal-item-label"><span>09 — The Badge</span><strong>Loved in 100 Countries</strong></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services" data-observe>
+  <div class="container">
+    <div class="sticky-pair">
+      <div class="left">
+        <span class="eyebrow">Beyond the sale</span>
+        <h2 class="section-title headline-enter">Everything your<br>motorcycle needs,<br>under one roof.</h2>
+        <p class="headline-enter">The purchase is the first chapter, not the last. Our service floor handles scheduled maintenance, accidental repairs, genuine spare parts, insurance claims and annual renewals — all from the same address you bought the motorcycle from.</p>
+      </div>
+      <div class="right">
+        <div class="service-item fade-up"><div class="service-num">01</div><div class="service-content"><h3>Hire Purchase via Hulas Fin Serv</h3><p>We offer easy Hire Purchase facilities through Hulas Fin Serv. Choose from 40% Downpayment (12.99% interest), 50% Downpayment (11.99% interest), or 60% Downpayment (8.99% interest). Tenures available for 12, 24, or 36 months. Approval typically within 48 hours.</p><div class="service-meta"><span>40% / 50% / 60% DP</span><span>8.99% - 12.99% Interest</span><span>Up to 36 months</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">02</div><div class="service-content"><h3>Bike exchange services</h3><p>Bring your current motorcycle for an on-the-spot valuation. The exchange value is adjusted against the new purchase, with the paperwork handled by our team — including ownership transfer of your previous bike.</p><div class="service-meta"><span>On-spot valuation</span><span>Transfer handled</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">03</div><div class="service-content"><h3>Genuine spare parts</h3><p>Only Bajaj-original parts — engine, electrical, body, and consumables. Each part carries the manufacturer warranty. We do not stock, fit, or recommend aftermarket substitutes.</p><div class="service-meta"><span>100% genuine</span><span>Manufacturer warranty</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">04</div><div class="service-content"><h3>Professional servicing</h3><p>Factory-trained mechanics, the full Bajaj tooling suite, and service intervals as per the owner's manual. Free first three services on every new motorcycle purchased from us.</p><div class="service-meta"><span>Factory-trained</span><span>3 free services</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">05</div><div class="service-content"><h3>Insurance assistance</h3><p>New policy issuance and annual renewals through our partner insurers. Claim assistance from intimation to settlement — including cashless repairs at our workshop for covered incidents.</p><div class="service-meta"><span>Cashless claims</span><span>Renewal reminders</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">06</div><div class="service-content"><h3>Customer support</h3><p>A single point of contact for every question — ownership, paperwork, service history, or warranty. Reachable by phone, walk-in, or WhatsApp during showroom hours.</p><div class="service-meta"><span>Single contact</span><span>Mon — Sat</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy" data-observe>
+  <div class="container">
+    <div class="sticky-pair">
+      <div class="left">
+        <span class="eyebrow">What we stand for</span>
+        <h2 class="section-title headline-enter">Eight commitments,<br>one handshake.</h2>
+        <p class="headline-enter">A motorcycle is a relationship that lasts longer than the showroom visit. The eight words rotating beside this paragraph are the standards we hold ourselves to — from the first test ride to the tenth service.</p>
+      </div>
+      <div class="ring-stage"><div class="ring" id="word-ring"></div><div class="ring-center">Ethos in motion</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWROOM -->
+<section class="showroom" id="showroom" data-observe>
+  <div class="container">
+    <div class="sticky-pair">
+      <div class="left">
+        <span class="eyebrow">Visit us</span>
+        <h2 class="section-title headline-enter">Maharajgunj,<br>Kathmandu.</h2>
+        <p class="headline-enter">The showroom is on the main road, a short walk from the Maharajgunj chowk. Bike parking is available on the premises. Bring your licence — test rides are offered on every variant in stock.</p>
+        <div class="showroom-info">
+          <div class="info-row fade-up"><div class="info-label">Address</div><div class="info-value">Divya Auto Hub Pvt. Ltd.<br>Maharajgunj, Kathmandu 44600<br><span class="accent">Bagmati Province · Nepal</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Hours</div><div class="info-value">Sunday — Friday: 9:30 — 18:00<br>Saturday: By appointment<br><span class="accent">Test rides until 17:00</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Phone</div><div class="info-value"><a href="tel:+9779801204448">9801204448</a><br><a href="tel:+97714533133">01-4533133</a><br><span class="accent">Sales · Service · WhatsApp</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Email</div><div class="info-value"><a href="mailto:divyautohub@gmail.com">divyautohub@gmail.com</a><br><span class="accent">For sales, service & enquiries</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Social</div><div class="info-value"><a href="https://www.facebook.com/BajajMaharajgunj" target="_blank">Facebook</a> · <a href="https://wa.me/9779801204448" target="_blank">WhatsApp</a><br><a href="https://www.instagram.com/bajajmaharajgunj" target="_blank">Instagram</a> · <a href="https://www.tiktok.com/@bajajmaharajgunj" target="_blank">TikTok</a><br><span class="accent">Follow for latest offers</span></div></div>
+        </div>
+      </div>
+      <div class="right showroom-images">
+        <div class="showroom-img-wrap tall fade-up"><img src="https://z-cdn-media.chatglm.cn/files/e56693fe-aa1c-49e0-b492-add0613c7c73.png?auth_key=1884178406-953e676ad0334619bf222f9adb45d4f3-0-4928afd081d26581648dbc00fb549429" alt="Pulsar NS400 on the showroom floor / mountains"><div class="showroom-img-label"><span>01 —</span> The NS400 Experience</div></div>
+        <div class="showroom-img-wrap wide fade-up"><img src="https://z-cdn-media.chatglm.cn/files/a8e595f0-ca5f-4e71-b533-a142356df6b6.jpeg?auth_key=1884178406-4a02595362924066ac958a70c14aefa7-0-ca953420414045ba87681626da40a581" alt="Avenger inside the showroom / on the road"><div class="showroom-img-label"><span>02 —</span> The Avenger Ride</div></div>
+        <div class="showroom-img-wrap tall fade-up"><img src="https://z-cdn-media.chatglm.cn/files/c53bfcab-ebfe-4fde-b897-e16329f4ddb0.png?auth_key=1884178406-8614dbe6a6d44eaf8d260777983733a6-0-138c77875428eb126ac0564db6d256fa" alt="Motorcycle front headlight close-up inside showroom"><div class="showroom-img-label"><span>03 —</span> On the floor</div></div>
+        <div class="showroom-img-wrap wide fade-up"><img src="https://z-cdn-media.chatglm.cn/files/625deb20-4396-4e66-a954-fcd9ddb40327.png?auth_key=1884178406-40a1f4ecc2cc475fb722bbab2ed1eaac-0-8be8dda04aeac1b430c65c296e1f4ce3" alt="Motorcycle engine close-up inside service bay"><div class="showroom-img-label"><span>04 —</span> Inside the bay</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="testride" id="testride" data-observe>
+  <div class="container">
+    <div class="testride-title fade-up">Feel the engine<br>before you <em>decide.</em></h2>
+    <p class="testride-desc fade-up" style="color: var(--text-soft); margin-top: 2rem;">Leave your number. Our team will call you back within the same business day to schedule a test ride on the Bajaj motorcycle of your choice.</p>
+    <form class="testride-form fade-up" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request received ✓'; this.querySelector('button').style.opacity='0.85';">
+      <input type="tel" placeholder="98XX XXX XXX" required>
+      <button type="submit">Request callback</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h4>Divya Auto Hub Pvt. Ltd.</h4>
+      <p>Authorised Bajaj Motorcycle dealership in Maharajgunj, Kathmandu. Complete range, finance, exchange, service, parts, and insurance — under one roof, since the first day.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Range</h5>
+      <ul><li><a href="#range">Platina</a></li><li><a href="#range">Pulsar</a></li><li><a href="#range">Dominar</a></li><li><a href="#range">Avenger</a></li><li><a href="#range">Chetak Electric</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul><li><a href="#services">Finance</a></li><li><a href="#services">Exchange</a></li><li><a href="#services">Servicing</a></li><li><a href="#services">Spare parts</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="https://www.facebook.com/BajajMaharajgunj" target="_blank">Facebook</a></li>
+        <li><a href="https://wa.me/9779801204448" target="_blank">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/bajajmaharajgunj" target="_blank">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@bajajmaharajgunj" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Divya Auto Hub Pvt. Ltd. · <span class="accent">Authorised Bajaj Dealer</span></span>
+    <span>Maharajgunj · Kathmandu · Nepal</span>
+  </div>
+</footer>
+
+<!-- ─────────── FLOATING BUTTONS (WHATSAPP + AI) ──── -->
+<div class="fab-wrapper">
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/9779801204448" class="wa-fab" target="_blank" title="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  </a>
+
+  <!-- AI Agent Divya Button -->
+  <div class="divya-fab" id="divyaFab" title="Chat with Divya AI">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 2.99.97 4.29L1 23l6.71-1.97C9.01 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.3 0-2.54-.36-3.6-.99l-.26-.15-3.99 1.17 1.17-3.99-.15-.26C4.36 14.54 4 13.3 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+  </div>
+</div>
+
+<div class="divya-chat-window" id="divyaChatWindow">
+  <div class="divya-chat-header">
+    <div class="divya-avatar">D</div>
+    <div class="divya-chat-header-text">
+      <h4>Divya AI</h4>
+      <span>Online · Auto Assistant</span>
+    </div>
+  </div>
+  <div class="divya-messages" id="divyaMessages"></div>
+  <div class="divya-input-area">
+    <input type="text" id="divyaInput" placeholder="Ask about price, EMI, models..." onkeypress="handleDivyaKeyPress(event)">
+    <button onclick="sendDivyaMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+// GLYPH RAIN, SCRAMBLE DECODE, TYPEWRITER, INTERSECTION OBSERVER, WORD RING CODE HERE (Same as before)
+(function() {
+  const cvs = document.querySelector('.hero-canvas');
+  if (!cvs) return;
+  const ctx = cvs.getContext('2d');
+  const heroSection = document.querySelector('.hero');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  function resize() { cvs.width = heroSection.offsetWidth; cvs.height = heroSection.offsetHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const COL_W = 22;
+  const CHARS = 'BAJAJ0123456789PULSARDOMINARchetakCTAVENGERPLATINA';
+  let cols, drops;
+  function setupCols() { cols = Math.floor(cvs.width / COL_W); drops = Array.from({length: cols}, () => Math.random() * -cvs.height); }
+  setupCols(); window.addEventListener('resize', setupCols);
+  const ripples = [];
+  heroSection.addEventListener('click', e => {
+    const rect = heroSection.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    if (y > rect.height * 0.3) { ripples.push({ x: e.clientX - rect.left, y: y, r: 0, life: 0 }); }
+  });
+  let running = true;
+  const io = new IntersectionObserver(entries => { entries.forEach(en => running = en.isIntersecting); });
+  io.observe(heroSection);
+  function frame() {
+    if (running) {
+      ctx.fillStyle = 'rgba(5, 16, 48, 0.10)';
+      ctx.fillRect(0,0, cvs.width, cvs.height);
+      ctx.font = '13px "JetBrains Mono", monospace';
+      for (let i = 0; i < cols; i++) {
+        const x = i * COL_W;
+        const y = drops[i];
+        const bright = Math.random() < 0.025;
+        ctx.fillStyle = bright ? 'rgba(255,230,180,0.95)' : 'rgba(230, 180, 50, 0.55)';
+        ctx.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], x, y);
+        drops[i] = y > cvs.height && Math.random() > 0.975 ? 0 : y + 11;
+      }
+      for (let p of ripples) {
+        p.r += 1.6; p.life += 0.012;
+        ctx.strokeStyle = `rgba(230, 180, 50, ${0.45 * (1 - p.life)})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.stroke();
+      }
+      for (let i = ripples.length - 1; i >= 0; i--) { if (ripples[i].life > 1) ripples.splice(i, 1); }
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+(function() {
+  const TARGET = 'DIVYA AUTO HUB';
+  const CHARS = '!<>-_\\/[]{}—=+*^?#________0123456789BAJAJDIVYA';
+  const el = document.getElementById('hero-title');
+  if (!el) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { el.textContent = TARGET; document.getElementById('hero-cta').classList.add('is-shown'); return; }
+  let iter = 0;
+  const max = TARGET.length * 8;
+  el.classList.add('is-decoding');
+  el.textContent = '';
+  (function tick() {
+    el.textContent = TARGET.split('').map((ch, i) => {
+      if (ch === ' ') return ' ';
+      return i < iter / 8 ? TARGET[i] : CHARS[Math.floor(Math.random() * CHARS.length)];
+    }).join('');
+    iter += 1;
+    if (iter >= max) {
+      el.textContent = TARGET;
+      el.classList.remove('is-decoding');
+      setTimeout(initTypewriter, 400);
+      return;
+    }
+    setTimeout(tick, 42);
+  })();
+})();
+
+function initTypewriter() {
+  const host = document.getElementById('hero-subtitle');
+  const ctaWrap = document.getElementById('hero-cta');
+  if (!host) return;
+  const SRC = `Authorised Bajaj dealership.\nMaharajgunj, Kathmandu — Nepal.\n\nPulsar · Dominar · Platina ·\nAvenger · Chetak electric.\n\nFinance. Exchange. Service. Parts.`;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { host.textContent = SRC; ctaWrap.classList.add('is-shown'); return; }
+  const caret = document.createElement('span');
+  caret.className = 'caret';
+  host.appendChild(caret);
+  let i = 0;
+  const textNode = document.createTextNode('');
+  host.insertBefore(textNode, caret);
+  (function tick() {
+    if (i < SRC.length) {
+      textNode.data += SRC[i];
+      i++;
+      const ch = SRC[i - 1];
+      let delay = 38;
+      if (ch === '\n') delay = 280;
+      else if (ch === '.') delay = 180;
+      else if (ch === '·') delay = 120;
+      setTimeout(tick, delay);
+    } else {
+      let n = 0, on = true;
+      const blink = setInterval(() => {
+        caret.classList.toggle('is-hidden', !(on = !on));
+        if (++n >= 6) {
+          clearInterval(blink);
+          caret.classList.add('is-hidden');
+          ctaWrap.classList.add('is-shown');
+        }
+      }, 400);
+    }
+  })();
+}
+
+(function() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-in');
+        en.target.querySelectorAll('.fade-up').forEach((el, i) => {
+          setTimeout(() => el.classList.add('is-in'), i * 80);
+        });
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('[data-observe]').forEach(el => io.observe(el));
+
+  const io2 = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-in');
+        io2.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => {
+    if (!el.closest('[data-observe]')) io2.observe(el);
+  });
+})();
+
+(function() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ring = document.getElementById('word-ring');
+  if (!ring) return;
+  const WORDS = [
+    { text: 'PERFORMANCE', accent: false },
+    { text: 'PRECISION', accent: true },
+    { text: 'RELIABILITY', accent: false },
+    { text: 'HERITAGE', accent: true },
+    { text: 'CRAFT', accent: false },
+    { text: 'TRUST', accent: true },
+    { text: 'SERVICE', accent: false },
+    { text: 'COMMUNITY', accent: true }
+  ];
+  const allWords = [...WORDS, ...WORDS];
+  const step = 360 / allWords.length;
+  const radius = 240;
+  allWords.forEach((w, i) => {
+    const d = document.createElement('div');
+    d.className = 'ring-item' + (w.accent ? ' accent' : '');
+    d.style.transform = `rotateX(${i * step}deg) translateZ(${radius}px) translateY(-50%)`;
+    d.innerHTML = `<span>${w.text}</span>`;
+    ring.appendChild(d);
+  });
+  if (reduced) return;
+  const rot = { v: 0 };
+  let currentRot = 0, currentSpd = 0, targetSpd = 0;
+  gsap.to(rot, {
+    v: 540,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#philosophy',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1.2,
+      onUpdate: (self) => { targetSpd = self.getVelocity() * 0.0004; }
+    }
+  });
+  const items = ring.querySelectorAll('.ring-item');
+  function tick() {
+    currentRot += (rot.v - currentRot) * 0.08;
+    currentSpd += (targetSpd - currentSpd) * 0.1;
+    targetSpd *= 0.92;
+    const absSpd = Math.abs(currentSpd);
+    const skew = Math.min(absSpd * 14, 10);
+    const sx = 1 + Math.min(absSpd * 0.2, 0.12);
+    ring.style.transform = `rotateX(${currentRot}deg)`;
+    items.forEach(it => {
+      const blur = Math.min(absSpd * 1.5, 2.5);
+      const span = it.querySelector('span');
+      it.style.filter = blur > 0.1 ? `blur(${blur}px)` : 'none';
+      span.style.transform = `skewX(${currentSpd > 0 ? skew : -skew}deg) scaleX(${sx})`;
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) {
+      const target = document.querySelector(id);
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 60;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+// ─────────── AI AGENT "DIVYA" INTELLIGENT LOGIC WITH HULAS FIN SERV DATA ────
+const divyaFab = document.getElementById('divyaFab');
+const divyaChatWindow = document.getElementById('divyaChatWindow');
+const divyaMessages = document.getElementById('divyaMessages');
+const divyaInput = document.getElementById('divyaInput');
+
+divyaFab.addEventListener('click', () => {
+  divyaChatWindow.classList.toggle('is-open');
+  if (divyaChatWindow.classList.contains('is-open') && divyaMessages.children.length === 0) {
+    addDivyaMessage("Namaste! I am Divya AI. I can provide model prices, Hulas Fin Serv EMI details, or info on any Bajaj bike. How can I help?", 'bot');
+  }
+});
+
+function handleDivyaKeyPress(e) {
+  if (e.key === 'Enter') {
+    sendDivyaMessage();
+  }
+}
+
+function sendDivyaMessage() {
+  const text = divyaInput.value.trim();
+  if (!text) return;
+  
+  addDivyaMessage(text, 'user');
+  divyaInput.value = '';
+  
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'divya-msg bot typing';
+  typingIndicator.textContent = "Divya is researching...";
+  divyaMessages.appendChild(typingIndicator);
+  divyaMessages.scrollTop = divyaMessages.scrollHeight;
+
+  setTimeout(() => {
+    typingIndicator.remove();
+    const response = getDivyaResponse(text.toLowerCase());
+    addDivyaMessage(response, 'bot');
+  }, 800);
+}
+
+function addDivyaMessage(text, sender) {
+  const msg = document.createElement('div');
+  msg.className = `divya-msg ${sender}`;
+  msg.textContent = text;
+  divyaMessages.appendChild(msg);
+  divyaMessages.scrollTop = divyaMessages.scrollHeight;
+}
+
+function getDivyaResponse(query) {
+  // 1. Check for Finance / EMI / Hulas Fin Serv specific queries
+  if (query.includes('finance') || query.includes('emi') || query.includes('loan') || query.includes('installment') || query.includes('hulas') || query.includes('hire purchase') || query.includes('downpayment') || query.includes('down payment')) {
+    const modelFound = findModelInQuery(query);
+    
+    // Determine Downpayment %
+    let dpPlan = "40% Downpayment (11.99% interest)";
+    if (query.includes('50') || query.includes('50%')) dpPlan = "50% Downpayment (10.99% interest)";
+    if (query.includes('60') || query.includes('60%')) dpPlan = "60% Downpayment (8.99% interest)";
+    
+    // Determine Tenure
+    let tenure = "24 months";
+    if (query.includes('12 month') || query.includes('1 year')) tenure = "12 months";
+    if (query.includes('36 month') || query.includes('3 year')) tenure = "36 months";
+
+    // Hardcoded data based on Hulas Excel Sheet for specific models
+    const emiData = {
+      "pulsar 150 sd": { dp40_24m: "10,493", dp50_24m: "8,658", dp60_24m: "6,722", dp40_36m: "7,437", dp50_36m: "6,109", dp60_36m: "4,679" },
+      "pulsar 220 f": { dp40_24m: "12,975", dp50_24m: "10,706", dp60_24m: "8,312", dp40_36m: "9,195", dp50_36m: "7,554", dp60_36m: "5,785" },
+      "dominar 400": { dp40_24m: "18,451", dp50_24m: "15,224", dp60_24m: "11,820", dp40_36m: "13,076", dp50_36m: "10,742", dp60_36m: "8,227" },
+      "pulsar 400": { dp40_24m: "17,396", dp50_24m: "14,354", dp60_24m: "11,144", dp40_36m: "12,328", dp50_36m: "10,127", dp60_36m: "7,757" },
+      "pulsar 200": { dp40_24m: "13,374", dp50_24m: "11,035", dp60_24m: "8,568", dp40_36m: "9,478", dp50_36m: "7,786", dp60_36m: "5,963" },
+      "platina": { dp40_24m: "~7,327", dp50_24m: "~6,046", dp60_24m: "~4,694", dp40_36m: "~5,193", dp50_36m: "~4,266", dp60_36m: "~3,267" }
+    };
+
+    if (modelFound) {
+      const key = Object.keys(emiData).find(k => modelFound.name.toLowerCase().includes(k));
+      if (key) {
+        const data = emiData[key];
+        let emiKey = `dp${dpPlan.match(/\d+/)[0]}_${tenure.match(/\d+/)[0]}m`;
+        let emiVal = data[emiKey] ? data[emiKey] : data[`${emiKey.split('_')[0]}_24m`]; // fallback to 24m
+        let finalTenure = data[emiKey] ? tenure : "24 months";
+        
+        return `For ${modelFound.name} via Hulas Fin Serv:\n- Plan: ${dpPlan}\n- Tenure: ${finalTenure}\n- Monthly EMI: NPR ${emiVal}\n\nTotal down payment includes insurance and registration. Please visit our showroom for exact documentation and final valuation.`;
+      }
+      return `For ${modelFound.name}, we offer Hire Purchase via Hulas Fin Serv. You can choose 40% DP (12.99% interest), 50% DP (11.99%), or 60% DP (8.99%). Tenures are 12, 24, or 36 months. Please visit us for the exact EMI calculation for this specific model.`;
+    }
+
+    return "We offer Hire Purchase facilities through Hulas Fin Serv. Plans available:\n1. 40% Downpayment @ 12.99% interest\n2. 50% Downpayment @ 11.99% interest\n3. 60% Downpayment @ 8.99% interest\nTenures: 12, 24, or 36 months.\n\nTell me which model you are interested in to get specific EMI details.";
+  }
+
+  // 2. Check for general Price queries
+  if (query.includes('price') || query.includes('daam') || query.includes('rate') || query.includes('cost') || query.includes('kati')) {
+    const modelFound = findModelInQuery(query);
+    if (modelFound) {
+      return `The price for ${modelFound.name} is ${modelFound.price}.`;
+    }
+    return "Our motorcycle prices range from NPR 255,900 (Platina 100) to NPR 646,900 (Dominar 400). Please tell me which specific model you are interested in (e.g., 'Pulsar 150 price').";
+  }
+
+  // 3. Check if a specific model is mentioned without the word 'price'
+  const modelFound = findModelInQuery(query);
+  if (modelFound) {
+    return `The ${modelFound.name} is priced at ${modelFound.price}. ${modelFound.desc} Would you like to know about Hulas Fin Serv EMI options for this model?`;
+  }
+
+  // 4. Address / Location
+  if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where')) {
+    return "We are located in Maharajgunj, Kathmandu. Showroom hours: Sunday to Friday, 9:30 AM to 6:00 PM. Test rides are available until 5:00 PM.";
+  }
+
+  // 5. Contact / Phone
+  if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) {
+    return "You can reach us at 9801204448 or 01-4533133. Email: divyautohub@gmail.com";
+  }
+
+  // 6. Service
+  if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts')) {
+    return "We provide factory-trained professional servicing, 3 free services for new bikes, and 100% genuine Bajaj spare parts with a manufacturer warranty.";
+  }
+
+  // 7. Test ride
+  if (query.includes('test ride') || query.includes('try') || query.includes('demo')) {
+    return "Yes, test rides are available! Please bring your driving license to our Maharajgunj showroom. Test rides run daily from 9:30 AM to 5:00 PM.";
+  }
+
+  // 8. Greetings
+  if (query.includes('namaste') || query.includes('hello') || query.includes('hi')) {
+    return "Namaste! How can I assist you with Bajaj motorcycles today? You can ask about prices, models, or Hulas Fin Serv hire purchase.";
+  }
+
+  // 9. Fallback
+  return "I am currently optimized to answer questions about Divya Auto Hub's motorcycle prices, Hulas Fin Serv hire purchase EMI, location, and services. For specific technical questions, please call us at 9801204448.";
+}
+
+function findModelInQuery(query) {
+  const rows = document.querySelectorAll('.range-row');
+  for (let row of rows) {
+    const name = row.querySelector('h3').innerText;
+    const priceNode = row.querySelector('.range-row-price');
+    const price = priceNode.childNodes[0].nodeValue.trim();
+    const desc = row.querySelector('.range-row-desc').innerText;
+    
+    const keywords = name.toLowerCase().split(/\s+/);
+    if (query.includes(name.toLowerCase()) || (keywords.length > 1 && query.includes(keywords[0]) && query.includes(keywords[1]))) {
+      return { name: name, price: price, desc: desc };
+    }
+  }
+  return null;
+}
+</script>
+</body>
+</html>

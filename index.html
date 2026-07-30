@@ -315,6 +315,99 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
 }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .hero-canvas { display: none; } .ring { transform: none !important; } }
+
+/* ===== FINANCE ELIGIBILITY CHECKER (MODAL) ===== */
+
+.fin-modal-overlay {
+  --bg: #0f1115; --card-bg: #1a1d24; --text: #ffffff; --text-soft: #b3b8c2;
+  --accent: #E4002B; --accent-dark: #b80023; --line: #2d3139;
+  --success: #22c55e; --warning: #eab308; --danger: #ef4444;
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(2,4,10,0.82); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 2rem; overflow-y: auto;
+}
+.fin-modal-overlay.fin-is-open { display: flex; }
+.fin-modal-overlay { color: var(--text); }
+.fin-modal-overlay * { box-sizing: border-box; }
+.fin-modal-overlay, .fin-modal-overlay input, .fin-modal-overlay select, .fin-modal-overlay button {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.fin-close-btn {
+  position: absolute; top: 1.2rem; right: 1.2rem; width: 36px; height: 36px;
+  border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid var(--line);
+  color: var(--text); font-size: 1.1rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: background 0.3s;
+  z-index: 5;
+}
+.fin-close-btn:hover { background: rgba(255,255,255,0.2); }
+.fin-container {
+  position: relative;
+  background: var(--card-bg); width: 100%; max-width: 700px;
+  border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden;
+  border: 1px solid var(--line);
+}
+.fin-header {
+  background: #000; padding: 2rem; text-align: center; border-bottom: 4px solid var(--accent);
+}
+.fin-header h1 { color: var(--accent); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.fin-header p { color: var(--text-soft); font-size: 0.9rem; margin-top: 0.5rem; }
+.fin-progress-bar { width: 100%; height: 6px; background: var(--line); }
+.fin-progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s ease; }
+.fin-body { padding: 2.5rem; max-height: 70vh; overflow-y: auto; }
+.fin-step { display: none; animation: fadeIn 0.5s ease; }
+.fin-step.fin-is-active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fin-step h3 { color: var(--text); margin-bottom: 1.5rem; font-size: 1.2rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+.fin-group { margin-bottom: 1.5rem; }
+.fin-group label { display: block; font-size: 0.85rem; color: var(--text-soft); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.fin-group input, .fin-group select {
+  width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
+  padding: 0.85rem 1rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.95rem; outline: none;
+  transition: border-color 0.3s;
+}
+.fin-group input:focus, .fin-group select:focus { border-color: var(--accent); }
+.fin-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.fin-radio-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.fin-radio-label {
+  background: var(--bg); border: 1px solid var(--line); padding: 0.8rem 1.2rem; border-radius: 8px;
+  cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: all 0.3s;
+}
+.fin-radio-label:hover { border-color: var(--accent); }
+.fin-radio-label input { accent-color: var(--accent); }
+.fin-doc-upload {
+  border: 2px dashed var(--line); background: var(--bg); padding: 1.5rem; text-align: center;
+  border-radius: 8px; cursor: pointer; position: relative; transition: border-color 0.3s;
+}
+.fin-doc-upload:hover { border-color: var(--accent); }
+.fin-doc-upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.fin-doc-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+.fin-doc-text { font-size: 0.85rem; color: var(--text-soft); }
+.fin-doc-name { font-size: 0.8rem; color: var(--accent); margin-top: 0.5rem; font-weight: bold; word-break: break-all; }
+.fin-btn-group { display: flex; justify-content: space-between; margin-top: 2.5rem; gap: 1rem; }
+.fin-btn-next { background: var(--accent); color: white; border: none; padding: 1rem 2rem; font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 8px; cursor: pointer; flex: 1; transition: background 0.3s; }
+.fin-btn-next:hover { background: var(--accent-dark); }
+.fin-btn-prev { background: transparent; color: var(--text-soft); border: 1px solid var(--line); padding: 1rem 2rem; font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; border-radius: 8px; cursor: pointer; flex: 0.5; transition: all 0.3s; }
+.fin-btn-prev:hover { border-color: var(--text-soft); color: var(--text); }
+.fin-alert { background: rgba(228, 0, 43, 0.1); border: 1px solid var(--accent); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; }
+.fin-alert p { font-size: 0.9rem; color: var(--text); }
+.fin-result-card { text-align: center; padding: 3rem 2rem; border-radius: 12px; margin-top: 1rem; }
+.fin-result-card .icon { font-size: 3rem; margin-bottom: 1rem; }
+.fin-result-card h3 { font-size: 1.5rem; margin-bottom: 1rem; border: none; padding: 0; }
+.fin-result-card p { color: var(--text-soft); }
+.fin-result-green { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--success); }
+.fin-result-green h3 { color: var(--success); }
+.fin-result-yellow { background: rgba(234, 179, 8, 0.1); border: 1px solid var(--warning); }
+.fin-result-yellow h3 { color: var(--warning); }
+.fin-result-red { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); }
+.fin-result-red h3 { color: var(--danger); }
+.fin-disclaimer { font-size: 0.75rem; color: #666; text-align: center; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+@media (max-width: 600px) {
+  .fin-row { grid-template-columns: 1fr; }
+  .fin-body { padding: 1.5rem; }
+  .fin-btn-group { flex-direction: column-reverse; }
+  .fin-btn-prev { flex: 1; }
+}
+
 </style>
 </head>
 <body>
@@ -330,6 +423,7 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
     <li><a href="#booking">Online Booking</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#showroom">Showroom</a></li>
+    <li><a href="#" onclick="openFinanceModal(); return false;">Check Finance Eligibility</a></li>
   </ul>
   <a href="#testride" class="nav-cta">Book a test ride</a>
 </nav>
@@ -441,7 +535,7 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
         <p class="headline-enter">The purchase is the first chapter, not the last. Our service floor handles scheduled maintenance, accidental repairs, genuine spare parts, insurance claims and annual renewals — all from the same address you bought the motorcycle from.</p>
       </div>
       <div class="right">
-        <div class="service-item fade-up"><div class="service-num">01</div><div class="service-content"><h3>Hire Purchase via Hulas Fin Serv</h3><p>We offer easy Hire Purchase facilities through Hulas Fin Serv. Choose from 40% Downpayment (12.99% interest), 50% Downpayment (10.99% interest), or 60% Downpayment (8.99% interest). Tenures available for 12, 24, 36, or 60 months. Approval typically within 48 hours.</p><div class="service-meta"><span>40% / 50% / 60% DP</span><span>8.99% - 12.99% Interest</span><span>Up to 60 months</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">01</div><div class="service-content"><h3>Hire Purchase via Hulas Fin Serv</h3><p>We offer easy Hire Purchase facilities through Hulas Fin Serv. Choose from 40% Downpayment (12.99% interest), 50% Downpayment (10.99% interest), or 60% Downpayment (8.99% interest). Tenures available for 12, 24, 36, or 60 months. Approval typically within 48 hours.</p><div class="service-meta"><span>40% / 50% / 60% DP</span><span>8.99% - 12.99% Interest</span><span>Up to 60 months</span></div><a href="#" onclick="openFinanceModal(); return false;" class="btn-primary" style="display: inline-block; margin-top: 1.2rem; padding: 0.6rem 1.2rem; font-size: 0.7rem;">Check Your Finance Eligibility →</a></div></div>
         <div class="service-item fade-up"><div class="service-num">02</div><div class="service-content"><h3>Bike exchange services</h3><p>Bring your current motorcycle for an on-the-spot valuation. The exchange value is adjusted against the new purchase, with the paperwork handled by our team — including ownership transfer of your previous bike.</p><div class="service-meta"><span>On-spot valuation</span><span>Transfer handled</span></div></div></div>
         <div class="service-item fade-up"><div class="service-num">03</div><div class="service-content"><h3>Genuine spare parts</h3><p>Only Bajaj-original parts — engine, electrical, body, and consumables. Each part carries the manufacturer warranty. We do not stock, fit, or recommend aftermarket substitutes.</p><div class="service-meta"><span>100% genuine</span><span>Manufacturer warranty</span></div></div></div>
         <div class="service-item fade-up"><div class="service-num">04</div><div class="service-content"><h3>Professional servicing</h3><p>Factory-trained mechanics, the full Bajaj tooling suite, and service intervals as per the owner's manual. Free first three services on every new motorcycle purchased from us.</p><div class="service-meta"><span>Factory-trained</span><span>3 free services</span></div></div></div>
@@ -567,7 +661,7 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
     </div>
     <div class="footer-col">
       <h5>Services</h5>
-      <ul><li><a href="#services">Finance</a></li><li><a href="#services">Exchange</a></li><li><a href="#services">Servicing</a></li><li><a href="#booking">Online Booking</a></li></ul>
+      <ul><li><a href="#services">Finance</a></li><li><a href="#" onclick="openFinanceModal(); return false;">Check Finance Eligibility</a></li><li><a href="#services">Exchange</a></li><li><a href="#services">Servicing</a></li><li><a href="#booking">Online Booking</a></li></ul>
     </div>
     <div class="footer-col">
       <h5>Connect</h5>
@@ -612,6 +706,172 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
 
 <elevenlabs-convai agent-id="agent_7701kyq1kmh6e8q8sbnrcxazjg9r"></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+
+<!-- ===== FINANCE ELIGIBILITY CHECKER (MODAL) ===== -->
+
+<div class="fin-modal-overlay" id="finModalOverlay">
+<div class="fin-container">
+  <button type="button" class="fin-close-btn" onclick="closeFinanceModal()" aria-label="Close">✕</button>
+  <div class="fin-header">
+    <h1>AI Finance Eligibility Checker</h1>
+    <p>Divya Auto Hub Pvt. Ltd. | Check your preliminary finance eligibility instantly.</p>
+  </div>
+  <div class="fin-progress-bar"><div class="fin-progress-fill" id="finProgressFill"></div></div>
+  
+  <div class="fin-body">
+    <form id="finForm" enctype="multipart/form-data">
+      
+      <!-- STEP 1: CUSTOMER INFO -->
+      <div class="fin-step fin-is-active" data-step="1">
+        <h3>Step 1: Customer Information</h3>
+        <div class="fin-group"><label>Full Name</label><input type="text" name="FullName" required></div>
+        <div class="fin-row">
+          <div class="fin-group"><label>Mobile Number</label><input type="tel" name="Mobile" required></div>
+          <div class="fin-group"><label>Citizenship Number</label><input type="text" name="Citizenship" required></div>
+        </div>
+        <div class="fin-row">
+          <div class="fin-group"><label>Date of Birth</label><input type="date" name="DOB" id="finDobInput" required onchange="finCalcAge()"></div>
+          <div class="fin-group"><label>Age (Auto Calculated)</label><input type="text" name="Age" id="finAgeInput" readonly required></div>
+        </div>
+        <div class="fin-group"><label>Permanent Address</label><input type="text" name="PermanentAddress" required></div>
+        <div class="fin-group"><label>Current Address</label><input type="text" name="CurrentAddress" required></div>
+        <button type="button" class="fin-btn-next" onclick="finNextStep(2)">Next Step</button>
+      </div>
+
+      <!-- STEP 2: MOTORCYCLE & DOWN PAYMENT -->
+      <div class="fin-step" data-step="2">
+        <h3>Step 2: Motorcycle & Down Payment</h3>
+        <div class="fin-group">
+          <label>Select Motorcycle Model</label>
+          <select name="BikeModel" required>
+            <option value="" disabled selected>Select Model</option>
+            <option>Pulsar N125</option><option>Pulsar N160</option><option>Pulsar NS160</option>
+            <option>Pulsar NS200</option><option>Pulsar N250</option><option>Pulsar NS400Z</option>
+            <option>Pulsar 220F</option><option>Dominar 250</option><option>Dominar 400</option>
+            <option>Avenger Street</option><option>Avenger Cruise</option><option>Platina</option>
+            <option>CT125X</option><option>Freedom 125</option><option>Chetak EV</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fin-group">
+          <label>How much down payment will you pay?</label>
+          <div class="fin-radio-group">
+            <label class="fin-radio-label"><input type="radio" name="DownPayment" value="Below 40%" required> Below 40%</label>
+            <label class="fin-radio-label"><input type="radio" name="DownPayment" value="40%-49%"> 40%-49%</label>
+            <label class="fin-radio-label"><input type="radio" name="DownPayment" value="50%-59%"> 50%-59%</label>
+            <label class="fin-radio-label"><input type="radio" name="DownPayment" value="60% or Above"> 60% or Above</label>
+          </div>
+        </div>
+        <div class="fin-btn-group">
+          <button type="button" class="fin-btn-prev" onclick="finPrevStep(1)">Previous</button>
+          <button type="button" class="fin-btn-next" onclick="finNextStep(3)">Next Step</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: INCOME SOURCE & GUARANTOR -->
+      <div class="fin-step" data-step="3">
+        <h3>Step 3: Income Source</h3>
+        <div class="fin-group">
+          <label>Do you have your own income source?</label>
+          <div class="fin-radio-group">
+            <label class="fin-radio-label"><input type="radio" name="HasIncome" value="Yes" required onchange="finToggleIncome(true)"> YES</label>
+            <label class="fin-radio-label"><input type="radio" name="HasIncome" value="No" onchange="finToggleIncome(false)"> NO</label>
+          </div>
+        </div>
+
+        <div id="finIncomeYesDiv" style="display:none;">
+          <div class="fin-group">
+            <label>Employment Type</label>
+            <select name="EmploymentType">
+              <option value="Employee">Employee</option>
+              <option value="Business Owner">Business Owner</option>
+              <option value="Self-employed">Self-employed</option>
+            </select>
+          </div>
+          <div class="fin-group"><label>Monthly Income (NPR)</label><input type="number" name="MonthlyIncome"></div>
+        </div>
+
+        <div id="finIncomeNoDiv" style="display:none;" class="fin-alert">
+          <p>You may still qualify by providing an eligible guarantor (Age 25+, Kathmandu Resident).</p>
+          <div class="fin-row" style="margin-top: 1rem;">
+            <div class="fin-group"><label>Guarantor Full Name</label><input type="text" name="GuarantorName"></div>
+            <div class="fin-group"><label>Guarantor Mobile</label><input type="tel" name="GuarantorMobile"></div>
+          </div>
+          <div class="fin-row">
+            <div class="fin-group"><label>Guarantor Age</label><input type="number" name="GuarantorAge"></div>
+            <div class="fin-group">
+              <label>Is Guarantor KTM Resident?</label>
+              <select name="GuarantorKTM"><option value="Yes">Yes</option><option value="No">No</option></select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="fin-btn-group">
+          <button type="button" class="fin-btn-prev" onclick="finPrevStep(2)">Previous</button>
+          <button type="button" class="fin-btn-next" onclick="finNextStep(4)">Next Step</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: DRIVING LICENCE & SIM -->
+      <div class="fin-step" data-step="4">
+        <h3>Step 4: Licence & SIM Verification</h3>
+        <div class="fin-group">
+          <label>Do you have a Driving Licence?</label>
+          <div class="fin-radio-group">
+            <label class="fin-radio-label"><input type="radio" name="HasDL" value="Yes" required onchange="finToggleDL(true)"> YES</label>
+            <label class="fin-radio-label"><input type="radio" name="HasDL" value="No" onchange="finToggleDL(false)"> NO</label>
+          </div>
+        </div>
+        <div id="finDlYesDiv" style="display:none;" class="fin-group">
+          <label>Licence Expiry Date</label>
+          <input type="date" name="DLExpiry" id="finDlExpiry">
+        </div>
+        <div class="fin-group">
+          <label>Is your SIM registered in your own name?</label>
+          <div class="fin-radio-group">
+            <label class="fin-radio-label"><input type="radio" name="SIMOwn" value="Yes" required> YES</label>
+            <label class="fin-radio-label"><input type="radio" name="SIMOwn" value="No"> NO</label>
+          </div>
+        </div>
+        <div class="fin-btn-group">
+          <button type="button" class="fin-btn-prev" onclick="finPrevStep(3)">Previous</button>
+          <button type="button" class="fin-btn-next" onclick="finNextStep(5)">Next Step</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: DOCUMENT UPLOAD -->
+      <div class="fin-step" data-step="5">
+        <h3>Step 5: Document Upload</h3>
+        <p style="color: var(--text-soft); margin-bottom: 1.5rem; font-size: 0.9rem;">Please upload clear photos/scans of your documents.</p>
+        
+        <div class="fin-row">
+          <div class="fin-group"><label>Citizenship Front</label><div class="fin-doc-upload"><span class="fin-doc-icon">📄</span><span class="fin-doc-text">Choose File</span><input type="file" name="CitizenshipFront" accept="image/*,application/pdf" required><div class="fin-doc-name"></div></div></div>
+          <div class="fin-group"><label>Citizenship Back</label><div class="fin-doc-upload"><span class="fin-doc-icon">📄</span><span class="fin-doc-text">Choose File</span><input type="file" name="CitizenshipBack" accept="image/*,application/pdf" required><div class="fin-doc-name"></div></div></div>
+        </div>
+        <div class="fin-row">
+          <div class="fin-group"><label>Passport Photo 1</label><div class="fin-doc-upload"><span class="fin-doc-icon">📷</span><span class="fin-doc-text">Choose File</span><input type="file" name="Photo1" accept="image/*" required><div class="fin-doc-name"></div></div></div>
+          <div class="fin-group"><label>Passport Photo 2</label><div class="fin-doc-upload"><span class="fin-doc-icon">📷</span><span class="fin-doc-text">Choose File</span><input type="file" name="Photo2" accept="image/*" required><div class="fin-doc-name"></div></div></div>
+        </div>
+        <div class="fin-group"><label>Driving Licence (If Applicable)</label><div class="fin-doc-upload"><span class="fin-doc-icon">🪪</span><span class="fin-doc-text">Choose File</span><input type="file" name="DrivingLicence" accept="image/*,application/pdf"><div class="fin-doc-name"></div></div></div>
+
+        <div class="fin-btn-group">
+          <button type="button" class="fin-btn-prev" onclick="finPrevStep(4)">Previous</button>
+          <button type="submit" class="fin-btn-next">Check Eligibility</button>
+        </div>
+      </div>
+
+      <!-- STEP 6: RESULT -->
+      <div class="fin-step" data-step="6">
+        <div id="finResultContainer"></div>
+        <div class="fin-disclaimer">
+          <p><strong>Disclaimer:</strong> This finance eligibility result is only a preliminary assessment. Final finance approval depends on the policies, document verification, and credit assessment of the respective finance company. Divya Auto Hub Pvt. Ltd. reserves the right to request additional documents if required.</p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+</div>
 
 <script>
 // GLYPH RAIN, SCRAMBLE DECODE, TYPEWRITER, INTERSECTION OBSERVER, WORD RING CODE
@@ -948,6 +1208,157 @@ function findModelInQuery(query) {
   }
   return null;
 }
+</script>
+
+<script>
+// ===== FINANCE ELIGIBILITY CHECKER (MODAL) =====
+
+// --- MODAL OPEN / CLOSE ---
+function openFinanceModal() {
+  const overlay = document.getElementById('finModalOverlay');
+  overlay.classList.add('fin-is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeFinanceModal() {
+  const overlay = document.getElementById('finModalOverlay');
+  overlay.classList.remove('fin-is-open');
+  document.body.style.overflow = '';
+}
+document.getElementById('finModalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeFinanceModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('finModalOverlay').classList.contains('fin-is-open')) {
+    closeFinanceModal();
+  }
+});
+
+// --- WIZARD NAVIGATION ---
+function finNextStep(step) {
+  const current = document.querySelector('.fin-step.fin-is-active');
+  current.classList.remove('fin-is-active');
+  document.querySelector(`.fin-step[data-step="${step}"]`).classList.add('fin-is-active');
+  finUpdateProgress(step);
+  document.querySelector('.fin-body').scrollTop = 0;
+}
+function finPrevStep(step) {
+  const current = document.querySelector('.fin-step.fin-is-active');
+  current.classList.remove('fin-is-active');
+  document.querySelector(`.fin-step[data-step="${step}"]`).classList.add('fin-is-active');
+  finUpdateProgress(step);
+  document.querySelector('.fin-body').scrollTop = 0;
+}
+function finUpdateProgress(step) {
+  const totalSteps = 5; // Step 6 is result
+  const progress = (step / totalSteps) * 100;
+  document.getElementById('finProgressFill').style.width = progress + '%';
+}
+
+// --- UI LOGIC ---
+function finCalcAge() {
+  const dob = document.getElementById('finDobInput').value;
+  if(!dob) return;
+  const diff = Date.now() - new Date(dob).getTime();
+  document.getElementById('finAgeInput').value = Math.abs(new Date(diff).getUTCFullYear() - 1970);
+}
+function finToggleIncome(hasIncome) {
+  document.getElementById('finIncomeYesDiv').style.display = hasIncome ? 'block' : 'none';
+  document.getElementById('finIncomeNoDiv').style.display = hasIncome ? 'none' : 'block';
+}
+function finToggleDL(hasDL) {
+  document.getElementById('finDlYesDiv').style.display = hasDL ? 'block' : 'none';
+}
+document.querySelectorAll('.fin-doc-upload input').forEach(input => {
+  input.addEventListener('change', function() {
+    const fileName = this.files[0] ? this.files[0].name : '';
+    this.closest('.fin-doc-upload').querySelector('.fin-doc-name').textContent = fileName;
+  });
+});
+
+// --- AI ELIGIBILITY RULES & FORM SUBMISSION ---
+document.getElementById('finForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Show loading state on button
+  const submitBtn = this.querySelector('button[type="submit"]');
+  submitBtn.textContent = 'Checking...';
+  submitBtn.disabled = true;
+
+  // Gather Data
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+  let resultHTML = '', eligibility = 'RED';
+
+  // Rule Validations
+  const finDlExpiry = data.DLExpiry ? new Date(data.DLExpiry) : null;
+  const isDLValid = finDlExpiry ? finDlExpiry > new Date() : false;
+  const isSIMValid = data.SIMOwn === 'Yes';
+
+  // Rule A: DP >= 50% + Valid DL + Valid SIM
+  if ((data.DownPayment === '50%-59%' || data.DownPayment === '60% or Above') && isDLValid && isSIMValid) {
+    eligibility = 'GREEN';
+  } 
+  // Rule B: DP 40%-49% + Income Verified + Valid DL + Valid SIM
+  else if (data.DownPayment === '40%-49%' && data.HasIncome === 'Yes' && isDLValid && isSIMValid) {
+    eligibility = 'YELLOW'; // Needs manual verification of income docs
+  } 
+  // Rule C: No Income -> Guarantor Required (Age 25+, KTM) + Valid DL + Valid SIM
+  else if (data.HasIncome === 'No') {
+    const gAge = parseInt(data.GuarantorAge || 0);
+    const gKTM = data.GuarantorKTM === 'Yes';
+    if (gAge >= 25 && gKTM && isDLValid && isSIMValid) {
+      eligibility = 'YELLOW'; // Conditionally eligible
+    } else {
+      eligibility = 'RED';
+    }
+  } else {
+    eligibility = 'RED'; // Default reject (e.g., DL expired, SIM not in name, DP < 40%)
+  }
+
+  // Generate Result UI
+  if (eligibility === 'GREEN') {
+    resultHTML = `<div class="fin-result-card fin-result-green">
+      <div class="icon">🎉</div>
+      <h3>Congratulations!</h3>
+      <p>You are preliminarily <strong>ELIGIBLE</strong> for Bajaj Motorcycle Finance.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">Our finance team will contact you shortly.</p>
+    </div>`;
+    formData.append('AI_Decision', 'ELIGIBLE (GREEN)');
+  } else if (eligibility === 'YELLOW') {
+    resultHTML = `<div class="fin-result-card fin-result-yellow">
+      <div class="icon">⚠️</div>
+      <h3>Conditionally Eligible</h3>
+      <p>Some additional verification or documents are required.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">Our finance officer will review your application.</p>
+    </div>`;
+    formData.append('AI_Decision', 'CONDITIONALLY ELIGIBLE (YELLOW)');
+  } else {
+    resultHTML = `<div class="fin-result-card fin-result-red">
+      <div class="icon">❌</div>
+      <h3>Currently Not Eligible</h3>
+      <p>Please review the missing requirements or contact our finance department.</p>
+    </div>`;
+    formData.append('AI_Decision', 'NOT ELIGIBLE (RED)');
+  }
+
+  // Move to Result Step
+  finNextStep(6);
+  document.getElementById('finResultContainer').innerHTML = resultHTML;
+
+  // Send Data to Admin Email (FormSubmit)
+  fetch('https://formsubmit.co/ajax/divyautohub@gmail.com', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: formData
+  }).then(response => response.json())
+    .then(data => { console.log('Application submitted successfully'); })
+    .catch(error => { console.error('Error:', error); })
+    .finally(() => {
+      submitBtn.textContent = 'Check Eligibility';
+      submitBtn.disabled = false;
+    });
+});
+
 </script>
 </body>
 </html>

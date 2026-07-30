@@ -226,9 +226,9 @@ footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
 .fade-up.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .hero-canvas { display: none; } .ring { transform: none !important; } }
 
-/* ─────────── FLOATING BUTTONS STYLES ──── */
+/* ─────────── FLOATING BUTTONS STYLES (Moved to Left to avoid ElevenLabs overlap) ──── */
 .fab-wrapper {
-  position: fixed; bottom: 24px; right: 24px; z-index: 998;
+  position: fixed; bottom: 24px; left: 24px; z-index: 998;
   display: flex; flex-direction: column; gap: 12px; align-items: center;
 }
 
@@ -239,7 +239,7 @@ footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 999;
   transition: transform 400ms var(--ease-quiet);
-  order: 2; /* Positions it above the AI button */
+  order: 2; 
 }
 .wa-fab:hover { transform: scale(1.05); }
 .wa-fab svg { width: 28px; height: 28px; fill: #ffffff; }
@@ -252,13 +252,13 @@ footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
   font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.5rem;
   cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 999;
   transition: transform 400ms var(--ease-quiet);
-  order: 1; /* Positions it below the WA button */
+  order: 1; 
 }
 .divya-fab:hover { transform: scale(1.05); }
 .divya-fab svg { width: 28px; height: 28px; fill: var(--bg); }
 
 .divya-chat-window {
-  position: fixed; bottom: 100px; right: 24px; width: 360px; max-width: calc(100vw - 48px);
+  position: fixed; bottom: 100px; left: 24px; width: 360px; max-width: calc(100vw - 48px);
   height: 500px; max-height: calc(100vh - 140px);
   background: #081535; border: 1px solid var(--line); border-radius: 8px;
   display: none; flex-direction: column; overflow: hidden; z-index: 999;
@@ -311,6 +311,14 @@ footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
   padding: 0 1rem; cursor: pointer; transition: opacity 0.3s;
 }
 .divya-input-area button:hover { opacity: 0.85; }
+
+/* ElevenLabs Widget Customization to align bottom right */
+elevenlabs-convai {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 999 !important;
+}
 </style>
 </head>
 <body>
@@ -532,7 +540,7 @@ footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
   </div>
 </footer>
 
-<!-- ─────────── FLOATING BUTTONS (WHATSAPP + AI) ──── -->
+<!-- ─────────── FLOATING BUTTONS (WHATSAPP + AI) moved to LEFT ──── -->
 <div class="fab-wrapper">
   <!-- WhatsApp Button -->
   <a href="https://wa.me/9779801204448" class="wa-fab" target="_blank" title="Chat on WhatsApp">
@@ -559,6 +567,10 @@ footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
     <button onclick="sendDivyaMessage()">Send</button>
   </div>
 </div>
+
+<!-- ─────────── ELEVENLABS VOICE AGENT WIDGET ──── -->
+<elevenlabs-convai agent-id="agent_7701kyq1kmh6e8q8sbnrcxazjg9r"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 <script>
 // GLYPH RAIN, SCRAMBLE DECODE, TYPEWRITER, INTERSECTION OBSERVER, WORD RING CODE HERE (Same as before)
@@ -824,21 +836,14 @@ function addDivyaMessage(text, sender) {
 }
 
 function getDivyaResponse(query) {
-  // 1. Check for Finance / EMI / Hulas Fin Serv specific queries
   if (query.includes('finance') || query.includes('emi') || query.includes('loan') || query.includes('installment') || query.includes('hulas') || query.includes('hire purchase') || query.includes('downpayment') || query.includes('down payment')) {
     const modelFound = findModelInQuery(query);
-    
-    // Determine Downpayment %
-    let dpPlan = "40% Downpayment (11.99% interest)";
-    if (query.includes('50') || query.includes('50%')) dpPlan = "50% Downpayment (10.99% interest)";
+    let dpPlan = "40% Downpayment (12.99% interest)";
+    if (query.includes('50') || query.includes('50%')) dpPlan = "50% Downpayment (11.99% interest)";
     if (query.includes('60') || query.includes('60%')) dpPlan = "60% Downpayment (8.99% interest)";
-    
-    // Determine Tenure
     let tenure = "24 months";
     if (query.includes('12 month') || query.includes('1 year')) tenure = "12 months";
     if (query.includes('36 month') || query.includes('3 year')) tenure = "36 months";
-
-    // Hardcoded data based on Hulas Excel Sheet for specific models
     const emiData = {
       "pulsar 150 sd": { dp40_24m: "10,493", dp50_24m: "8,658", dp60_24m: "6,722", dp40_36m: "7,437", dp50_36m: "6,109", dp60_36m: "4,679" },
       "pulsar 220 f": { dp40_24m: "12,975", dp50_24m: "10,706", dp60_24m: "8,312", dp40_36m: "9,195", dp50_36m: "7,554", dp60_36m: "5,785" },
@@ -847,64 +852,31 @@ function getDivyaResponse(query) {
       "pulsar 200": { dp40_24m: "13,374", dp50_24m: "11,035", dp60_24m: "8,568", dp40_36m: "9,478", dp50_36m: "7,786", dp60_36m: "5,963" },
       "platina": { dp40_24m: "~7,327", dp50_24m: "~6,046", dp60_24m: "~4,694", dp40_36m: "~5,193", dp50_36m: "~4,266", dp60_36m: "~3,267" }
     };
-
     if (modelFound) {
       const key = Object.keys(emiData).find(k => modelFound.name.toLowerCase().includes(k));
       if (key) {
         const data = emiData[key];
         let emiKey = `dp${dpPlan.match(/\d+/)[0]}_${tenure.match(/\d+/)[0]}m`;
-        let emiVal = data[emiKey] ? data[emiKey] : data[`${emiKey.split('_')[0]}_24m`]; // fallback to 24m
+        let emiVal = data[emiKey] ? data[emiKey] : data[`${emiKey.split('_')[0]}_24m`];
         let finalTenure = data[emiKey] ? tenure : "24 months";
-        
         return `For ${modelFound.name} via Hulas Fin Serv:\n- Plan: ${dpPlan}\n- Tenure: ${finalTenure}\n- Monthly EMI: NPR ${emiVal}\n\nTotal down payment includes insurance and registration. Please visit our showroom for exact documentation and final valuation.`;
       }
       return `For ${modelFound.name}, we offer Hire Purchase via Hulas Fin Serv. You can choose 40% DP (12.99% interest), 50% DP (11.99%), or 60% DP (8.99%). Tenures are 12, 24, or 36 months. Please visit us for the exact EMI calculation for this specific model.`;
     }
-
     return "We offer Hire Purchase facilities through Hulas Fin Serv. Plans available:\n1. 40% Downpayment @ 12.99% interest\n2. 50% Downpayment @ 11.99% interest\n3. 60% Downpayment @ 8.99% interest\nTenures: 12, 24, or 36 months.\n\nTell me which model you are interested in to get specific EMI details.";
   }
-
-  // 2. Check for general Price queries
   if (query.includes('price') || query.includes('daam') || query.includes('rate') || query.includes('cost') || query.includes('kati')) {
     const modelFound = findModelInQuery(query);
-    if (modelFound) {
-      return `The price for ${modelFound.name} is ${modelFound.price}.`;
-    }
+    if (modelFound) return `The price for ${modelFound.name} is ${modelFound.price}.`;
     return "Our motorcycle prices range from NPR 255,900 (Platina 100) to NPR 646,900 (Dominar 400). Please tell me which specific model you are interested in (e.g., 'Pulsar 150 price').";
   }
-
-  // 3. Check if a specific model is mentioned without the word 'price'
   const modelFound = findModelInQuery(query);
-  if (modelFound) {
-    return `The ${modelFound.name} is priced at ${modelFound.price}. ${modelFound.desc} Would you like to know about Hulas Fin Serv EMI options for this model?`;
-  }
-
-  // 4. Address / Location
-  if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where')) {
-    return "We are located in Maharajgunj, Kathmandu. Showroom hours: Sunday to Friday, 9:30 AM to 6:00 PM. Test rides are available until 5:00 PM.";
-  }
-
-  // 5. Contact / Phone
-  if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) {
-    return "You can reach us at 9801204448 or 01-4533133. Email: divyautohub@gmail.com";
-  }
-
-  // 6. Service
-  if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts')) {
-    return "We provide factory-trained professional servicing, 3 free services for new bikes, and 100% genuine Bajaj spare parts with a manufacturer warranty.";
-  }
-
-  // 7. Test ride
-  if (query.includes('test ride') || query.includes('try') || query.includes('demo')) {
-    return "Yes, test rides are available! Please bring your driving license to our Maharajgunj showroom. Test rides run daily from 9:30 AM to 5:00 PM.";
-  }
-
-  // 8. Greetings
-  if (query.includes('namaste') || query.includes('hello') || query.includes('hi')) {
-    return "Namaste! How can I assist you with Bajaj motorcycles today? You can ask about prices, models, or Hulas Fin Serv hire purchase.";
-  }
-
-  // 9. Fallback
+  if (modelFound) return `The ${modelFound.name} is priced at ${modelFound.price}. ${modelFound.desc} Would you like to know about Hulas Fin Serv EMI options for this model?`;
+  if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where')) return "We are located in Maharajgunj, Kathmandu. Showroom hours: Sunday to Friday, 9:30 AM to 6:00 PM. Test rides are available until 5:00 PM.";
+  if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) return "You can reach us at 9801204448 or 01-4533133. Email: divyautohub@gmail.com";
+  if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts')) return "We provide factory-trained professional servicing, 3 free services for new bikes, and 100% genuine Bajaj spare parts with a manufacturer warranty.";
+  if (query.includes('test ride') || query.includes('try') || query.includes('demo')) return "Yes, test rides are available! Please bring your driving license to our Maharajgunj showroom. Test rides run daily from 9:30 AM to 5:00 PM.";
+  if (query.includes('namaste') || query.includes('hello') || query.includes('hi')) return "Namaste! How can I assist you with Bajaj motorcycles today? You can ask about prices, models, or Hulas Fin Serv hire purchase.";
   return "I am currently optimized to answer questions about Divya Auto Hub's motorcycle prices, Hulas Fin Serv hire purchase EMI, location, and services. For specific technical questions, please call us at 9801204448.";
 }
 
@@ -915,7 +887,6 @@ function findModelInQuery(query) {
     const priceNode = row.querySelector('.range-row-price');
     const price = priceNode.childNodes[0].nodeValue.trim();
     const desc = row.querySelector('.range-row-desc').innerText;
-    
     const keywords = name.toLowerCase().split(/\s+/);
     if (query.includes(name.toLowerCase()) || (keywords.length > 1 && query.includes(keywords[0]) && query.includes(keywords[1]))) {
       return { name: name, price: price, desc: desc };

@@ -61,7 +61,6 @@ img { display: block; max-width: 100%; }
 .nav-links a:hover { color: var(--accent); }
 .nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bg); background: var(--accent); padding: 0.7rem 1.2rem; transition: opacity 400ms var(--ease-quiet); }
 .nav-cta:hover { opacity: 0.85; }
-@media (max-width: 860px) { .nav-links { display: none; } .nav { padding: 1rem 1.5rem; } }
 
 /* HERO */
 .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 9rem 2rem 5rem; overflow: hidden; }
@@ -111,7 +110,6 @@ section { position: relative; padding: 8rem 2rem; }
 .intro-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--line); }
 .stat-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem; }
 .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); line-height: 1.4; }
-@media (max-width: 860px) { .intro-grid { grid-template-columns: 1fr; gap: 3rem; } .intro-left { position: static; } .intro-stats { grid-template-columns: 1fr; gap: 1.5rem; } }
 
 /* RANGE */
 .range { border-top: 1px solid var(--line); }
@@ -136,7 +134,6 @@ section { position: relative; padding: 8rem 2rem; }
 .range-row:hover .range-row-desc { opacity: 1; }
 .range-row-arrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); text-align: right; transition: color 600ms var(--ease-quiet), transform 600ms var(--ease-quiet); }
 .range-row:hover .range-row-arrow { color: var(--accent); transform: translateX(8px); }
-@media (max-width: 1100px) { .range-row { grid-template-columns: 40px 1fr 1fr; grid-template-areas: "num name price" "num desc desc" "num arrow arrow"; gap: 1rem 1.5rem; padding: 2rem 1rem; } .range-row-num { grid-area: num; } .range-row-name { grid-area: name; } .range-row-price { grid-area: price; text-align: right; } .range-row-desc { grid-area: desc; } .range-row-arrow { grid-area: arrow; text-align: left; } }
 
 /* METAL GRID */
 .metal { border-top: 1px solid var(--line); }
@@ -151,13 +148,11 @@ section { position: relative; padding: 8rem 2rem; }
 .metal-item-label span { color: var(--accent); display: block; margin-bottom: 0.4rem; }
 .metal-item-label strong { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.2rem; text-transform: none; display: block; }
 .m-item-1 { grid-column: 1 / 7; aspect-ratio: 4/3; } .m-item-2 { grid-column: 7 / 13; aspect-ratio: 4/3; } .m-item-3 { grid-column: 1 / 5; aspect-ratio: 1/1; } .m-item-4 { grid-column: 5 / 9; aspect-ratio: 1/1; } .m-item-5 { grid-column: 9 / 13; aspect-ratio: 1/1; } .m-item-6 { grid-column: 1 / 5; aspect-ratio: 4/5; } .m-item-7 { grid-column: 5 / 13; aspect-ratio: 16/9; } .m-item-8 { grid-column: 1 / 7; aspect-ratio: 16/9; } .m-item-9 { grid-column: 7 / 13; aspect-ratio: 16/9; }
-@media (max-width: 1100px) { .m-item-1, .m-item-2, .m-item-3, .m-item-4, .m-item-5, .m-item-6, .m-item-7, .m-item-8, .m-item-9 { grid-column: 1 / -1; aspect-ratio: 16/9; } }
 
 /* STICKY PAIR */
 .sticky-pair { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
 .sticky-pair .left { position: sticky; top: 8rem; }
 .sticky-pair .left p { font-size: 1.1rem; line-height: 1.7; color: var(--text-soft); margin-top: 2rem; max-width: 480px; }
-@media (max-width: 860px) { .sticky-pair { grid-template-columns: 1fr; gap: 3rem; } .sticky-pair .left { position: static; } }
 
 /* SERVICES */
 .services { border-top: 1px solid var(--line); }
@@ -202,35 +197,16 @@ section { position: relative; padding: 8rem 2rem; }
 .testride-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 7vw, 6rem); margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; }
 .testride-title em { font-style: normal; color: var(--accent); }
 .testride-desc { font-size: 1.1rem; line-height: 1.65; color: var(--text-soft); max-width: 540px; margin: 0 auto 3rem; }
-
-.testride-form {
-  max-width: 600px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-  border: 1px solid var(--line); background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 8px;
-}
-.testride-form input, .testride-form select {
-  width: 100%; background: var(--bg); border: 1px solid var(--line-soft); border-radius: 4px;
-  padding: 1rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.3s;
-}
+.testride-form { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border: 1px solid var(--line); background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 8px; }
+.testride-form input, .testride-form select { width: 100%; background: var(--bg); border: 1px solid var(--line-soft); border-radius: 4px; padding: 1rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.3s; }
 .testride-form input:focus, .testride-form select:focus { border-color: var(--accent); }
 .testride-form select option { background: var(--bg); color: var(--text); }
-.testride-form button {
-  grid-column: 1 / -1; background: var(--accent); color: var(--bg); border: none; padding: 1.2rem;
-  font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
-  cursor: pointer; transition: opacity 400ms var(--ease-quiet); border-radius: 4px;
-}
+.testride-form button { grid-column: 1 / -1; background: var(--accent); color: var(--bg); border: none; padding: 1.2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: opacity 400ms var(--ease-quiet); border-radius: 4px; }
 .testride-form button:hover { opacity: 0.85; }
 .testride-form button:disabled { opacity: 0.5; cursor: not-allowed; }
-
-.exchange-fields-wrapper {
-  grid-column: 1 / -1; display: none; grid-template-columns: 1fr 1fr; gap: 1rem; 
-  margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line-soft);
-}
+.exchange-fields-wrapper { grid-column: 1 / -1; display: none; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line-soft); }
 .exchange-fields-wrapper.is-visible { display: grid; }
-.exchange-fields-wrapper input, .exchange-fields-wrapper select {
-  background: rgba(255,255,255,0.02); 
-}
-@media (max-width: 600px) { .testride-form, .exchange-fields-wrapper { grid-template-columns: 1fr; } }
+.exchange-fields-wrapper input, .exchange-fields-wrapper select { background: rgba(255,255,255,0.02); }
 
 /* ONLINE BOOKING & PAYMENT */
 .booking { border-top: 1px solid var(--line); }
@@ -245,7 +221,6 @@ section { position: relative; padding: 8rem 2rem; }
 .booking-qr { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #ffffff; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 .booking-qr img { width: 100%; max-width: 300px; height: auto; border-radius: 8px; }
 .qr-label { margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.9rem; color: var(--bg); letter-spacing: 0.2em; }
-@media (max-width: 860px) { .booking-grid { grid-template-columns: 1fr; gap: 3rem; } .booking-qr { order: -1; } }
 
 /* FOOTER */
 footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
@@ -259,23 +234,19 @@ footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
 .footer-col a:hover { color: var(--accent); }
 .footer-bottom { max-width: 1400px; margin: 2rem auto 0; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-soft); flex-wrap: wrap; gap: 1rem; }
 .footer-bottom .accent { color: var(--accent); }
-@media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; } .footer-brand { grid-column: 1 / -1; } }
 
 /* UTILITIES */
 .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 1000ms var(--ease-quiet), transform 1000ms var(--ease-quiet); }
 .fade-up.is-in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .hero-canvas { display: none; } .ring { transform: none !important; } }
 
-/* ─────────── FLOATING BUTTONS STYLES ──── */
+/* ─────────── FLOATING BUTTONS & CHAT ──── */
 .fab-wrapper { position: fixed; bottom: 24px; left: 24px; z-index: 998; display: flex; flex-direction: column; gap: 12px; align-items: center; }
 .wa-fab { width: 52px; height: 52px; background: #25D366; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 999; transition: transform 400ms var(--ease-quiet); order: 2; }
 .wa-fab:hover { transform: scale(1.05); }
 .wa-fab svg { width: 28px; height: 28px; fill: #ffffff; }
-
 .divya-fab { width: 60px; height: 60px; background: var(--accent); color: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 999; transition: transform 400ms var(--ease-quiet); order: 1; }
 .divya-fab:hover { transform: scale(1.05); }
 .divya-fab svg { width: 28px; height: 28px; fill: var(--bg); }
-
 .divya-chat-window { position: fixed; bottom: 100px; left: 24px; width: 360px; max-width: calc(100vw - 48px); height: 500px; max-height: calc(100vh - 140px); background: #081535; border: 1px solid var(--line); border-radius: 8px; display: none; flex-direction: column; overflow: hidden; z-index: 999; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 .divya-chat-window.is-open { display: flex; }
 .divya-chat-header { padding: 1rem 1.25rem; background: #0a1c4d; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 0.75rem; }
@@ -298,6 +269,52 @@ footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
 .divya-input-area button:hover { opacity: 0.85; }
 
 elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 999 !important; }
+
+/* ─────────── MOBILE RESPONSIVE STYLES ──── */
+@media (max-width: 1100px) {
+  .range-row { grid-template-columns: 40px 1fr 1fr; grid-template-areas: "num name price" "num desc desc" "num arrow arrow"; gap: 1rem 1.5rem; padding: 2rem 1rem; }
+  .range-row-num { grid-area: num; } .range-row-name { grid-area: name; } .range-row-price { grid-area: price; text-align: right; } .range-row-desc { grid-area: desc; } .range-row-arrow { grid-area: arrow; text-align: left; }
+  .m-item-1, .m-item-2, .m-item-3, .m-item-4, .m-item-5, .m-item-6, .m-item-7, .m-item-8, .m-item-9 { grid-column: 1 / -1; aspect-ratio: 16/9; }
+  .intro-grid, .sticky-pair { grid-template-columns: 1fr; gap: 3rem; }
+  .intro-left { position: static; }
+  .intro-stats { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-cta { padding: 0.5rem 0.8rem; font-size: 0.6rem; }
+  .nav-logo-text { font-size: 0.7rem; }
+  .nav-logo-text small { display: none; }
+  
+  .hero { padding: 7rem 1.5rem 4rem; min-height: 90vh; }
+  .hero-meta { margin-bottom: 2.5rem; flex-direction: column; gap: 0.5rem; }
+  .hero-meta-right { gap: 1rem; }
+  
+  section { padding: 5rem 1.5rem; }
+  .testride { padding: 5rem 1rem; }
+  
+  .philosophy .sticky-pair { grid-template-columns: 1fr; gap: 2rem; }
+  .ring-stage { height: 60vh; min-height: 400px; }
+  
+  .booking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .booking-qr { order: -1; max-width: 280px; margin: 0 auto; }
+  
+  .testride-form, .exchange-fields-wrapper { grid-template-columns: 1fr !important; }
+  
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .footer-brand, .footer-col { display: flex; flex-direction: column; align-items: center; }
+  .footer-col ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  
+  .divya-chat-window { width: calc(100vw - 32px); left: 16px; bottom: 90px; height: calc(100vh - 110px); }
+  .fab-wrapper { left: 16px; bottom: 16px; }
+  
+  .info-row { grid-template-columns: 80px 1fr; gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .hero-canvas { display: none; } .ring { transform: none !important; } }
 </style>
 </head>
 <body>
@@ -372,7 +389,6 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
         <strong>All prices in NPR</strong><br>BS6 models available<br>Updated for 2025
       </div>
     </div>
-
     <div class="range-list">
       <div class="range-row fade-up"><div class="range-row-num">01</div><div class="range-row-name"><h3>Platina 100 ES BS6</h3><span>Commuter · Economy</span></div><div class="range-row-price">NPR 255,900<small>EMI fr. 6,119/mo</small></div><div class="range-row-desc">The no-nonsense daily. Cushioned suspension, frugal engine, and a price tag that respects the monthly budget.</div><div class="range-row-arrow">Enquire →</div></div>
       <div class="range-row fade-up"><div class="range-row-num">02</div><div class="range-row-name"><h3>Pulsar 125 Neon BS6</h3><span>Commuter · Entry Sport</span></div><div class="range-row-price">NPR 304,900</div><div class="range-row-desc">The gateway to the Pulsar family. Neon accents, comfortable upright stance, and an incredibly frugal engine.</div><div class="range-row-arrow">Enquire →</div></div>
@@ -460,6 +476,7 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
         <p class="headline-enter">The showroom is on the main road, a short walk from the Maharajgunj chowk. Bike parking is available on the premises. Bring your licence — test rides are offered on every variant in stock.</p>
         <div class="showroom-info">
           <div class="info-row fade-up"><div class="info-label">Address</div><div class="info-value">Divya Auto Hub Pvt. Ltd.<br>Maharajgunj, Kathmandu 44600<br><span class="accent">Bagmati Province · Nepal</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Map</div><div class="info-value"><a href="https://share.google/S9ZEX8IjkyDosLomr" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.7rem;">View on Google Maps →</a></div></div>
           <div class="info-row fade-up"><div class="info-label">Hours</div><div class="info-value">Sunday — Friday: 9:30 — 18:00<br>Saturday: By appointment<br><span class="accent">Test rides until 17:00</span></div></div>
           <div class="info-row fade-up"><div class="info-label">Phone</div><div class="info-value"><a href="tel:+9779801204448">9801204448</a><br><a href="tel:+97714533133">01-4533133</a><br><span class="accent">Sales · Service · WhatsApp</span></div></div>
           <div class="info-row fade-up"><div class="info-label">Email</div><div class="info-value"><a href="mailto:divyautohub@gmail.com">divyautohub@gmail.com</a><br><span class="accent">For sales, service & enquiries</span></div></div>
@@ -482,63 +499,28 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
     <div class="testride-title fade-up">Feel the engine<br>before you <em>decide.</em></h2>
     <p class="testride-desc fade-up" style="color: var(--text-soft); margin-top: 2rem;">Fill in your details below. Our team will contact you shortly to schedule a test ride or assist with your purchase.</p>
     
-    <!-- Hidden Iframe for Bulletproof Form Submission without page reload or CORS issues -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-    
-    <!-- FormSubmit.co Standard Integration -->
     <form class="testride-form fade-up" id="enquiryForm" action="https://formsubmit.co/divyautohub@gmail.com" method="POST" target="hidden_iframe">
       <input type="hidden" name="_subject" value="New Bike Enquiry from Website!">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
-      
       <input type="text" name="Name" placeholder="Customer Name" required>
       <input type="tel" name="Phone" placeholder="Phone Number" required>
-      
       <select name="Model" id="modelSelect" required>
         <option value="" disabled selected>Select Desired Model</option>
-        <option>Platina 100 ES BS6</option>
-        <option>Pulsar 125 Neon BS6</option>
-        <option>Pulsar 125 NS ABS FI BS6</option>
-        <option>Pulsar N 125 BS6</option>
-        <option>Pulsar 150 SD BS6</option>
-        <option>Pulsar 150 TD BS6</option>
-        <option>Pulsar N 150 BS6</option>
-        <option>Pulsar N 160 DC ABS BS6 (UG2)</option>
-        <option>Pulsar 220 F ABS FI BS6</option>
-        <option>Pulsar 200 NS FI DC ABS BS6</option>
-        <option>Pulsar N 250 DC ABS BS6</option>
-        <option>Pulsar 400 NS BS6</option>
-        <option>Dominar 400 ABS BS6</option>
-        <option>Avenger / Chetak</option>
+        <option>Platina 100 ES BS6</option><option>Pulsar 125 Neon BS6</option><option>Pulsar 125 NS ABS FI BS6</option><option>Pulsar N 125 BS6</option><option>Pulsar 150 SD BS6</option><option>Pulsar 150 TD BS6</option><option>Pulsar N 150 BS6</option><option>Pulsar N 160 DC ABS BS6 (UG2)</option><option>Pulsar 220 F ABS FI BS6</option><option>Pulsar 200 NS FI DC ABS BS6</option><option>Pulsar N 250 DC ABS BS6</option><option>Pulsar 400 NS BS6</option><option>Dominar 400 ABS BS6</option><option>Avenger / Chetak</option>
       </select>
-
       <select name="Mode_of_Payment" id="paymentMode" required>
         <option value="" disabled selected>Payment Mode</option>
-        <option>Cash</option>
-        <option>Finance</option>
-        <option>Exchange</option>
-        <option>Cash + Finance</option>
-        <option>Finance + Exchange</option>
-        <option>Cash + Exchange</option>
-        <option>Cash + Finance + Exchange</option>
+        <option>Cash</option><option>Finance</option><option>Exchange</option><option>Cash + Finance</option><option>Finance + Exchange</option><option>Cash + Exchange</option><option>Cash + Finance + Exchange</option>
       </select>
-
       <input type="text" name="Location" placeholder="Your Location (e.g., Maharajgunj)" required style="grid-column: 1 / -1;">
-
-      <!-- Hidden Exchange Fields -->
       <div class="exchange-fields-wrapper" id="exchangeFields">
         <input type="text" name="Old_Bike_Model" placeholder="Old Bike Brand & Model">
         <input type="number" name="Model_Year" placeholder="Model Year">
-        <select name="Condition">
-          <option value="" disabled selected>Old Bike Condition</option>
-          <option>Excellent</option>
-          <option>Good</option>
-          <option>Fair</option>
-          <option>Needs Repair</option>
-        </select>
+        <select name="Condition"><option value="" disabled selected>Old Bike Condition</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Needs Repair</option></select>
         <input type="number" name="Expected_Price" placeholder="Expected Price (NPR)">
       </div>
-
       <button type="submit" id="submitBtn">Submit Enquiry</button>
     </form>
   </div>
@@ -590,10 +572,10 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
     <div class="footer-col">
       <h5>Connect</h5>
       <ul>
+        <li><a href="https://share.google/S9ZEX8IjkyDosLomr" target="_blank">Google Maps</a></li>
         <li><a href="https://www.facebook.com/BajajMaharajgunj" target="_blank">Facebook</a></li>
         <li><a href="https://wa.me/9779801204448" target="_blank">WhatsApp</a></li>
         <li><a href="https://www.instagram.com/bajajmaharajgunj" target="_blank">Instagram</a></li>
-        <li><a href="https://www.tiktok.com/@bajajmaharajgunj" target="_blank">TikTok</a></li>
       </ul>
     </div>
   </div>
@@ -603,7 +585,7 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
   </div>
 </footer>
 
-<!-- ─────────── FLOATING BUTTONS (WHATSAPP + AI) ──── -->
+<!-- FLOATING BUTTONS -->
 <div class="fab-wrapper">
   <a href="https://wa.me/9779801204448" class="wa-fab" target="_blank" title="Chat on WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -623,12 +605,11 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
   </div>
   <div class="divya-messages" id="divyaMessages"></div>
   <div class="divya-input-area">
-    <input type="text" id="divyaInput" placeholder="Ask about price, EMI, models..." onkeypress="handleDivyaKeyPress(event)">
+    <input type="text" id="divyaInput" placeholder="प्रश्न सोध्नुहोस्..." onkeypress="handleDivyaKeyPress(event)">
     <button onclick="sendDivyaMessage()">Send</button>
   </div>
 </div>
 
-<!-- ─────────── ELEVENLABS VOICE AGENT WIDGET ──── -->
 <elevenlabs-convai agent-id="agent_7701kyq1kmh6e8q8sbnrcxazjg9r"></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
@@ -781,14 +762,10 @@ function initTypewriter() {
   const ring = document.getElementById('word-ring');
   if (!ring) return;
   const WORDS = [
-    { text: 'PERFORMANCE', accent: false },
-    { text: 'PRECISION', accent: true },
-    { text: 'RELIABILITY', accent: false },
-    { text: 'HERITAGE', accent: true },
-    { text: 'CRAFT', accent: false },
-    { text: 'TRUST', accent: true },
-    { text: 'SERVICE', accent: false },
-    { text: 'COMMUNITY', accent: true }
+    { text: 'PERFORMANCE', accent: false }, { text: 'PRECISION', accent: true },
+    { text: 'RELIABILITY', accent: false }, { text: 'HERITAGE', accent: true },
+    { text: 'CRAFT', accent: false }, { text: 'TRUST', accent: true },
+    { text: 'SERVICE', accent: false }, { text: 'COMMUNITY', accent: true }
   ];
   const allWords = [...WORDS, ...WORDS];
   const step = 360 / allWords.length;
@@ -804,31 +781,15 @@ function initTypewriter() {
   const rot = { v: 0 };
   let currentRot = 0, currentSpd = 0, targetSpd = 0;
   gsap.to(rot, {
-    v: 540,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#philosophy',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 1.2,
-      onUpdate: (self) => { targetSpd = self.getVelocity() * 0.0004; }
-    }
+    v: 540, ease: 'none',
+    scrollTrigger: { trigger: '#philosophy', start: 'top bottom', end: 'bottom top', scrub: 1.2, onUpdate: (self) => { targetSpd = self.getVelocity() * 0.0004; } }
   });
   const items = ring.querySelectorAll('.ring-item');
   function tick() {
-    currentRot += (rot.v - currentRot) * 0.08;
-    currentSpd += (targetSpd - currentSpd) * 0.1;
-    targetSpd *= 0.92;
-    const absSpd = Math.abs(currentSpd);
-    const skew = Math.min(absSpd * 14, 10);
-    const sx = 1 + Math.min(absSpd * 0.2, 0.12);
+    currentRot += (rot.v - currentRot) * 0.08; currentSpd += (targetSpd - currentSpd) * 0.1; targetSpd *= 0.92;
+    const absSpd = Math.abs(currentSpd); const skew = Math.min(absSpd * 14, 10); const sx = 1 + Math.min(absSpd * 0.2, 0.12);
     ring.style.transform = `rotateX(${currentRot}deg)`;
-    items.forEach(it => {
-      const blur = Math.min(absSpd * 1.5, 2.5);
-      const span = it.querySelector('span');
-      it.style.filter = blur > 0.1 ? `blur(${blur}px)` : 'none';
-      span.style.transform = `skewX(${currentSpd > 0 ? skew : -skew}deg) scaleX(${sx})`;
-    });
+    items.forEach(it => { const blur = Math.min(absSpd * 1.5, 2.5); const span = it.querySelector('span'); it.style.filter = blur > 0.1 ? `blur(${blur}px)` : 'none'; span.style.transform = `skewX(${currentSpd > 0 ? skew : -skew}deg) scaleX(${sx})`; });
     requestAnimationFrame(tick);
   }
   tick();
@@ -837,78 +798,41 @@ function initTypewriter() {
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href');
-    if (id.length > 1) {
-      const target = document.querySelector(id);
-      if (target) {
-        e.preventDefault();
-        const top = target.getBoundingClientRect().top + window.scrollY - 60;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    }
+    if (id.length > 1) { const target = document.querySelector(id); if (target) { e.preventDefault(); const top = target.getBoundingClientRect().top + window.scrollY - 60; window.scrollTo({ top, behavior: 'smooth' }); } }
   });
 });
 
-// ─────────── ENQUIRY FORM DYNAMIC LOGIC & SUBMISSION (BULLETPROOF IFRAME) ────
-
-// 1. Auto-fill Model and Scroll to Form when "Enquire" is clicked
+// ENQUIRY FORM LOGIC
 document.querySelectorAll('.range-row').forEach(row => {
   row.addEventListener('click', () => {
     const bikeName = row.querySelector('h3').innerText;
     const modelSelect = document.getElementById('modelSelect');
-    
-    for (let i = 0; i < modelSelect.options.length; i++) {
-      if (modelSelect.options[i].text === bikeName) {
-        modelSelect.selectedIndex = i;
-        modelSelect.value = bikeName;
-        break;
-      }
-    }
-
+    for (let i = 0; i < modelSelect.options.length; i++) { if (modelSelect.options[i].text === bikeName) { modelSelect.selectedIndex = i; modelSelect.value = bikeName; break; } }
     document.getElementById('testride').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 });
 
-// 2. Show/Hide Exchange Fields based on Payment Mode
 const paymentMode = document.getElementById('paymentMode');
 const exchangeFields = document.getElementById('exchangeFields');
-
 paymentMode.addEventListener('change', function() {
   const selectedValue = this.value;
   if (selectedValue.includes('Exchange')) {
-    exchangeFields.classList.add('is-visible');
-    exchangeFields.querySelectorAll('input, select').forEach(el => el.required = true);
+    exchangeFields.classList.add('is-visible'); exchangeFields.querySelectorAll('input, select').forEach(el => el.required = true);
   } else {
-    exchangeFields.classList.remove('is-visible');
-    exchangeFields.querySelectorAll('input, select').forEach(el => {
-      el.required = false;
-      el.value = ''; 
-    });
+    exchangeFields.classList.remove('is-visible'); exchangeFields.querySelectorAll('input, select').forEach(el => { el.required = false; el.value = ''; });
   }
 });
 
-// 3. Iframe Form Submission (No AJAX, No CORS errors, 100% success rate)
 document.getElementById('enquiryForm').addEventListener('submit', function() {
-  const btn = document.getElementById('submitBtn');
-  const originalText = btn.textContent;
-  
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-
-  // The form submits to the hidden iframe naturally.
-  // We use a timeout to give the iframe time to load the response from FormSubmit.
+  const btn = document.getElementById('submitBtn'); const originalText = btn.textContent;
+  btn.textContent = 'Sending...'; btn.disabled = true;
   setTimeout(() => {
-    btn.textContent = 'Enquiry Sent ✓';
-    this.reset();
-    exchangeFields.classList.remove('is-visible'); // Hide exchange fields after reset
-    
-    setTimeout(() => { 
-      btn.textContent = originalText; 
-      btn.disabled = false; 
-    }, 4000);
-  }, 2500); // 2.5 seconds delay to allow form submission to complete
+    btn.textContent = 'Enquiry Sent ✓'; this.reset(); exchangeFields.classList.remove('is-visible');
+    setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 4000);
+  }, 2500);
 });
 
-// ─────────── AI AGENT "DIVYA" INTELLIGENT LOGIC ────
+// ─────────── AI AGENT "DIVYA" (NEPALI REPLY LOGIC) ────
 const divyaFab = document.getElementById('divyaFab');
 const divyaChatWindow = document.getElementById('divyaChatWindow');
 const divyaMessages = document.getElementById('divyaMessages');
@@ -917,15 +841,11 @@ const divyaInput = document.getElementById('divyaInput');
 divyaFab.addEventListener('click', () => {
   divyaChatWindow.classList.toggle('is-open');
   if (divyaChatWindow.classList.contains('is-open') && divyaMessages.children.length === 0) {
-    addDivyaMessage("Namaste! I am Divya AI. I can provide model prices, Hulas Fin Serv EMI details, or info on any Bajaj bike. How can I help?", 'bot');
+    addDivyaMessage("नमस्ते! म दिव्या AI हुँ। बजाज मोटरसाइकलको मूल्य, Hulas Fin Serv को EMI, वा अन्य कुनै जानकारी चाहिएमा मलाई सोध्नुहोस्।", 'bot');
   }
 });
 
-function handleDivyaKeyPress(e) {
-  if (e.key === 'Enter') {
-    sendDivyaMessage();
-  }
-}
+function handleDivyaKeyPress(e) { if (e.key === 'Enter') { sendDivyaMessage(); } }
 
 function sendDivyaMessage() {
   const text = divyaInput.value.trim();
@@ -934,7 +854,7 @@ function sendDivyaMessage() {
   divyaInput.value = '';
   const typingIndicator = document.createElement('div');
   typingIndicator.className = 'divya-msg bot typing';
-  typingIndicator.textContent = "Divya is researching...";
+  typingIndicator.textContent = "Divya ले सोचिरहेको छ...";
   divyaMessages.appendChild(typingIndicator);
   divyaMessages.scrollTop = divyaMessages.scrollHeight;
   setTimeout(() => {
@@ -953,14 +873,16 @@ function addDivyaMessage(text, sender) {
 }
 
 function getDivyaResponse(query) {
-  if (query.includes('booking') || query.includes('advance') || query.includes('payment') || query.includes('qr')) {
-    return "You can book your bike online! Please scroll down to the 'Online Booking' section. You can scan the Rastriya Banijya Bank QR code or transfer the advance amount to Account No: 1160100002067001 (Divya Auto Hub Pvt. Ltd.). After payment, send the receipt to our WhatsApp 9801204448.";
+  // Booking & Payment
+  if (query.includes('booking') || query.includes('advance') || query.includes('payment') || query.includes('qr') || query.includes('buking') || query.includes('teso')) {
+    return "तपाईंले अनलाइन बुकिङ गर्न सक्नुहुन्छ! वेबसाइटको 'Online Booking' सेक्सनमा गएर राष्ट्रिय वाणिज्य बैंकको QR स्क्यान गर्नुहोस् वा खाता नम्बर ११६०१००००२०६७००१ मा रकम पठाउनुहोस्। भुक्तानी गरेपछि रसिद हाम्रो WhatsApp (९८०१२०४४४८) मा पठाउनुहोस्।";
   }
-  if (query.includes('finance') || query.includes('emi') || query.includes('loan') || query.includes('installment') || query.includes('hulas') || query.includes('hire purchase') || query.includes('downpayment') || query.includes('down payment')) {
+  // Finance
+  if (query.includes('finance') || query.includes('emi') || query.includes('loan') || query.includes('installment') || query.includes('hulas') || query.includes('hire purchase') || query.includes('downpayment') || query.includes('down payment') || query.includes('byaj') || query.includes('kista')) {
     const modelFound = findModelInQuery(query);
-    let dpKey = "dp40", dpPlan = "40% Downpayment (12.99% interest)";
-    if (query.includes('50') || query.includes('50%')) { dpKey = "dp50"; dpPlan = "50% Downpayment (10.99% interest)"; }
-    if (query.includes('60') || query.includes('60%')) { dpKey = "dp60"; dpPlan = "60% Downpayment (8.99% interest)"; }
+    let dpKey = "dp40", dpPlan = "४०% डाउनपेमेन्ट (१२.९९% ब्याज)";
+    if (query.includes('50') || query.includes('50%')) { dpKey = "dp50"; dpPlan = "५०% डाउनपेमेन्ट (१०.९९% ब्याज)"; }
+    if (query.includes('60') || query.includes('60%')) { dpKey = "dp60"; dpPlan = "६०% डाउनपेमेन्ट (८.९९% ब्याज)"; }
     let tenure = "24";
     if (query.includes('12 month') || query.includes('12 mahina') || query.includes('1 year')) tenure = "12";
     if (query.includes('36 month') || query.includes('36 mahina') || query.includes('3 year')) tenure = "36";
@@ -976,28 +898,40 @@ function getDivyaResponse(query) {
     if (modelFound) {
       const key = Object.keys(emiData).find(k => modelFound.name.toLowerCase().includes(k));
       if (key) {
-        const data = emiData[key][dpKey];
-        const emiVal = data[tenure] ? data[tenure] : data["24"];
-        const finalTenure = data[tenure] ? tenure : "24";
-        return `For ${modelFound.name} via Hulas Fin Serv:\n- Plan: ${dpPlan}\n- Tenure: ${finalTenure} months\n- Monthly EMI: NPR ${emiVal}\n\nTotal down payment includes insurance and registration. Please visit our showroom for exact documentation and final valuation.`;
+        const data = emiData[key][dpKey]; const emiVal = data[tenure] ? data[tenure] : data["24"]; const finalTenure = data[tenure] ? tenure : "24";
+        return `Hulas Fin Serv मार्फत ${modelFound.name} को लागि:\n- योजना: ${dpPlan}\n- अवधि: ${finalTenure} महिना\n- मासिक EMI: रु ${emiVal}\n\nकृपया सटीक डकुमेन्टेसन र अन्तिम मूल्याङ्कनको लागि हाम्रो शोरूममा आउनुहोस्।`;
       }
-      return `For ${modelFound.name}, we offer Hire Purchase via Hulas Fin Serv. You can choose 40% DP (12.99% interest), 50% DP (10.99%), or 60% DP (8.99%). Tenures are 12, 24, 36, or 60 months. Please visit us for the exact EMI calculation for this specific model.`;
+      return `${modelFound.name} को लागि हामी Hulas Fin Serv मार्फत Hire Purchase उपलब्ध गराउँछौं। तपाईं ४०% DP (१२.९९% ब्याज), ५०% DP (१०.९९%), वा ६०% DP (८.९९%) छान्न सक्नुहुन्छ। अवधि १२, २४, ३६, वा ६० महिनाको हुन्छ।`;
     }
-    return "We offer Hire Purchase facilities through Hulas Fin Serv. Plans available:\n1. 40% Downpayment @ 12.99% interest\n2. 50% Downpayment @ 10.99% interest\n3. 60% Downpayment @ 8.99% interest\nTenures: 12, 24, 36, or 60 months.\n\nTell me which model you are interested in to get specific EMI details.";
+    return "हामी Hulas Fin Serv मार्फत Hire Purchase सुविधा उपलब्ध गराउँछौं। उपलब्ध योजनाहरू:\n१. ४०% डाउनपेमेन्ट (१२.९९% ब्याज)\n२. ५०% डाउनपेमेन्ट (१०.९९% ब्याज)\n३. ६०% डाउनपेमेन्ट (८.९९% ब्याज)\nअवधि: १२, २४, ३६, वा ६० महिना।\n\nविशेष EMI विवरणको लागि कुन मोडेलमा रुचि छ भन्नुहोस्।";
   }
-  if (query.includes('price') || query.includes('daam') || query.includes('rate') || query.includes('cost') || query.includes('kati')) {
+  // Price
+  if (query.includes('price') || query.includes('daam') || query.includes('rate') || query.includes('cost') || query.includes('kati') || query.includes('kati ko')) {
     const modelFound = findModelInQuery(query);
-    if (modelFound) return `The price for ${modelFound.name} is ${modelFound.price}.`;
-    return "Our motorcycle prices range from NPR 255,900 (Platina 100) to NPR 646,900 (Dominar 400). Please tell me which specific model you are interested in (e.g., 'Pulsar 150 price').";
+    if (modelFound) return `${modelFound.name} को मूल्य ${modelFound.price} हो।`;
+    return "हाम्रो मोटरसाइकलको मूल्य रु २,५५,९०० (Platina 100) देखि रु ६,४६,९०० (Dominar 400) सम्म छ। कुन मोडेलमा रुचि छ भन्नुहोस्।";
   }
+  // Model mentioned
   const modelFound = findModelInQuery(query);
-  if (modelFound) return `The ${modelFound.name} is priced at ${modelFound.price}. ${modelFound.desc} Would you like to know about Hulas Fin Serv EMI options for this model?`;
-  if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where')) return "We are located in Maharajgunj, Kathmandu. Showroom hours: Sunday to Friday, 9:30 AM to 6:00 PM. Test rides are available until 5:00 PM.";
-  if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) return "You can reach us at 9801204448 or 01-4533133. Email: divyautohub@gmail.com";
-  if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts')) return "We provide factory-trained professional servicing, 3 free services for new bikes, and 100% genuine Bajaj spare parts with a manufacturer warranty.";
-  if (query.includes('test ride') || query.includes('try') || query.includes('demo')) return "Yes, test rides are available! You can also fill out the enquiry form at the bottom of the page with your details, and we will contact you.";
-  if (query.includes('namaste') || query.includes('hello') || query.includes('hi')) return "Namaste! How can I assist you with Bajaj motorcycles today? You can ask about prices, models, or Hulas Fin Serv hire purchase.";
-  return "I am currently optimized to answer questions about Divya Auto Hub's motorcycle prices, Hulas Fin Serv hire purchase EMI, location, and services. For specific technical questions, please call us at 9801204448.";
+  if (modelFound) return `${modelFound.name} को मूल्य ${modelFound.price} हो। ${modelFound.desc} के तपाईं यो मोडेलको EMI विवरण जान्न चाहनुहुन्छ?`;
+  
+  // Location
+  if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where') || query.includes('kaha cha')) return "हामी महाराजगन्ज, काठमाडौंमा अवस्थित छौं। शोरूम समय: आइतबार देखि शुक्रबार, बिहान ९:३० देखि साँझ ६:०० बजेसम्म। तल 'Google Maps' मा क्लिक गरेर लोकेसन हेर्न सक्नुहुन्छ।";
+  
+  // Contact
+  if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) return "तपाईं हामीलाई ९८०१२०४४४८ वा ०१-४५३३१३३ मा सम्पर्क गर्न सक्नुहुन्छ। इमेल: divyautohub@gmail.com";
+  
+  // Service
+  if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts') || query.includes('saruwa')) return "हामी फ्याक्ट्री-प्रशिक्षित मेकानिक, नयाँ बाइकको ३ निःशुल्क सर्भिस, र १००% जेनुइन बजाज स्पेयर पार्ट्स उपलब्ध गराउँछौं।";
+  
+  // Test Ride
+  if (query.includes('test ride') || query.includes('try') || query.includes('demo') || query.includes('chalaune')) return "हो, टेस्ट राइड उपलब्ध छ! तपाईंले वेबसाइटको तल 'Book a test ride' फर्म भरेर हामीलाई सम्पर्क गर्न सक्नुहुन्छ।";
+  
+  // Greetings
+  if (query.includes('namaste') || query.includes('hello') || query.includes('hi') || query.includes('namaskar')) return "नमस्ते! बजाज मोटरसाइकलको बारेमा कसरी सहयोग गर्न सक्छु? तपाईं मूल्य, मोडेल, वा Hulas Fin Serv EMI को बारेमा सोध्न सक्नुहुन्छ।";
+  
+  // Fallback
+  return "म अहिले Divya Auto Hub को मोटरसाइकल मूल्य, Hulas Fin Serv EMI, स्थान, र सेवाहरूको बारेमा प्रश्नहरूको उत्तर दिन अनुकूलित छु। विशेष प्राविधिक प्रश्नको लागि कृपया हामीलाई ९८०१२०४४४८ मा फोन गर्नुहोस्।";
 }
 
 function findModelInQuery(query) {

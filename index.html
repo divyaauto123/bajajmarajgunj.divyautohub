@@ -502,8 +502,12 @@ elevenlabs-convai {
   <div class="container">
     <div class="testride-title fade-up">Feel the engine<br>before you <em>decide.</em></h2>
     <p class="testride-desc fade-up" style="color: var(--text-soft); margin-top: 2rem;">Leave your number. Our team will call you back within the same business day to schedule a test ride on the Bajaj motorcycle of your choice.</p>
-    <form class="testride-form fade-up" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Request received ✓'; this.querySelector('button').style.opacity='0.85';">
-      <input type="tel" placeholder="98XX XXX XXX" required>
+    <!-- FormSubmit.co Integration to send email directly to divyautohub@gmail.com -->
+    <form class="testride-form fade-up" action="https://formsubmit.co/divyautohub@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Test Ride Request from Website!">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="tel" name="Customer_Phone" placeholder="98XX XXX XXX" required>
       <button type="submit">Request callback</button>
     </form>
   </div>
@@ -836,11 +840,8 @@ function addDivyaMessage(text, sender) {
 }
 
 function getDivyaResponse(query) {
-  // 1. Check for Finance / EMI / Hulas Fin Serv specific queries
   if (query.includes('finance') || query.includes('emi') || query.includes('loan') || query.includes('installment') || query.includes('hulas') || query.includes('hire purchase') || query.includes('downpayment') || query.includes('down payment')) {
     const modelFound = findModelInQuery(query);
-    
-    // Determine Downpayment % and Interest Rate
     let dpKey = "dp40";
     let dpPlan = "40% Downpayment (12.99% interest)";
     if (query.includes('50') || query.includes('50%')) {
@@ -851,14 +852,10 @@ function getDivyaResponse(query) {
       dpKey = "dp60";
       dpPlan = "60% Downpayment (8.99% interest)";
     }
-    
-    // Determine Tenure
     let tenure = "24";
     if (query.includes('12 month') || query.includes('12 mahina') || query.includes('1 year')) tenure = "12";
     if (query.includes('36 month') || query.includes('36 mahina') || query.includes('3 year')) tenure = "36";
     if (query.includes('60 month') || query.includes('60 mahina') || query.includes('5 year')) tenure = "60";
-
-    // Hardcoded data based on Hulas Excel Sheet 2082-83 for specific models
     const emiData = {
       "pulsar 150 sd": {
         dp40: { "12": "12,869", "24": "10,493", "36": "7,437", "60": "5,021" },
@@ -891,49 +888,30 @@ function getDivyaResponse(query) {
         dp60: { "12": "8,951", "24": "4,676", "36": "3,255", "60": "3,186" }
       }
     };
-
     if (modelFound) {
       const key = Object.keys(emiData).find(k => modelFound.name.toLowerCase().includes(k));
       if (key) {
         const data = emiData[key][dpKey];
-        const emiVal = data[tenure] ? data[tenure] : data["24"]; // fallback to 24m
+        const emiVal = data[tenure] ? data[tenure] : data["24"];
         const finalTenure = data[tenure] ? tenure : "24";
-        
         return `For ${modelFound.name} via Hulas Fin Serv:\n- Plan: ${dpPlan}\n- Tenure: ${finalTenure} months\n- Monthly EMI: NPR ${emiVal}\n\nTotal down payment includes insurance and registration. Please visit our showroom for exact documentation and final valuation.`;
       }
       return `For ${modelFound.name}, we offer Hire Purchase via Hulas Fin Serv. You can choose 40% DP (12.99% interest), 50% DP (10.99%), or 60% DP (8.99%). Tenures are 12, 24, 36, or 60 months. Please visit us for the exact EMI calculation for this specific model.`;
     }
-
     return "We offer Hire Purchase facilities through Hulas Fin Serv. Plans available:\n1. 40% Downpayment @ 12.99% interest\n2. 50% Downpayment @ 10.99% interest\n3. 60% Downpayment @ 8.99% interest\nTenures: 12, 24, 36, or 60 months.\n\nTell me which model you are interested in to get specific EMI details.";
   }
-
-  // 2. Check for general Price queries
   if (query.includes('price') || query.includes('daam') || query.includes('rate') || query.includes('cost') || query.includes('kati')) {
     const modelFound = findModelInQuery(query);
     if (modelFound) return `The price for ${modelFound.name} is ${modelFound.price}.`;
     return "Our motorcycle prices range from NPR 255,900 (Platina 100) to NPR 646,900 (Dominar 400). Please tell me which specific model you are interested in (e.g., 'Pulsar 150 price').";
   }
-
-  // 3. Check if a specific model is mentioned without the word 'price'
   const modelFound = findModelInQuery(query);
   if (modelFound) return `The ${modelFound.name} is priced at ${modelFound.price}. ${modelFound.desc} Would you like to know about Hulas Fin Serv EMI options for this model?`;
-  
-  // 4. Address / Location
   if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where')) return "We are located in Maharajgunj, Kathmandu. Showroom hours: Sunday to Friday, 9:30 AM to 6:00 PM. Test rides are available until 5:00 PM.";
-  
-  // 5. Contact / Phone
   if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) return "You can reach us at 9801204448 or 01-4533133. Email: divyautohub@gmail.com";
-  
-  // 6. Service
   if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts')) return "We provide factory-trained professional servicing, 3 free services for new bikes, and 100% genuine Bajaj spare parts with a manufacturer warranty.";
-  
-  // 7. Test ride
-  if (query.includes('test ride') || query.includes('try') || query.includes('demo')) return "Yes, test rides are available! Please bring your driving license to our Maharajgunj showroom. Test rides run daily from 9:30 AM to 5:00 PM.";
-  
-  // 8. Greetings
+  if (query.includes('test ride') || query.includes('try') || query.includes('demo')) return "Yes, test rides are available! Please bring your driving license to our Maharajgunj showroom. Test rides run daily from 9:30 AM to 5:00 PM. You can also leave your number in the 'Book a test ride' form at the bottom of the page, and we will call you back!";
   if (query.includes('namaste') || query.includes('hello') || query.includes('hi')) return "Namaste! How can I assist you with Bajaj motorcycles today? You can ask about prices, models, or Hulas Fin Serv hire purchase.";
-  
-  // 9. Fallback
   return "I am currently optimized to answer questions about Divya Auto Hub's motorcycle prices, Hulas Fin Serv hire purchase EMI, location, and services. For specific technical questions, please call us at 9801204448.";
 }
 

@@ -1,434 +1,1666 @@
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divya Auto Hub | Portal v4.0</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #8b0000 100%); min-height: 100vh; }
-        .glass-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); }
-        .glass-card-light { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .btn-primary { background: linear-gradient(90deg, #d10808 0%, #8b0000 100%); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(209, 8, 8, 0.3); }
-        .hidden { display: none !important; }
-        .modal-bg { background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(5px); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- PRIMARY SEO META TAGS -->
+<title>Divya Auto Hub | Authorised Bajaj Motorcycle Dealer in Kathmandu</title>
+<meta name="title" content="Divya Auto Hub | Authorised Bajaj Motorcycle Dealer in Kathmandu">
+<meta name="description" content="Authorised Bajaj dealership in Maharajgunj, Kathmandu. Buy Pulsar, Dominar, Avenger, Platina & Chetak at the best prices. Easy finance via Hulas Fin Serv, exchange, servicing & spare parts.">
+<meta name="keywords" content="Bajaj dealer Kathmandu, Bajaj motorcycle Nepal, Pulsar price Nepal, Hulas Fin Serv, Divya Auto Hub, hire purchase Nepal">
+<meta name="author" content="Divya Auto Hub Pvt. Ltd.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.divyaautohub.com.np/" />
+
+<!-- GEO TAGS -->
+<meta name="geo.region" content="NP-P3" />
+<meta name="geo.placename" content="Maharajgunj, Kathmandu" />
+<meta name="geo.position" content="27.7172;85.3240" />
+<meta name="ICBM" content="27.7172, 85.3240" />
+
+<!-- FONTS & SCRIPTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;800;900&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<style>
+:root {
+  --bg: #051030;
+  --text: #ffffff;
+  --text-soft: #c4d4f0;
+  --accent: rgba(230, 180, 50, 1);
+  --accent-soft: rgba(230, 180, 50, 0.25);
+  --line: rgba(255,255,255,0.12);
+  --line-soft: rgba(255,255,255,0.06);
+  --ease-quiet: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: var(--bg); scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400; line-height: 1.6; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: var(--bg); }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(5,16,48,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--line-soft); }
+.nav-logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.7rem; }
+.nav-logo-mark { width: 10px; height: 10px; background: var(--accent); flex-shrink: 0; }
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+.nav-logo-text small { font-size: 0.6rem; color: var(--text-soft); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 2px; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a { color: var(--text-soft); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 400ms var(--ease-quiet); }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bg); background: var(--accent); padding: 0.7rem 1.2rem; transition: opacity 400ms var(--ease-quiet); }
+.nav-cta:hover { opacity: 0.85; }
+
+/* HERO */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 9rem 2rem 5rem; overflow: hidden; }
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.4; pointer-events: none; }
+.hero-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, transparent 0%, var(--bg) 95%); }
+.hero-content { position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; width: 100%; }
+.hero-meta { display: flex; justify-content: space-between; margin-bottom: 4.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-soft); flex-wrap: wrap; gap: 1rem; }
+.hero-meta-left { color: var(--accent); }
+.hero-meta-right { display: flex; gap: 2rem; }
+#hero-title { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: clamp(2.6rem, 9vw, 8.5rem); line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 2.5rem; }
+#hero-title.is-decoding { text-shadow: 0 0 30px var(--accent-soft); }
+.hero-typewriter-wrap { max-width: 620px; margin-bottom: 3rem; }
+.hero-subtitle { font-family: 'JetBrains Mono', monospace; font-size: clamp(0.82rem, 1.05vw, 0.95rem); line-height: 1.85; color: var(--text-soft); white-space: pre-wrap; min-height: 220px; }
+.caret { display: inline-block; width: 8px; height: 1.05em; background: var(--accent); vertical-align: text-bottom; margin-left: 2px; transform: translateY(2px); }
+.caret.is-hidden { opacity: 0; }
+.hero-cta-wrap { opacity: 0; transform: translateY(20px); transition: opacity 800ms var(--ease-quiet), transform 800ms var(--ease-quiet); }
+.hero-cta-wrap.is-shown { opacity: 1; transform: none; }
+.hero-cta-row { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+.btn-primary { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bg); background: var(--accent); padding: 1rem 1.75rem; display: inline-flex; align-items: center; gap: 0.8rem; transition: opacity 400ms var(--ease-quiet); }
+.btn-primary:hover { opacity: 0.85; }
+.btn-primary .arrow { transition: transform 400ms var(--ease-quiet); display: inline-block; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+.btn-ghost { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); border-bottom: 1px solid var(--accent); padding-bottom: 0.3rem; transition: color 400ms var(--ease-quiet); }
+.btn-ghost:hover { color: var(--accent); }
+.hero-scroll-hint { position: absolute; bottom: 2rem; left: 2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-soft); opacity: 0.55; z-index: 2; display: flex; align-items: center; gap: 0.6rem; }
+.hero-scroll-hint::after { content: ''; display: inline-block; width: 30px; height: 1px; background: var(--accent); animation: scrollLine 2.4s var(--ease-quiet) infinite; }
+@keyframes scrollLine { 0%, 100% { transform: scaleX(0.3); transform-origin: left; } 50% { transform: scaleX(1); transform-origin: left; } }
+
+/* SECTIONS */
+section { position: relative; padding: 8rem 2rem; }
+.container { max-width: 1400px; margin: 0 auto; width: 100%; }
+.eyebrow { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); opacity: 0; transform: translateY(16px); transition: opacity 600ms var(--ease-quiet), transform 600ms var(--ease-quiet); }
+.eyebrow::after { content: ''; display: inline-block; width: 0; height: 1px; margin-left: 0.75rem; vertical-align: middle; background: currentColor; transition: width 800ms var(--ease-quiet) 400ms; }
+.is-in .eyebrow { opacity: 1; transform: none; transition-delay: 100ms; }
+.is-in .eyebrow::after { width: 2rem; }
+.section-title { font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(2rem, 4.5vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; margin: 1.5rem 0 0; }
+.section-title em { font-style: normal; color: var(--accent); }
+.headline-enter { opacity: 0; transform: translateY(40px); transition: opacity 1000ms var(--ease-quiet), transform 1000ms var(--ease-quiet); }
+.is-in .headline-enter { opacity: 1; transform: none; }
+
+/* INTRO */
+.intro { border-top: 1px solid var(--line); }
+.intro-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+.intro-left { position: sticky; top: 8rem; }
+.intro-right p { font-size: 1.15rem; line-height: 1.7; color: var(--text-soft); margin-bottom: 2rem; max-width: 560px; }
+.intro-right p:first-of-type { font-size: 1.5rem; line-height: 1.5; color: var(--text); margin-bottom: 3rem; }
+.intro-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--line); }
+.stat-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+.stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); line-height: 1.4; }
+
+/* RANGE */
+.range { border-top: 1px solid var(--line); }
+.range-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; flex-wrap: wrap; gap: 2rem; }
+.range-header-left { max-width: 720px; }
+.range-header-right { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); text-align: right; line-height: 1.8; }
+.range-header-right strong { color: var(--accent); font-weight: 400; }
+.range-list { border-top: 1px solid var(--line); }
+.range-row { position: relative; display: grid; grid-template-columns: 60px 2fr 1.3fr 1.5fr 100px; gap: 2rem; align-items: center; padding: 2.5rem 1.5rem; border-bottom: 1px solid var(--line); cursor: pointer; transition: background 600ms var(--ease-quiet); }
+.range-row::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--accent); transition: height 600ms var(--ease-quiet); }
+.range-row:hover::before { height: 100%; }
+.range-row:hover { background: rgba(230, 180, 50, 0.03); }
+.range-row-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-soft); transition: color 600ms var(--ease-quiet); }
+.range-row:hover .range-row-num { color: var(--accent); }
+.range-row-name h3 { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 0.4rem; transition: color 600ms var(--ease-quiet); }
+.range-row:hover .range-row-name h3 { color: var(--accent); }
+.range-row-name span { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); }
+.range-row-price { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--text); transition: color 600ms var(--ease-quiet); }
+.range-row:hover .range-row-price { color: var(--accent); }
+.range-row-price small { display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-soft); margin-top: 0.3rem; opacity: 0.7; }
+.range-row-desc { font-size: 0.85rem; line-height: 1.55; color: var(--text-soft); opacity: 0.5; transition: opacity 600ms var(--ease-quiet); }
+.range-row:hover .range-row-desc { opacity: 1; }
+.range-row-arrow { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-soft); text-align: right; transition: color 600ms var(--ease-quiet), transform 600ms var(--ease-quiet); }
+.range-row:hover .range-row-arrow { color: var(--accent); transform: translateX(8px); }
+
+/* METAL GRID */
+.metal { border-top: 1px solid var(--line); }
+.metal-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; flex-wrap: wrap; gap: 2rem; }
+.metal-header-left { max-width: 720px; }
+.metal-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.metal-item { position: relative; overflow: hidden; background: var(--line-soft); border: 1px solid var(--line-soft); }
+.metal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1500ms var(--ease-quiet), filter 600ms var(--ease-quiet); filter: grayscale(0.2) contrast(1.1); }
+.metal-item:hover img { transform: scale(1.04); filter: grayscale(0) contrast(1.15); }
+.metal-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(5,16,48,0.85) 100%); pointer-events: none; }
+.metal-item-label { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; z-index: 2; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); }
+.metal-item-label span { color: var(--accent); display: block; margin-bottom: 0.4rem; }
+.metal-item-label strong { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.2rem; text-transform: none; display: block; }
+.m-item-1 { grid-column: 1 / 7; aspect-ratio: 4/3; } .m-item-2 { grid-column: 7 / 13; aspect-ratio: 4/3; } .m-item-3 { grid-column: 1 / 5; aspect-ratio: 1/1; } .m-item-4 { grid-column: 5 / 9; aspect-ratio: 1/1; } .m-item-5 { grid-column: 9 / 13; aspect-ratio: 1/1; } .m-item-6 { grid-column: 1 / 5; aspect-ratio: 4/5; } .m-item-7 { grid-column: 5 / 13; aspect-ratio: 16/9; } .m-item-8 { grid-column: 1 / 7; aspect-ratio: 16/9; } .m-item-9 { grid-column: 7 / 13; aspect-ratio: 16/9; }
+
+/* STICKY PAIR */
+.sticky-pair { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+.sticky-pair .left { position: sticky; top: 8rem; }
+.sticky-pair .left p { font-size: 1.1rem; line-height: 1.7; color: var(--text-soft); margin-top: 2rem; max-width: 480px; }
+
+/* SERVICES */
+.services { border-top: 1px solid var(--line); }
+.service-item { padding: 3rem 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 60px 1fr; gap: 2rem; }
+.service-item:first-child { border-top: 1px solid var(--line); }
+.service-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); padding-top: 0.5rem; }
+.service-content h3 { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 0.75rem; }
+.service-content p { font-size: 0.95rem; line-height: 1.65; color: var(--text-soft); max-width: 520px; margin-bottom: 1.25rem; }
+.service-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-soft); }
+.service-meta span { display: flex; align-items: center; gap: 0.4rem; }
+.service-meta span::before { content: ''; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
+
+/* PHILOSOPHY */
+.philosophy { border-top: 1px solid var(--line); padding: 8rem 2rem; overflow: hidden; }
+.philosophy .sticky-pair { grid-template-columns: 1fr 1fr; gap: 4rem; }
+.ring-stage { perspective: 1000px; height: 100vh; min-height: 600px; position: relative; display: flex; align-items: center; justify-content: center; }
+.ring { position: relative; width: 1px; height: 1px; transform-style: preserve-3d; will-change: transform; }
+.ring-item { position: absolute; top: 0; left: 0; white-space: nowrap; }
+.ring-item span { display: inline-block; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.6rem); color: var(--text); padding: 0 1rem; }
+.ring-item.accent span { color: var(--accent); }
+.ring-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-soft); text-align: center; z-index: 2; }
+.ring-center::before { content: ''; display: block; width: 1px; height: 30px; background: var(--accent); margin: 0 auto 1rem; }
+
+/* SHOWROOM */
+.showroom { border-top: 1px solid var(--line); }
+.showroom-info { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 3rem; }
+.info-row { display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line-soft); }
+.info-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-soft); padding-top: 0.2rem; }
+.info-value { font-size: 1rem; line-height: 1.55; }
+.info-value a:hover { color: var(--accent); }
+.info-value .accent { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: block; margin-top: 0.4rem; }
+.showroom-img-wrap { position: relative; overflow: hidden; background: var(--line-soft); }
+.showroom-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--ease-quiet); filter: grayscale(0.3) contrast(1.05); }
+.showroom-img-wrap:hover img { transform: scale(1.03); }
+.showroom-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(5,16,48,0.85) 100%); pointer-events: none; }
+.showroom-img-label { position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 2; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text); }
+.showroom-img-label span { color: var(--accent); }
+.showroom-img-wrap.tall { aspect-ratio: 4/3; } .showroom-img-wrap.wide { aspect-ratio: 16/9; }
+
+/* CTA & FORM */
+.testride { border-top: 1px solid var(--line); text-align: center; padding: 10rem 2rem; position: relative; overflow: hidden; }
+.testride-title { font-family: 'Inter', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 7vw, 6rem); margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+.testride-title em { font-style: normal; color: var(--accent); }
+.testride-desc { font-size: 1.1rem; line-height: 1.65; color: var(--text-soft); max-width: 540px; margin: 0 auto 3rem; }
+.testride-form { max-width: 600px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; border: 1px solid var(--line); background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 8px; }
+.testride-form input, .testride-form select { width: 100%; background: var(--bg); border: 1px solid var(--line-soft); border-radius: 4px; padding: 1rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.3s; }
+.testride-form input:focus, .testride-form select:focus { border-color: var(--accent); }
+.testride-form select option { background: var(--bg); color: var(--text); }
+.testride-form button { grid-column: 1 / -1; background: var(--accent); color: var(--bg); border: none; padding: 1.2rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: opacity 400ms var(--ease-quiet); border-radius: 4px; }
+.testride-form button:hover { opacity: 0.85; }
+.testride-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+.exchange-fields-wrapper { grid-column: 1 / -1; display: none; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line-soft); }
+.exchange-fields-wrapper.is-visible { display: grid; }
+.exchange-fields-wrapper input, .exchange-fields-wrapper select { background: rgba(255,255,255,0.02); }
+
+/* ONLINE BOOKING & PAYMENT */
+.booking { border-top: 1px solid var(--line); }
+.booking-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+.booking-info p { font-size: 1.1rem; line-height: 1.7; color: var(--text-soft); margin-bottom: 2rem; }
+.bank-details { background: rgba(255,255,255,0.03); border: 1px solid var(--line-soft); border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 2rem; }
+.bank-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid var(--line-soft); font-family: 'Inter', sans-serif; font-size: 1rem; }
+.bank-row:last-child { border-bottom: none; }
+.bank-row span { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); }
+.bank-row strong { color: var(--text); font-weight: 500; }
+.booking-note { font-size: 0.9rem; color: var(--accent); opacity: 0.9; }
+.booking-qr { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #ffffff; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.booking-qr img { width: 100%; max-width: 300px; height: auto; border-radius: 8px; }
+.qr-label { margin-top: 1rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.9rem; color: var(--bg); letter-spacing: 0.2em; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--line); padding: 5rem 2rem 2rem; }
+.footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--line); }
+.footer-brand h4 { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+.footer-brand h4::before { content: ''; width: 10px; height: 10px; background: var(--accent); }
+.footer-brand p { font-size: 0.9rem; line-height: 1.65; color: var(--text-soft); max-width: 320px; }
+.footer-col h5 { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; font-weight: 400; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.75rem; font-size: 0.9rem; color: var(--text-soft); }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom { max-width: 1400px; margin: 2rem auto 0; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; text-transform: uppercase; color: var(--text-soft); flex-wrap: wrap; gap: 1rem; }
+.footer-bottom .accent { color: var(--accent); }
+
+/* UTILITIES */
+.fade-up { opacity: 0; transform: translateY(40px); transition: opacity 1000ms var(--ease-quiet), transform 1000ms var(--ease-quiet); }
+.fade-up.is-in { opacity: 1; transform: none; }
+
+/* ─────────── FLOATING BUTTONS & CHAT ──── */
+.fab-wrapper { position: fixed; bottom: 24px; left: 24px; z-index: 998; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.wa-fab { width: 52px; height: 52px; background: #25D366; color: #ffffff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 999; transition: transform 400ms var(--ease-quiet); order: 2; }
+.wa-fab:hover { transform: scale(1.05); }
+.wa-fab svg { width: 28px; height: 28px; fill: #ffffff; }
+.divya-fab { width: 60px; height: 60px; background: var(--accent); color: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 999; transition: transform 400ms var(--ease-quiet); order: 1; }
+.divya-fab:hover { transform: scale(1.05); }
+.divya-fab svg { width: 28px; height: 28px; fill: var(--bg); }
+.divya-chat-window { position: fixed; bottom: 100px; left: 24px; width: 360px; max-width: calc(100vw - 48px); height: 500px; max-height: calc(100vh - 140px); background: #081535; border: 1px solid var(--line); border-radius: 8px; display: none; flex-direction: column; overflow: hidden; z-index: 999; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+.divya-chat-window.is-open { display: flex; }
+.divya-chat-header { padding: 1rem 1.25rem; background: #0a1c4d; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 0.75rem; }
+.divya-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--bg); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.2rem; }
+.divya-chat-header-text h4 { font-size: 0.9rem; margin: 0; }
+.divya-chat-header-text span { font-size: 0.7rem; color: #4ade80; display: flex; align-items: center; gap: 0.3rem; }
+.divya-chat-header-text span::before { content: ''; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
+.divya-messages { flex: 1; padding: 1.25rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.divya-messages::-webkit-scrollbar { width: 4px; }
+.divya-messages::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+.divya-msg { max-width: 85%; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.85rem; line-height: 1.5; opacity: 0; transform: translateY(10px); animation: divyaFadeIn 0.4s var(--ease-quiet) forwards; }
+@keyframes divyaFadeIn { to { opacity: 1; transform: translateY(0); } }
+.divya-msg.bot { background: #10224f; color: var(--text-soft); border-top-left-radius: 2px; align-self: flex-start; white-space: pre-line; }
+.divya-msg.user { background: var(--accent); color: var(--bg); border-top-right-radius: 2px; align-self: flex-end; font-weight: 500; }
+.divya-msg.typing { background: #10224f; color: var(--text-soft); border-top-left-radius: 2px; align-self: flex-start; font-style: italic; opacity: 0.7; }
+.divya-input-area { padding: 1rem; border-top: 1px solid var(--line); background: #0a1c4d; display: flex; gap: 0.75rem; }
+.divya-input-area input { flex: 1; background: #051030; border: 1px solid var(--line); border-radius: 4px; padding: 0.75rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.85rem; outline: none; }
+.divya-input-area input:focus { border-color: var(--accent); }
+.divya-input-area button { background: var(--accent); color: var(--bg); border: none; border-radius: 4px; padding: 0 1rem; cursor: pointer; transition: opacity 0.3s; }
+.divya-input-area button:hover { opacity: 0.85; }
+
+elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 999 !important; }
+
+/* ─────────── MOBILE RESPONSIVE STYLES ──── */
+@media (max-width: 1100px) {
+  .range-row { grid-template-columns: 40px 1fr 1fr; grid-template-areas: "num name price" "num desc desc" "num arrow arrow"; gap: 1rem 1.5rem; padding: 2rem 1rem; }
+  .range-row-num { grid-area: num; } .range-row-name { grid-area: name; } .range-row-price { grid-area: price; text-align: right; } .range-row-desc { grid-area: desc; } .range-row-arrow { grid-area: arrow; text-align: left; }
+  .m-item-1, .m-item-2, .m-item-3, .m-item-4, .m-item-5, .m-item-6, .m-item-7, .m-item-8, .m-item-9 { grid-column: 1 / -1; aspect-ratio: 16/9; }
+  .intro-grid, .sticky-pair { grid-template-columns: 1fr; gap: 3rem; }
+  .intro-left { position: static; }
+  .intro-stats { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-cta { padding: 0.5rem 0.8rem; font-size: 0.6rem; }
+  .nav-logo-text { font-size: 0.7rem; }
+  .nav-logo-text small { display: none; }
+  
+  .hero { padding: 7rem 1.5rem 4rem; min-height: 90vh; }
+  .hero-meta { margin-bottom: 2.5rem; flex-direction: column; gap: 0.5rem; }
+  .hero-meta-right { gap: 1rem; }
+  
+  section { padding: 5rem 1.5rem; }
+  .testride { padding: 5rem 1rem; }
+  
+  .philosophy .sticky-pair { grid-template-columns: 1fr; gap: 2rem; }
+  .ring-stage { height: 60vh; min-height: 400px; }
+  
+  .booking-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .booking-qr { order: -1; max-width: 280px; margin: 0 auto; }
+  
+  .testride-form, .exchange-fields-wrapper { grid-template-columns: 1fr !important; }
+  
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .footer-brand, .footer-col { display: flex; flex-direction: column; align-items: center; }
+  .footer-col ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  
+  .divya-chat-window { width: calc(100vw - 32px); left: 16px; bottom: 90px; height: calc(100vh - 110px); }
+  .fab-wrapper { left: 16px; bottom: 16px; }
+  
+  .info-row { grid-template-columns: 80px 1fr; gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } .hero-canvas { display: none; } .ring { transform: none !important; } }
+
+/* ===== FINANCE ELIGIBILITY CHECKER (MODAL) ===== */
+
+.fin-modal-overlay {
+  --bg: #0f1115; --card-bg: #1a1d24; --text: #ffffff; --text-soft: #b3b8c2;
+  --accent: #E4002B; --accent-dark: #b80023; --line: #2d3139;
+  --success: #22c55e; --warning: #eab308; --danger: #ef4444;
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(2,4,10,0.82); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 2rem; overflow-y: auto;
+}
+.fin-modal-overlay.fin-is-open { display: flex; }
+.fin-modal-overlay { color: var(--text); }
+.fin-modal-overlay * { box-sizing: border-box; }
+.fin-modal-overlay, .fin-modal-overlay input, .fin-modal-overlay select, .fin-modal-overlay button {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.fin-close-btn {
+  position: absolute; top: 1.2rem; right: 1.2rem; width: 36px; height: 36px;
+  border-radius: 50%; background: rgba(255,255,255,0.1); border: 1px solid var(--line);
+  color: var(--text); font-size: 1.1rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: background 0.3s;
+  z-index: 5;
+}
+.fin-close-btn:hover { background: rgba(255,255,255,0.2); }
+.fin-container {
+  position: relative;
+  background: var(--card-bg); width: 100%; max-width: 700px;
+  border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden;
+  border: 1px solid var(--line);
+}
+.fin-header {
+  background: #000; padding: 2rem; text-align: center; border-bottom: 4px solid var(--accent);
+}
+.fin-header h1 { color: var(--accent); font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.fin-header p { color: var(--text-soft); font-size: 0.9rem; margin-top: 0.5rem; }
+.fin-progress-bar { width: 100%; height: 6px; background: var(--line); }
+.fin-progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s ease; }
+.fin-body { padding: 2.5rem; max-height: 70vh; overflow-y: auto; }
+.fin-step { display: none; animation: fadeIn 0.5s ease; }
+.fin-step.fin-is-active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fin-step h3 { color: var(--text); margin-bottom: 1.5rem; font-size: 1.2rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+.fin-group { margin-bottom: 1.5rem; }
+.fin-group label { display: block; font-size: 0.85rem; color: var(--text-soft); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.fin-group input, .fin-group select {
+  width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
+  padding: 0.85rem 1rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.95rem; outline: none;
+  transition: border-color 0.3s;
+}
+.fin-group input:focus, .fin-group select:focus { border-color: var(--accent); }
+.fin-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.fin-radio-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.fin-radio-label {
+  background: var(--bg); border: 1px solid var(--line); padding: 0.8rem 1.2rem; border-radius: 8px;
+  cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; transition: all 0.3s;
+}
+.fin-radio-label:hover { border-color: var(--accent); }
+.fin-radio-label input { accent-color: var(--accent); }
+.fin-doc-upload {
+  border: 2px dashed var(--line); background: var(--bg); padding: 1.5rem; text-align: center;
+  border-radius: 8px; cursor: pointer; position: relative; transition: border-color 0.3s;
+}
+.fin-doc-upload:hover { border-color: var(--accent); }
+.fin-doc-upload input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.fin-doc-icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+.fin-doc-text { font-size: 0.85rem; color: var(--text-soft); }
+.fin-doc-name { font-size: 0.8rem; color: var(--accent); margin-top: 0.5rem; font-weight: bold; word-break: break-all; }
+.fin-btn-group { display: flex; justify-content: space-between; margin-top: 2.5rem; gap: 1rem; }
+.fin-btn-next { background: var(--accent); color: white; border: none; padding: 1rem 2rem; font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 8px; cursor: pointer; flex: 1; transition: background 0.3s; }
+.fin-btn-next:hover { background: var(--accent-dark); }
+.fin-btn-prev { background: transparent; color: var(--text-soft); border: 1px solid var(--line); padding: 1rem 2rem; font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; border-radius: 8px; cursor: pointer; flex: 0.5; transition: all 0.3s; }
+.fin-btn-prev:hover { border-color: var(--text-soft); color: var(--text); }
+.fin-alert { background: rgba(228, 0, 43, 0.1); border: 1px solid var(--accent); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; }
+.fin-alert p { font-size: 0.9rem; color: var(--text); }
+.fin-result-card { text-align: center; padding: 3rem 2rem; border-radius: 12px; margin-top: 1rem; }
+.fin-result-card .icon { font-size: 3rem; margin-bottom: 1rem; }
+.fin-result-card h3 { font-size: 1.5rem; margin-bottom: 1rem; border: none; padding: 0; }
+.fin-result-card p { color: var(--text-soft); }
+.fin-result-green { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--success); }
+.fin-result-green h3 { color: var(--success); }
+.fin-result-yellow { background: rgba(234, 179, 8, 0.1); border: 1px solid var(--warning); }
+.fin-result-yellow h3 { color: var(--warning); }
+.fin-result-red { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); }
+.fin-result-red h3 { color: var(--danger); }
+.fin-disclaimer { font-size: 0.75rem; color: #666; text-align: center; margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+@media (max-width: 600px) {
+  .fin-row { grid-template-columns: 1fr; }
+  .fin-body { padding: 1.5rem; }
+  .fin-btn-group { flex-direction: column-reverse; }
+  .fin-btn-prev { flex: 1; }
+}
+
+/* ===== CUSTOMER PORTAL (MODAL) ===== */
+
+.cust-modal-overlay {
+  --cust-bg: #f3f4f6; --cust-card: rgba(255,255,255,0.97); --cust-accent: #e11d48; --cust-accent-dark: #be123c;
+  --cust-blue: #2563eb; --cust-blue-dark: #1d4ed8;
+  display: none; position: fixed; inset: 0; z-index: 2100;
+  background: rgba(2,4,10,0.82); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 2rem; overflow-y: auto;
+}
+.cust-modal-overlay.cust-is-open { display: flex; }
+.cust-modal-overlay, .cust-modal-overlay input, .cust-modal-overlay button {
+  font-family: 'Inter', system-ui, sans-serif; box-sizing: border-box;
+}
+.cust-close-btn {
+  position: absolute; top: 1.2rem; right: 1.2rem; width: 36px; height: 36px;
+  border-radius: 50%; background: rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.1);
+  color: #111; font-size: 1.1rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: background 0.3s;
+  z-index: 5;
+}
+.cust-close-btn:hover { background: rgba(0,0,0,0.16); }
+.cust-container {
+  position: relative; background: var(--cust-card); backdrop-filter: blur(10px);
+  width: 100%; max-width: 420px; border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
+  padding: 1.5rem; color: #111827;
+}
+.cust-header { text-align: center; margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+.cust-header h1 { font-size: 1.3rem; font-weight: 800; color: #1f2937; }
+.cust-header p { color: #6b7280; font-size: 0.85rem; margin-top: 0.2rem; }
+.cust-hidden { display: none; }
+.cust-search-hint { color: #4b5563; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; }
+.cust-search-row { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.cust-search-row input {
+  flex: 1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid #d1d5db; outline: none;
+  font-size: 0.95rem; transition: border-color 0.3s;
+}
+.cust-search-row input:focus { border-color: var(--cust-accent); box-shadow: 0 0 0 2px rgba(225,29,72,0.15); }
+.cust-search-row button {
+  background: var(--cust-accent); color: #fff; border: none; padding: 0.75rem 1rem; border-radius: 8px;
+  font-weight: 500; cursor: pointer; transition: background 0.3s;
+}
+.cust-search-row button:hover { background: var(--cust-accent-dark); }
+.cust-error-box { background: #fef2f2; color: var(--cust-accent-dark); padding: 0.75rem; border-radius: 8px; font-size: 0.85rem; text-align: center; }
+.cust-loading { text-align: center; padding: 2rem 0; }
+.cust-loading svg { height: 2.5rem; width: 2.5rem; color: var(--cust-accent); margin: 0 auto; animation: cust-spin 1s linear infinite; }
+@keyframes cust-spin { to { transform: rotate(360deg); } }
+.cust-loading p { color: #6b7280; margin-top: 1rem; }
+.cust-error-state { text-align: center; padding: 2rem 0; }
+.cust-error-state p:first-child { color: var(--cust-accent-dark); font-weight: 600; }
+.cust-error-state p:last-child { color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+.cust-btn-secondary { margin-top: 1rem; width: 100%; background: #e5e7eb; color: #1f2937; border: none; padding: 0.65rem; border-radius: 8px; font-weight: 500; cursor: pointer; transition: background 0.3s; }
+.cust-btn-secondary:hover { background: #d1d5db; }
+.cust-profile { display: flex; flex-direction: column; align-items: center; margin-bottom: 1.5rem; }
+.cust-profile img { width: 6rem; height: 6rem; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 0.75rem; }
+.cust-profile h2 { font-size: 1.2rem; font-weight: 700; color: #1f2937; }
+.cust-profile p { color: #6b7280; font-size: 0.85rem; }
+.cust-info-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.cust-info-row { background: #f9fafb; padding: 0.75rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+.cust-info-row span:first-child { color: #6b7280; font-size: 0.85rem; }
+.cust-info-row span:last-child { font-weight: 500; color: #1f2937; }
+.cust-badge { font-weight: 700; font-size: 0.8rem; padding: 0.25rem 0.6rem; border-radius: 999px; }
+.cust-badge-pending { background: #fef9c3; color: #a16207; }
+.cust-badge-pending-orange { background: #ffedd5; color: #c2410c; }
+.cust-badge-ready { background: #dcfce7; color: #15803d; }
+.cust-download-section { margin-top: 1.5rem; }
+.cust-download-btn {
+  width: 100%; color: #fff; padding: 0.85rem; border-radius: 8px; font-weight: 700; text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; transition: opacity 0.3s;
+}
+.cust-download-btn:hover { opacity: 0.9; }
+.cust-download-btn.cust-bb { background: var(--cust-accent); }
+.cust-download-btn.cust-ins { background: var(--cust-blue); }
+.cust-pending-note { background: #fefce8; border: 1px solid #fde68a; color: #a16207; padding: 0.75rem; border-radius: 8px; font-size: 0.85rem; text-align: center; margin-bottom: 0.75rem; }
+.cust-ready-note { background: #dcfce7; border: 1px solid #86efac; color: #15803d; padding: 0.75rem; border-radius: 8px; font-size: 0.85rem; text-align: center; margin-bottom: 0.75rem; line-height: 1.5; }
+.cust-ready-note strong { display: block; margin-top: 0.3rem; font-size: 0.9rem; }
+
+</style>
 </head>
-<body class="flex items-center justify-center p-4">
+<body>
 
-    <!-- LOGIN VIEW -->
-    <div id="loginView" class="glass-card p-8 rounded-2xl shadow-2xl w-full max-w-md text-white">
-        <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold tracking-wide">Divya Auto Hub</h1>
-            <p class="text-gray-300 mt-1 text-sm">SaaS Customer Service Platform v4.0</p>
-        </div>
-        <form id="loginForm">
-            <div class="mb-5">
-                <label class="block text-gray-200 text-sm font-medium mb-2">Email Address</label>
-                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-500 outline-none transition" placeholder="admin@divyaautohub.com" required>
-            </div>
-            <div class="mb-6">
-                <label class="block text-gray-200 text-sm font-medium mb-2">Password</label>
-                <input type="password" id="password" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-500 outline-none transition" placeholder="********" required>
-            </div>
-            <div id="errorMsg" class="hidden bg-red-500/20 border border-red-500 text-red-200 p-3 rounded-lg mb-4 text-sm text-center"></div>
-            <button type="submit" id="loginBtn" class="btn-primary w-full text-white font-bold py-3 rounded-lg flex justify-center items-center">
-                <span id="btnText">Secure Sign In</span>
-                <svg id="btnSpinner" class="hidden animate-spin h-5 w-5 ml-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-            </button>
-        </form>
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-mark"></span>
+    <span class="nav-logo-text">Divya Auto Hub<small>Bajaj Authorised · Kathmandu</small></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#range">Price List</a></li>
+    <li><a href="#booking">Online Booking</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#showroom">Showroom</a></li>
+    <li><a href="#" onclick="openFinanceModal(); return false;">Check Finance Eligibility</a></li>
+    <li><a href="#" onclick="openCustomerModal(); return false;">Customer Portal</a></li>
+  </ul>
+  <a href="#testride" class="nav-cta">Book a test ride</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas class="hero-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-meta">
+      <span class="hero-meta-left">AUTHORISED DEALER · EST. MAHARAJGUNJ</span>
+      <div class="hero-meta-right"><span>27.7172° N</span><span>85.3240° E</span></div>
     </div>
-
-    <!-- DASHBOARD VIEW -->
-    <div id="dashboardView" class="hidden w-full max-w-6xl mx-auto">
-        <nav class="glass-card-light rounded-xl p-4 shadow-md flex flex-col sm:flex-row justify-between items-center mb-6">
-            <div class="flex items-center space-x-3 mb-4 sm:mb-0">
-                <div class="bg-red-600 text-white p-2 rounded-lg font-bold">DAH</div>
-                <h1 class="text-xl font-bold text-gray-800">Admin Dashboard</h1>
-            </div>
-            <div class="flex items-center space-x-4">
-                <span id="userName" class="text-gray-600 text-sm font-medium">Loading user...</span>
-                <button id="logoutBtn" class="bg-gray-800 hover:bg-black text-white px-4 py-2 rounded-lg text-sm font-medium transition flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
-                    Logout
-                </button>
-            </div>
-        </nav>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div class="glass-card-light p-5 rounded-xl shadow-sm border-l-4 border-red-600"><p class="text-gray-500 text-sm font-medium">Total Customers</p><p id="statTotal" class="text-3xl font-bold text-gray-800 mt-2">0</p></div>
-            <div class="glass-card-light p-5 rounded-xl shadow-sm border-l-4 border-yellow-500"><p class="text-gray-500 text-sm font-medium">Pending Bluebooks</p><p id="statBluebook" class="text-3xl font-bold text-gray-800 mt-2">0</p></div>
-            <div class="glass-card-light p-5 rounded-xl shadow-sm border-l-4 border-orange-500"><p class="text-gray-500 text-sm font-medium">Pending Insurance</p><p id="statInsurance" class="text-3xl font-bold text-gray-800 mt-2">0</p></div>
-            <div class="glass-card-light p-5 rounded-xl shadow-sm border-l-4 border-green-600"><p class="text-gray-500 text-sm font-medium">Delivered Today</p><p class="text-3xl font-bold text-gray-800 mt-2">0</p></div>
-        </div>
-
-        <div class="glass-card-light p-6 rounded-xl shadow-sm">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-semibold text-gray-800">Recent Customers</h3>
-                <button id="addCustomerBtn" class="bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-red-700 flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
-                    Add Customer
-                </button>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="border-b border-gray-200 bg-gray-50">
-                            <th class="py-3 px-4 text-gray-600 font-medium text-sm">Name</th>
-                            <th class="py-3 px-4 text-gray-600 font-medium text-sm">Phone</th>
-                            <th class="py-3 px-4 text-gray-600 font-medium text-sm">Bike Model</th>
-                            <th class="py-3 px-4 text-gray-600 font-medium text-sm">Bike Number</th>
-                            <th class="py-3 px-4 text-gray-600 font-medium text-sm">Bluebook</th>
-                            <th class="py-3 px-4 text-gray-600 font-medium text-sm">Insurance</th>
-                            <th class="py-3 px-4 text-gray-600 font-medium text-sm">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="customerTableBody"></tbody>
-                </table>
-            </div>
-        </div>
+    <h1 id="hero-title">DIVYA AUTO HUB</h1>
+    <div class="hero-typewriter-wrap"><div class="hero-subtitle" id="hero-subtitle"></div></div>
+    <div class="hero-cta-wrap" id="hero-cta">
+      <div class="hero-cta-row">
+        <a href="#range" class="btn-primary">View price list <span class="arrow">→</span></a>
+        <a href="#showroom" class="btn-ghost">Visit showroom</a>
+      </div>
     </div>
+  </div>
+  <div class="hero-scroll-hint">Scroll to begin</div>
+</section>
 
-    <!-- ADD / EDIT CUSTOMER MODAL -->
-    <div id="addCustomerModal" class="hidden fixed inset-0 modal-bg z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6">
-            <div class="flex justify-between items-center mb-4">
-                <h3 id="customerModalTitle" class="text-xl font-semibold text-gray-800">Add New Customer</h3>
-                <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
-            </div>
-            <form id="customerForm">
-                <input type="hidden" id="custEditId" value="">
-                <div class="mb-4"><label class="block text-gray-700 text-sm font-medium mb-2">Full Name</label><input type="text" id="custName" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 outline-none" required></div>
-                <div class="mb-4"><label class="block text-gray-700 text-sm font-medium mb-2">Phone Number</label><input type="tel" id="custPhone" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 outline-none" placeholder="98XXXXXXXX" required></div>
-                <div class="mb-4"><label class="block text-gray-700 text-sm font-medium mb-2">Bike Model</label><input type="text" id="custBike" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 outline-none" placeholder="Pulsar 150" required></div>
-                <div class="mb-4"><label class="block text-gray-700 text-sm font-medium mb-2">Bike Number</label><input type="text" id="custBikeNumber" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-500 outline-none" placeholder="बा २ प १२३४ / BA 2 PA 1234"></div>
-                <button type="submit" id="customerFormSubmitBtn" class="btn-primary w-full text-white font-bold py-3 rounded-lg">Save Customer</button>
-            </form>
+<!-- INTRO -->
+<section class="intro" data-observe>
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-left">
+        <span class="eyebrow">Authorised Dealer · Kathmandu</span>
+        <h2 class="section-title headline-enter">A Bajaj for every road,<br>every rider, every reason.</h2>
+      </div>
+      <div class="intro-right">
+        <p class="headline-enter">Divya Auto Hub Pvt. Ltd. is the authorised Bajaj Motorcycle dealership in Maharajgunj, Kathmandu — stocking the complete Bajaj range, from the daily-workhorse Platina to the dominant NS400.</p>
+        <p class="headline-enter">Our showroom is a single point of contact for the purchase, finance, exchange, servicing, insurance and spare parts of every Bajaj motorcycle sold in Nepal. The team behind the counter has been with the brand for over a decade — they know the differences between an NS200 and an N250, and they will tell you which one fits your commute.</p>
+        <p class="headline-enter">Whether you are buying your first motorcycle or your fifth, the brief is the same: a hassle-free experience, transparent pricing, and after-sales support that does not disappear the moment the registration plate is fitted.</p>
+        <div class="intro-stats">
+          <div><div class="stat-num">13+</div><div class="stat-label">Models<br>in stock</div></div>
+          <div><div class="stat-num">06</div><div class="stat-label">Model<br>families</div></div>
+          <div><div class="stat-num">10+</div><div class="stat-label">Years of<br>Bajaj experience</div></div>
         </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- VIEW CUSTOMER MODAL -->
-    <div id="viewCustomerModal" class="hidden fixed inset-0 modal-bg z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-semibold text-gray-800">Customer Details</h3>
-                <button id="closeViewModalBtn" class="text-gray-400 hover:text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
-            </div>
-            <div class="space-y-3">
-                <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"><span class="text-gray-500 text-sm">Full Name</span><span id="viewName" class="font-medium text-gray-800 text-right"></span></div>
-                <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"><span class="text-gray-500 text-sm">Phone</span><span id="viewPhone" class="font-medium text-gray-800 text-right"></span></div>
-                <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"><span class="text-gray-500 text-sm">Bike Model</span><span id="viewBike" class="font-medium text-gray-800 text-right"></span></div>
-                <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"><span class="text-gray-500 text-sm">Bike Number</span><span id="viewBikeNumber" class="font-medium text-gray-800 text-right"></span></div>
-                <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"><span class="text-gray-500 text-sm">Bluebook Status</span><span id="viewBluebook" class="font-bold text-sm px-2 py-1 rounded-full"></span></div>
-                <div id="viewBluebookLinkWrap" class="hidden"><a id="viewBluebookLink" href="#" target="_blank" class="text-red-600 text-sm font-medium hover:underline">Open Bluebook PDF →</a></div>
-                <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"><span class="text-gray-500 text-sm">Insurance Status</span><span id="viewInsurance" class="font-bold text-sm px-2 py-1 rounded-full"></span></div>
-                <div id="viewInsuranceLinkWrap" class="hidden"><a id="viewInsuranceLink" href="#" target="_blank" class="text-blue-600 text-sm font-medium hover:underline">Open Insurance PDF →</a></div>
-                <div class="bg-gray-50 p-3 rounded-lg flex justify-between items-center"><span class="text-gray-500 text-sm">Added On</span><span id="viewCreated" class="font-medium text-gray-800 text-right"></span></div>
-            </div>
-            <button id="closeViewModalBtn2" class="mt-6 w-full bg-gray-200 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-300">Close</button>
+<!-- RANGE / PRICE LIST -->
+<section class="range" id="range" data-observe>
+  <div class="container">
+    <div class="range-header">
+      <div class="range-header-left">
+        <span class="eyebrow">The Price List</span>
+        <h2 class="section-title headline-enter">Transparent pricing.<br>No hidden <em>margins.</em></h2>
+      </div>
+      <div class="range-header-right headline-enter">
+        <strong>All prices in NPR</strong><br>BS6 models available<br>Updated for 2025
+      </div>
+    </div>
+    <div class="range-list">
+      <div class="range-row fade-up"><div class="range-row-num">01</div><div class="range-row-name"><h3>Platina 100 ES BS6</h3><span>Commuter · Economy</span></div><div class="range-row-price">NPR 255,900<small>EMI fr. 6,119/mo</small></div><div class="range-row-desc">The no-nonsense daily. Cushioned suspension, frugal engine, and a price tag that respects the monthly budget.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">02</div><div class="range-row-name"><h3>Pulsar 125 Neon BS6</h3><span>Commuter · Entry Sport</span></div><div class="range-row-price">NPR 304,900</div><div class="range-row-desc">The gateway to the Pulsar family. Neon accents, comfortable upright stance, and an incredibly frugal engine.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">03</div><div class="range-row-name"><h3>Pulsar 125 NS ABS FI BS6</h3><span>Sport · Streetfighter</span></div><div class="range-row-price">NPR 342,900</div><div class="range-row-desc">Naked sport styling in a 125cc package. Fuel-injected, single-channel ABS, and a chassis built for the city.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">04</div><div class="range-row-name"><h3>Pulsar N 125 BS6</h3><span>Sport · Premium Commuter</span></div><div class="range-row-price">NPR 316,900</div><div class="range-row-desc">A refined step up. Premium fit-and-finish, precise handling, and an engine that feels unstressed at highway speeds.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">05</div><div class="range-row-name"><h3>Pulsar 150 SD BS6</h3><span>Sport · Commuter</span></div><div class="range-row-price">NPR 367,900</div><div class="range-row-desc">The legendary workhorse. Single-disc brake, classic Pulsar styling, and an engine that outlasts the decade.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">06</div><div class="range-row-name"><h3>Pulsar 150 TD BS6</h3><span>Sport · Twin Disc</span></div><div class="range-row-price">NPR 380,900</div><div class="range-row-desc">The 150 SD with added front and rear disc brakes for riders who demand sharper stopping power in city traffic.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">07</div><div class="range-row-name"><h3>Pulsar N 150 BS6</h3><span>Sport · Streetfighter</span></div><div class="range-row-price">NPR 392,900</div><div class="range-row-desc">The new generation N-series. Aggressive tank extensions, brighter headlamp, and a punchy mid-range.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">08</div><div class="range-row-name"><h3>Pulsar N 160 DC ABS BS6 (UG2)</h3><span>Sport · Premium</span></div><div class="range-row-price">NPR 435,900</div><div class="range-row-desc">Dual-channel ABS, updated ergonomics, and a torque-heavy engine. A serious motorcycle for serious riders.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">09</div><div class="range-row-name"><h3>Pulsar 220 F ABS FI BS6</h3><span>Sport · Semi-Faired</span></div><div class="range-row-price">NPR 454,900</div><div class="range-row-desc">The iconic "Pulsar 220". Semi-faired for highway stability, fuel-injected, and still the king of the 200cc commute.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">10</div><div class="range-row-name"><h3>Pulsar 200 NS FI DC ABS BS6</h3><span>Sport · Naked Street</span></div><div class="range-row-price">NPR 468,900</div><div class="range-row-desc">Raw, aggressive, and built for the canyon. Liquid-cooled performance with streetfighter ergonomics.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">11</div><div class="range-row-name"><h3>Pulsar N 250 DC ABS BS6</h3><span>Sport · Premium</span></div><div class="range-row-price">NPR 519,900</div><div class="range-row-desc">The 250cc sweet spot. Smooth power delivery, premium suspension, and the kind of braking hardware usually reserved for bigger bikes.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">12</div><div class="range-row-name"><h3>Pulsar 400 NS BS6</h3><span>Performance · Naked</span></div><div class="range-row-price">NPR 609,900</div><div class="range-row-desc">The flagship Pulsar. 373cc, 35 PS, and a chassis that thrives on aggressive riding. A true performance flagship.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">13</div><div class="range-row-name"><h3>Dominar 400 ABS BS6</h3><span>Touring · Highway</span></div><div class="range-row-price">NPR 646,900</div><div class="range-row-desc">Built for the long stretch. Triple-spark ignition, comfortable touring ergonomics, and a tank that goes the distance.</div><div class="range-row-arrow">Enquire →</div></div>
+      <div class="range-row fade-up"><div class="range-row-num">14</div><div class="range-row-name"><h3>Avenger / Chetak</h3><span>Cruiser · Electric</span></div><div class="range-row-price">On Enquiry</div><div class="range-row-desc">The Avenger cruiser line and the Chetak electric scooter are available to order. Pricing on request.</div><div class="range-row-arrow">Enquire →</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- IN THE METAL -->
+<section class="metal" id="metal" data-observe>
+  <div class="container">
+    <div class="metal-header">
+      <div class="metal-header-left">
+        <span class="eyebrow">In the metal</span>
+        <h2 class="section-title headline-enter">Engineering, up close.<br>No gloss, <em>just the parts.</em></h2>
+      </div>
+    </div>
+    <div class="metal-grid">
+      <div class="metal-item m-item-1 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/c53bfcab-ebfe-4fde-b897-e16329f4ddb0.png?auth_key=1884178406-8614dbe6a6d44eaf8d260777983733a6-0-138c77875428eb126ac0564db6d256fa" alt="Motorcycle front headlight close-up"><div class="metal-item-label"><span>01 — Front</span><strong>Headlight & Windshield</strong></div></div>
+      <div class="metal-item m-item-2 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/625deb20-4396-4e66-a954-fcd9ddb40327.png?auth_key=1884178406-40a1f4ecc2cc475fb722bbab2ed1eaac-0-8be8dda04aeac1b430c65c296e1f4ce3" alt="Motorcycle engine close-up"><div class="metal-item-label"><span>02 — Powertrain</span><strong>Engine & Transmission</strong></div></div>
+      <div class="metal-item m-item-3 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/81f8a539-6c75-4b39-a95d-00af9ccc2076.png?auth_key=1884178406-28e66c1d480f413ca82bad15162acb6b-0-a7e24efe2d9395401cee90b74edbb646" alt="Front brake and disc"><div class="metal-item-label"><span>03 — Braking</span><strong>Front Disc</strong></div></div>
+      <div class="metal-item m-item-4 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/3a7ed70e-f7ff-45ae-8d66-06edc5193d83.png?auth_key=1884178406-51f793ea5c7d479aa9c422836952b2d5-0-bc959f8c80c988a7b4bda7fb2f4c7890" alt="Motorcycle suspension and forks"><div class="metal-item-label"><span>04 — Suspension</span><strong>Front Forks</strong></div></div>
+      <div class="metal-item m-item-5 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/1daf35d4-0b45-4759-af1e-0337a14a8452.png?auth_key=1884178406-ed5c3504ec0c48efa9bbad4b0a3d8075-0-fc3b7a6f9e7a605617a3ddc5faeb6a37" alt="Front tyre and MRF rubber"><div class="metal-item-label"><span>05 — Rubber</span><strong>Front Tyre (MRF)</strong></div></div>
+      <div class="metal-item m-item-6 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/b0ad3b63-7677-42f1-b2bc-739d36c2deca.png?auth_key=1884178406-2fe0c9b86ebf4d82b3122c045ec514c8-0-392ed9fde3a2d59b96b9b3de922476b9" alt="Exhaust and rear mechanicals"><div class="metal-item-label"><span>06 — Exhaust</span><strong>Rear & Muffler</strong></div></div>
+      <div class="metal-item m-item-7 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/e56693fe-aa1c-49e0-b492-add0613c7c73.png?auth_key=1884178406-953e676ad0334619bf222f9adb45d4f3-0-4928afd081d26581648dbc00fb549429" alt="NS400 ridden in the mountains"><div class="metal-item-label"><span>07 — Pulsar NS400</span><strong>373cc · 35 PS · 35 Nm</strong></div></div>
+      <div class="metal-item m-item-8 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/a8e595f0-ca5f-4e71-b533-a142356df6b6.jpeg?auth_key=1884178406-4a02595362924066ac958a70c14aefa7-0-ca953420414045ba87681626da40a581" alt="Avenger ridden in the mountains"><div class="metal-item-label"><span>08 — Avenger</span><strong>219.89cc · 19.03 PS · 17.5 Nm</strong></div></div>
+      <div class="metal-item m-item-9 fade-up"><img src="https://z-cdn-media.chatglm.cn/files/7c0e16bb-197a-4797-ab16-e71e2ec309e3.png?auth_key=1884178406-9800f736c5cf452684ff46121dd8daba-0-9341cc393be827de1d1208bba94636cb" alt="Bajaj brand logo"><div class="metal-item-label"><span>09 — The Badge</span><strong>Loved in 100 Countries</strong></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services" data-observe>
+  <div class="container">
+    <div class="sticky-pair">
+      <div class="left">
+        <span class="eyebrow">Beyond the sale</span>
+        <h2 class="section-title headline-enter">Everything your<br>motorcycle needs,<br>under one roof.</h2>
+        <p class="headline-enter">The purchase is the first chapter, not the last. Our service floor handles scheduled maintenance, accidental repairs, genuine spare parts, insurance claims and annual renewals — all from the same address you bought the motorcycle from.</p>
+      </div>
+      <div class="right">
+        <div class="service-item fade-up"><div class="service-num">01</div><div class="service-content"><h3>Hire Purchase via Hulas Fin Serv</h3><p>We offer easy Hire Purchase facilities through Hulas Fin Serv. Choose from 40% Downpayment (12.99% interest), 50% Downpayment (10.99% interest), or 60% Downpayment (8.99% interest). Tenures available for 12, 24, 36, or 60 months. Approval typically within 48 hours.</p><div class="service-meta"><span>40% / 50% / 60% DP</span><span>8.99% - 12.99% Interest</span><span>Up to 60 months</span></div><a href="#" onclick="openFinanceModal(); return false;" class="btn-primary" style="display: inline-block; margin-top: 1.2rem; padding: 0.6rem 1.2rem; font-size: 0.7rem;">Check Your Finance Eligibility →</a></div></div>
+        <div class="service-item fade-up"><div class="service-num">02</div><div class="service-content"><h3>Bike exchange services</h3><p>Bring your current motorcycle for an on-the-spot valuation. The exchange value is adjusted against the new purchase, with the paperwork handled by our team — including ownership transfer of your previous bike.</p><div class="service-meta"><span>On-spot valuation</span><span>Transfer handled</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">03</div><div class="service-content"><h3>Genuine spare parts</h3><p>Only Bajaj-original parts — engine, electrical, body, and consumables. Each part carries the manufacturer warranty. We do not stock, fit, or recommend aftermarket substitutes.</p><div class="service-meta"><span>100% genuine</span><span>Manufacturer warranty</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">04</div><div class="service-content"><h3>Professional servicing</h3><p>Factory-trained mechanics, the full Bajaj tooling suite, and service intervals as per the owner's manual. Free first three services on every new motorcycle purchased from us.</p><div class="service-meta"><span>Factory-trained</span><span>3 free services</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">05</div><div class="service-content"><h3>Insurance assistance</h3><p>New policy issuance and annual renewals through our partner insurers. Claim assistance from intimation to settlement — including cashless repairs at our workshop for covered incidents.</p><div class="service-meta"><span>Cashless claims</span><span>Renewal reminders</span></div></div></div>
+        <div class="service-item fade-up"><div class="service-num">06</div><div class="service-content"><h3>Customer support</h3><p>A single point of contact for every question — ownership, paperwork, service history, or warranty. Reachable by phone, walk-in, or WhatsApp during showroom hours.</p><div class="service-meta"><span>Single contact</span><span>Mon — Sat</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy" data-observe>
+  <div class="container">
+    <div class="sticky-pair">
+      <div class="left">
+        <span class="eyebrow">What we stand for</span>
+        <h2 class="section-title headline-enter">Eight commitments,<br>one handshake.</h2>
+        <p class="headline-enter">A motorcycle is a relationship that lasts longer than the showroom visit. The eight words rotating beside this paragraph are the standards we hold ourselves to — from the first test ride to the tenth service.</p>
+      </div>
+      <div class="ring-stage"><div class="ring" id="word-ring"></div><div class="ring-center">Ethos in motion</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWROOM -->
+<section class="showroom" id="showroom" data-observe>
+  <div class="container">
+    <div class="sticky-pair">
+      <div class="left">
+        <span class="eyebrow">Visit us</span>
+        <h2 class="section-title headline-enter">Maharajgunj,<br>Kathmandu.</h2>
+        <p class="headline-enter">The showroom is on the main road, a short walk from the Maharajgunj chowk. Bike parking is available on the premises. Bring your licence — test rides are offered on every variant in stock.</p>
+        <div class="showroom-info">
+          <div class="info-row fade-up"><div class="info-label">Address</div><div class="info-value">Divya Auto Hub Pvt. Ltd.<br>Maharajgunj, Kathmandu 44600<br><span class="accent">Bagmati Province · Nepal</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Map</div><div class="info-value"><a href="https://share.google/S9ZEX8IjkyDosLomr" target="_blank" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.7rem;">View on Google Maps →</a></div></div>
+          <div class="info-row fade-up"><div class="info-label">Hours</div><div class="info-value">Sunday — Friday: 9:30 — 18:00<br>Saturday: By appointment<br><span class="accent">Test rides until 17:00</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Phone</div><div class="info-value"><a href="tel:+9779801204448">9801204448</a><br><a href="tel:+97714533133">01-4533133</a><br><span class="accent">Sales · Service · WhatsApp</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Email</div><div class="info-value"><a href="mailto:divyautohub@gmail.com">divyautohub@gmail.com</a><br><span class="accent">For sales, service & enquiries</span></div></div>
+          <div class="info-row fade-up"><div class="info-label">Social</div><div class="info-value"><a href="https://www.facebook.com/BajajMaharajgunj" target="_blank">Facebook</a> · <a href="https://wa.me/9779801204448" target="_blank">WhatsApp</a><br><a href="https://www.instagram.com/bajajmaharajgunj" target="_blank">Instagram</a> · <a href="https://www.tiktok.com/@bajajmaharajgunj" target="_blank">TikTok</a><br><span class="accent">Follow for latest offers</span></div></div>
         </div>
+      </div>
+      <div class="right showroom-images">
+        <div class="showroom-img-wrap tall fade-up"><img src="https://z-cdn-media.chatglm.cn/files/e56693fe-aa1c-49e0-b492-add0613c7c73.png?auth_key=1884178406-953e676ad0334619bf222f9adb45d4f3-0-4928afd081d26581648dbc00fb549429" alt="Pulsar NS400 on the showroom floor / mountains"><div class="showroom-img-label"><span>01 —</span> The NS400 Experience</div></div>
+        <div class="showroom-img-wrap wide fade-up"><img src="https://z-cdn-media.chatglm.cn/files/a8e595f0-ca5f-4e71-b533-a142356df6b6.jpeg?auth_key=1884178406-4a02595362924066ac958a70c14aefa7-0-ca953420414045ba87681626da40a581" alt="Avenger inside the showroom / on the road"><div class="showroom-img-label"><span>02 —</span> The Avenger Ride</div></div>
+        <div class="showroom-img-wrap tall fade-up"><img src="https://z-cdn-media.chatglm.cn/files/c53bfcab-ebfe-4fde-b897-e16329f4ddb0.png?auth_key=1884178406-8614dbe6a6d44eaf8d260777983733a6-0-138c77875428eb126ac0564db6d256fa" alt="Motorcycle front headlight close-up inside showroom"><div class="showroom-img-label"><span>03 —</span> On the floor</div></div>
+        <div class="showroom-img-wrap wide fade-up"><img src="https://z-cdn-media.chatglm.cn/files/625deb20-4396-4e66-a954-fcd9ddb40327.png?auth_key=1884178406-40a1f4ecc2cc475fb722bbab2ed1eaac-0-8be8dda04aeac1b430c65c296e1f4ce3" alt="Motorcycle engine close-up inside service bay"><div class="showroom-img-label"><span>04 —</span> Inside the bay</div></div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- QR CODE MODAL -->
-    <div id="qrModal" class="hidden fixed inset-0 modal-bg z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 text-center">
-            <h3 class="text-xl font-semibold text-gray-800 mb-4">Customer QR Code</h3>
-            <div id="qrcode" class="flex justify-center my-4"></div>
-            <p id="qrCustomerName" class="font-medium text-gray-700 mb-4"></p>
-            <button id="closeQrModalBtn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 w-full">Close</button>
+<!-- CTA (ENQUIRY FORM) -->
+<section class="testride" id="testride" data-observe>
+  <div class="container">
+    <div class="testride-title fade-up">Feel the engine<br>before you <em>decide.</em></h2>
+    <p class="testride-desc fade-up" style="color: var(--text-soft); margin-top: 2rem;">Fill in your details below. Our team will contact you shortly to schedule a test ride or assist with your purchase.</p>
+    
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <form class="testride-form fade-up" id="enquiryForm" action="https://formsubmit.co/divyautohub@gmail.com" method="POST" target="hidden_iframe">
+      <input type="hidden" name="_subject" value="New Bike Enquiry from Website!">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="Name" placeholder="Customer Name" required>
+      <input type="tel" name="Phone" placeholder="Phone Number" required>
+      <select name="Model" id="modelSelect" required>
+        <option value="" disabled selected>Select Desired Model</option>
+        <option>Platina 100 ES BS6</option><option>Pulsar 125 Neon BS6</option><option>Pulsar 125 NS ABS FI BS6</option><option>Pulsar N 125 BS6</option><option>Pulsar 150 SD BS6</option><option>Pulsar 150 TD BS6</option><option>Pulsar N 150 BS6</option><option>Pulsar N 160 DC ABS BS6 (UG2)</option><option>Pulsar 220 F ABS FI BS6</option><option>Pulsar 200 NS FI DC ABS BS6</option><option>Pulsar N 250 DC ABS BS6</option><option>Pulsar 400 NS BS6</option><option>Dominar 400 ABS BS6</option><option>Avenger / Chetak</option>
+      </select>
+      <select name="Mode_of_Payment" id="paymentMode" required>
+        <option value="" disabled selected>Payment Mode</option>
+        <option>Cash</option><option>Finance</option><option>Exchange</option><option>Cash + Finance</option><option>Finance + Exchange</option><option>Cash + Exchange</option><option>Cash + Finance + Exchange</option>
+      </select>
+      <input type="text" name="Location" placeholder="Your Location (e.g., Maharajgunj)" required style="grid-column: 1 / -1;">
+      <div class="exchange-fields-wrapper" id="exchangeFields">
+        <input type="text" name="Old_Bike_Model" placeholder="Old Bike Brand & Model">
+        <input type="number" name="Model_Year" placeholder="Model Year">
+        <select name="Condition"><option value="" disabled selected>Old Bike Condition</option><option>Excellent</option><option>Good</option><option>Fair</option><option>Needs Repair</option></select>
+        <input type="number" name="Expected_Price" placeholder="Expected Price (NPR)">
+      </div>
+      <button type="submit" id="submitBtn">Submit Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- ONLINE BOOKING & PAYMENT -->
+<section class="booking" id="booking" data-observe>
+  <div class="container">
+    <div class="metal-header">
+      <div class="metal-header-left">
+        <span class="eyebrow">Online Booking</span>
+        <h2 class="section-title headline-enter">Reserve your bike<br>via <em>QR Payment.</em></h2>
+      </div>
+    </div>
+    <div class="booking-grid">
+      <div class="booking-info fade-up">
+        <p>Book your favourite Bajaj motorcycle online by making an advance payment via Rastriya Banijya Bank Ltd. Scan the QR code using your mobile banking app or enter the bank details below to transfer the amount directly.</p>
+        <div class="bank-details">
+          <div class="bank-row"><span>Bank</span> <strong>Rastriya Banijya Bank Ltd.</strong></div>
+          <div class="bank-row"><span>Account Name</span> <strong>Divya Auto Hub Pvt. Ltd.</strong></div>
+          <div class="bank-row"><span>Account Number</span> <strong>1160100002067001</strong></div>
         </div>
+        <p class="booking-note">After payment, please send the screenshot/receipt to our WhatsApp (9801204448) or email to confirm your booking.</p>
+        <a href="https://wa.me/9779801204448?text=Hello%20Divya%20Auto%20Hub,%20I%20have%20made%20an%20advance%20payment%20for%20my%20booking." class="btn-primary" target="_blank" style="margin-top: 1.5rem;">Send Receipt on WhatsApp <span class="arrow">→</span></a>
+      </div>
+      <div class="booking-qr fade-up">
+        <img src="https://z-cdn-media.chatglm.cn/files/023f1eb7-4746-4c0e-af90-99ecc0e4faf5.png?auth_key=1885396799-51e726e7c5cc4342a6d7845cd55fa86b-0-efa741d134870298fb8def64341d612b" alt="Rastriya Banijya Bank QR Code for Divya Auto Hub">
+        <div class="qr-label">SCAN & PAY</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- HIDDEN FILE INPUTS FOR PDF UPLOADS -->
-    <input type="file" id="pdfUploadBluebook" class="hidden" accept="application/pdf">
-    <input type="file" id="pdfUploadInsurance" class="hidden" accept="application/pdf">
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h4>Divya Auto Hub Pvt. Ltd.</h4>
+      <p>Authorised Bajaj Motorcycle dealership in Maharajgunj, Kathmandu. Complete range, finance, exchange, service, parts, and insurance — under one roof, since the first day.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Range</h5>
+      <ul><li><a href="#range">Platina</a></li><li><a href="#range">Pulsar</a></li><li><a href="#range">Dominar</a></li><li><a href="#range">Avenger</a></li><li><a href="#range">Chetak Electric</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul><li><a href="#services">Finance</a></li><li><a href="#" onclick="openFinanceModal(); return false;">Check Finance Eligibility</a></li><li><a href="#" onclick="openCustomerModal(); return false;">Customer Portal</a></li><li><a href="#services">Exchange</a></li><li><a href="#services">Servicing</a></li><li><a href="#booking">Online Booking</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="https://share.google/S9ZEX8IjkyDosLomr" target="_blank">Google Maps</a></li>
+        <li><a href="https://www.facebook.com/BajajMaharajgunj" target="_blank">Facebook</a></li>
+        <li><a href="https://wa.me/9779801204448" target="_blank">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/bajajmaharajgunj" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Divya Auto Hub Pvt. Ltd. · <span class="accent">Authorised Bajaj Dealer</span></span>
+    <span>Maharajgunj · Kathmandu · Nepal</span>
+  </div>
+</footer>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+<!-- FLOATING BUTTONS -->
+<div class="fab-wrapper">
+  <a href="https://wa.me/9779801204448" class="wa-fab" target="_blank" title="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  </a>
+  <div class="divya-fab" id="divyaFab" title="Chat with Divya AI">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 2.99.97 4.29L1 23l6.71-1.97C9.01 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.3 0-2.54-.36-3.6-.99l-.26-.15-3.99 1.17 1.17-3.99-.15-.26C4.36 14.54 4 13.3 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
+  </div>
+</div>
+
+<div class="divya-chat-window" id="divyaChatWindow">
+  <div class="divya-chat-header">
+    <div class="divya-avatar">D</div>
+    <div class="divya-chat-header-text">
+      <h4>Divya AI</h4>
+      <span>Online · Auto Assistant</span>
+    </div>
+  </div>
+  <div class="divya-messages" id="divyaMessages"></div>
+  <div class="divya-input-area">
+    <input type="text" id="divyaInput" placeholder="प्रश्न सोध्नुहोस्..." onkeypress="handleDivyaKeyPress(event)">
+    <button onclick="sendDivyaMessage()">Send</button>
+  </div>
+</div>
+
+<elevenlabs-convai agent-id="agent_7701kyq1kmh6e8q8sbnrcxazjg9r"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+
+<!-- ===== FINANCE ELIGIBILITY CHECKER (MODAL) ===== -->
+
+<div class="fin-modal-overlay" id="finModalOverlay">
+<div class="fin-container">
+  <button type="button" class="fin-close-btn" onclick="closeFinanceModal()" aria-label="Close">✕</button>
+  <div class="fin-header">
+    <h1>AI Finance Eligibility Checker</h1>
+    <p>Divya Auto Hub Pvt. Ltd. | Check your preliminary finance eligibility instantly.</p>
+  </div>
+  <div class="fin-progress-bar"><div class="fin-progress-fill" id="finProgressFill"></div></div>
+  
+  <div class="fin-body">
+    <form id="finForm" enctype="multipart/form-data">
+      
+      <!-- STEP 1: CUSTOMER INFO -->
+      <div class="fin-step fin-is-active" data-step="1">
+        <h3>Step 1: Customer Information</h3>
+        <div class="fin-group"><label>Full Name</label><input type="text" name="FullName" required></div>
+        <div class="fin-row">
+          <div class="fin-group"><label>Mobile Number</label><input type="tel" name="Mobile" required></div>
+          <div class="fin-group"><label>Citizenship Number</label><input type="text" name="Citizenship" required></div>
+        </div>
+        <div class="fin-row">
+          <div class="fin-group"><label>Date of Birth</label><input type="date" name="DOB" id="finDobInput" required onchange="finCalcAge()"></div>
+          <div class="fin-group"><label>Age (Auto Calculated)</label><input type="text" name="Age" id="finAgeInput" readonly required></div>
+        </div>
+        <div class="fin-group"><label>Permanent Address</label><input type="text" name="PermanentAddress" required></div>
+        <div class="fin-group"><label>Current Address</label><input type="text" name="CurrentAddress" required></div>
+        <button type="button" class="fin-btn-next" onclick="finNextStep(2)">Next Step</button>
+      </div>
+
+      <!-- STEP 2: MOTORCYCLE & DOWN PAYMENT -->
+      <div class="fin-step" data-step="2">
+        <h3>Step 2: Motorcycle & Down Payment</h3>
+        <div class="fin-group">
+          <label>Select Motorcycle Model</label>
+          <select name="BikeModel" required>
+            <option value="" disabled selected>Select Model</option>
+            <option>Pulsar N125</option><option>Pulsar N160</option><option>Pulsar NS160</option>
+            <option>Pulsar NS200</option><option>Pulsar N250</option><option>Pulsar NS400Z</option>
+            <option>Pulsar 220F</option><option>Dominar 250</option><option>Dominar 400</option>
+            <option>Avenger Street</option><option>Avenger Cruise</option><option>Platina</option>
+            <option>CT125X</option><option>Freedom 125</option><option>Chetak EV</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fin-group">
+          <label>How much down payment will you pay?</label>
+          <div class="fin-radio-group">
+            <label class="fin-radio-label"><input type="radio" name="DownPayment" value="Below 40%" required> Below 40%</label>
+            <label class="fin-radio-label"><input type="radio" name="DownPayment" value="40%-49%"> 40%-49%</label>
+            <label class="fin-radio-label"><input type="radio" name="DownPayment" value="50%-59%"> 50%-59%</label>
+            <label class="fin-radio-label"><input type="radio" name="DownPayment" value="60% or Above"> 60% or Above</label>
+          </div>
+        </div>
+        <div class="fin-btn-group">
+          <button type="button" class="fin-btn-prev" onclick="finPrevStep(1)">Previous</button>
+          <button type="button" class="fin-btn-next" onclick="finNextStep(3)">Next Step</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: INCOME SOURCE & GUARANTOR -->
+      <div class="fin-step" data-step="3">
+        <h3>Step 3: Income Source</h3>
+        <div class="fin-group">
+          <label>Do you have your own income source?</label>
+          <div class="fin-radio-group">
+            <label class="fin-radio-label"><input type="radio" name="HasIncome" value="Yes" required onchange="finToggleIncome(true)"> YES</label>
+            <label class="fin-radio-label"><input type="radio" name="HasIncome" value="No" onchange="finToggleIncome(false)"> NO</label>
+          </div>
+        </div>
+
+        <div id="finIncomeYesDiv" style="display:none;">
+          <div class="fin-group">
+            <label>Employment Type</label>
+            <select name="EmploymentType">
+              <option value="Employee">Employee</option>
+              <option value="Business Owner">Business Owner</option>
+              <option value="Self-employed">Self-employed</option>
+            </select>
+          </div>
+          <div class="fin-group"><label>Monthly Income (NPR)</label><input type="number" name="MonthlyIncome"></div>
+        </div>
+
+        <div id="finIncomeNoDiv" style="display:none;" class="fin-alert">
+          <p>You may still qualify by providing an eligible guarantor (Age 25+, Kathmandu Resident).</p>
+          <div class="fin-row" style="margin-top: 1rem;">
+            <div class="fin-group"><label>Guarantor Full Name</label><input type="text" name="GuarantorName"></div>
+            <div class="fin-group"><label>Guarantor Mobile</label><input type="tel" name="GuarantorMobile"></div>
+          </div>
+          <div class="fin-row">
+            <div class="fin-group"><label>Guarantor Age</label><input type="number" name="GuarantorAge"></div>
+            <div class="fin-group">
+              <label>Is Guarantor KTM Resident?</label>
+              <select name="GuarantorKTM"><option value="Yes">Yes</option><option value="No">No</option></select>
+            </div>
+          </div>
+        </div>
         
-        const SUPABASE_URL = 'https://acrbfhtyswdtscjofvrh.supabase.co'; 
-        const SUPABASE_ANON_KEY = 'sb_publishable_g9XKC1WTa5noMqG2Q1Cs3Q_-79iZW1z'; 
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        <div class="fin-btn-group">
+          <button type="button" class="fin-btn-prev" onclick="finPrevStep(2)">Previous</button>
+          <button type="button" class="fin-btn-next" onclick="finNextStep(4)">Next Step</button>
+        </div>
+      </div>
 
-        const loginView = document.getElementById('loginView');
-        const dashboardView = document.getElementById('dashboardView');
-        const loginForm = document.getElementById('loginForm');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const addCustomerBtn = document.getElementById('addCustomerBtn');
-        const addCustomerModal = document.getElementById('addCustomerModal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const customerForm = document.getElementById('customerForm');
-        const customerTableBody = document.getElementById('customerTableBody');
-        const qrModal = document.getElementById('qrModal');
-        const closeQrModalBtn = document.getElementById('closeQrModalBtn');
-        const qrcodeDiv = document.getElementById('qrcode');
+      <!-- STEP 4: DRIVING LICENCE & SIM -->
+      <div class="fin-step" data-step="4">
+        <h3>Step 4: Licence & SIM Verification</h3>
+        <div class="fin-group">
+          <label>Do you have a Driving Licence?</label>
+          <div class="fin-radio-group">
+            <label class="fin-radio-label"><input type="radio" name="HasDL" value="Yes" required onchange="finToggleDL(true)"> YES</label>
+            <label class="fin-radio-label"><input type="radio" name="HasDL" value="No" onchange="finToggleDL(false)"> NO</label>
+          </div>
+        </div>
+        <div id="finDlYesDiv" style="display:none;" class="fin-group">
+          <label>Licence Expiry Date</label>
+          <input type="date" name="DLExpiry" id="finDlExpiry">
+        </div>
+        <div class="fin-group">
+          <label>Is your SIM registered in your own name?</label>
+          <div class="fin-radio-group">
+            <label class="fin-radio-label"><input type="radio" name="SIMOwn" value="Yes" required> YES</label>
+            <label class="fin-radio-label"><input type="radio" name="SIMOwn" value="No"> NO</label>
+          </div>
+        </div>
+        <div class="fin-btn-group">
+          <button type="button" class="fin-btn-prev" onclick="finPrevStep(3)">Previous</button>
+          <button type="button" class="fin-btn-next" onclick="finNextStep(5)">Next Step</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: DOCUMENT UPLOAD -->
+      <div class="fin-step" data-step="5">
+        <h3>Step 5: Document Upload</h3>
+        <p style="color: var(--text-soft); margin-bottom: 1.5rem; font-size: 0.9rem;">Please upload clear photos/scans of your documents.</p>
         
-        let currentUploadCustomerId = null;
-        let currentUploadType = null; // 'bluebook' or 'insurance'
-        let customerCache = {}; // id -> full customer record, refreshed on every fetchCustomers()
+        <div class="fin-row">
+          <div class="fin-group"><label>Citizenship Front</label><div class="fin-doc-upload"><span class="fin-doc-icon">📄</span><span class="fin-doc-text">Choose File</span><input type="file" name="CitizenshipFront" accept="image/*,application/pdf" required><div class="fin-doc-name"></div></div></div>
+          <div class="fin-group"><label>Citizenship Back</label><div class="fin-doc-upload"><span class="fin-doc-icon">📄</span><span class="fin-doc-text">Choose File</span><input type="file" name="CitizenshipBack" accept="image/*,application/pdf" required><div class="fin-doc-name"></div></div></div>
+        </div>
+        <div class="fin-row">
+          <div class="fin-group"><label>Passport Photo 1</label><div class="fin-doc-upload"><span class="fin-doc-icon">📷</span><span class="fin-doc-text">Choose File</span><input type="file" name="Photo1" accept="image/*" required><div class="fin-doc-name"></div></div></div>
+          <div class="fin-group"><label>Passport Photo 2</label><div class="fin-doc-upload"><span class="fin-doc-icon">📷</span><span class="fin-doc-text">Choose File</span><input type="file" name="Photo2" accept="image/*" required><div class="fin-doc-name"></div></div></div>
+        </div>
+        <div class="fin-group"><label>Driving Licence (If Applicable)</label><div class="fin-doc-upload"><span class="fin-doc-icon">🪪</span><span class="fin-doc-text">Choose File</span><input type="file" name="DrivingLicence" accept="image/*,application/pdf"><div class="fin-doc-name"></div></div></div>
 
-        const customerModalTitle = document.getElementById('customerModalTitle');
-        const customerFormSubmitBtn = document.getElementById('customerFormSubmitBtn');
-        const custEditIdInput = document.getElementById('custEditId');
-        const viewCustomerModal = document.getElementById('viewCustomerModal');
-        const closeViewModalBtn = document.getElementById('closeViewModalBtn');
-        const closeViewModalBtn2 = document.getElementById('closeViewModalBtn2');
+        <div class="fin-btn-group">
+          <button type="button" class="fin-btn-prev" onclick="finPrevStep(4)">Previous</button>
+          <button type="submit" class="fin-btn-next">Check Eligibility</button>
+        </div>
+      </div>
 
-        async function initApp() {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session) { showDashboard(session.user); } else { showLogin(); }
+      <!-- STEP 6: RESULT -->
+      <div class="fin-step" data-step="6">
+        <div id="finResultContainer"></div>
+        <div class="fin-disclaimer">
+          <p><strong>Disclaimer:</strong> This finance eligibility result is only a preliminary assessment. Final finance approval depends on the policies, document verification, and credit assessment of the respective finance company. Divya Auto Hub Pvt. Ltd. reserves the right to request additional documents if required.</p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+</div>
+
+<!-- ===== CUSTOMER PORTAL (MODAL) ===== -->
+<div class="cust-modal-overlay" id="custModalOverlay">
+<div class="cust-container">
+  <button type="button" class="cust-close-btn" onclick="closeCustomerModal()" aria-label="Close">✕</button>
+
+  <div class="cust-header">
+    <h1>Divya Auto Hub</h1>
+    <p>Customer Service Portal</p>
+  </div>
+
+  <!-- SEARCH VIEW -->
+  <div id="custSearchView">
+    <p class="cust-search-hint">Enter your registered phone number to check your Bluebook and Insurance status.</p>
+    <div class="cust-search-row">
+      <input type="tel" id="custSearchPhone" placeholder="98XXXXXXXX" required>
+      <button id="custSearchBtn">Search</button>
+    </div>
+    <div id="custSearchError" class="cust-hidden cust-error-box"></div>
+  </div>
+
+  <!-- LOADING STATE -->
+  <div id="custLoadingState" class="cust-hidden cust-loading">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle style="opacity:0.25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path style="opacity:0.75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+    <p>Loading your details...</p>
+  </div>
+
+  <!-- ERROR STATE -->
+  <div id="custErrorState" class="cust-hidden cust-error-state">
+    <p>Customer not found.</p>
+    <p>Please check your number or contact Divya Auto Hub.</p>
+    <button id="custBackToSearchBtn" class="cust-btn-secondary">Search Again</button>
+  </div>
+
+  <!-- CUSTOMER DETAILS -->
+  <div id="custDetails" class="cust-hidden">
+    <div class="cust-profile">
+      <img src="https://ui-avatars.com/api/?background=e11d48&color=fff&size=128" alt="Profile">
+      <h2 id="custName"></h2>
+      <p id="custPhone"></p>
+    </div>
+
+    <div class="cust-info-list">
+      <div class="cust-info-row"><span>Bike Model</span><span id="custBike"></span></div>
+      <div class="cust-info-row"><span>Bluebook Status</span><span id="custBluebook" class="cust-badge"></span></div>
+      <div class="cust-info-row"><span>Insurance Status</span><span id="custInsurance" class="cust-badge"></span></div>
+    </div>
+
+    <div id="custBluebookReadySection" class="cust-hidden">
+      <div class="cust-ready-note">
+        Your Bluebook is ready! Please visit Divya Auto Hub to collect it.
+        <strong>Contact: 01-4533133 / 9700041744</strong>
+      </div>
+    </div>
+    <div id="custBluebookPendingSection" class="cust-hidden">
+      <div class="cust-pending-note">Your Bluebook is being processed. Please check back later.</div>
+    </div>
+
+    <div id="custInsuranceDownloadSection" class="cust-download-section cust-hidden" style="margin-top: -0.5rem;">
+      <a id="custDownloadInsuranceBtn" href="#" target="_blank" class="cust-download-btn cust-ins">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+        Download Insurance PDF
+      </a>
+    </div>
+    <div id="custInsurancePendingSection" class="cust-hidden">
+      <div class="cust-pending-note">Your Insurance is being processed. Please check back later.</div>
+    </div>
+
+    <button id="custLogoutBtn" class="cust-btn-secondary" style="margin-top: 1rem;">Close</button>
+  </div>
+</div>
+</div>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+  const CUST_SUPABASE_URL = 'https://acrbfhtyswdtscjofvrh.supabase.co';
+  const CUST_SUPABASE_ANON_KEY = 'sb_publishable_g9XKC1WTa5noMqG2Q1Cs3Q_-79iZW1z';
+  const custSupabase = createClient(CUST_SUPABASE_URL, CUST_SUPABASE_ANON_KEY);
+
+  const custModalOverlay = document.getElementById('custModalOverlay');
+  const custSearchView = document.getElementById('custSearchView');
+  const custLoadingState = document.getElementById('custLoadingState');
+  const custErrorState = document.getElementById('custErrorState');
+  const custDetails = document.getElementById('custDetails');
+
+  window.openCustomerModal = function() {
+    custModalOverlay.classList.add('cust-is-open');
+  };
+  window.closeCustomerModal = function() {
+    custModalOverlay.classList.remove('cust-is-open');
+  };
+  custModalOverlay.addEventListener('click', function(e) {
+    if (e.target === this) closeCustomerModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && custModalOverlay.classList.contains('cust-is-open')) closeCustomerModal();
+  });
+
+  // Auto-open via QR code (?id=uuid or ?customer=uuid)
+  const custUrlParams = new URLSearchParams(window.location.search);
+  const custIdParam = custUrlParams.get('id') || custUrlParams.get('customer');
+  if (custIdParam) {
+    openCustomerModal();
+    custSearchView.classList.add('cust-hidden');
+    custFetchById(custIdParam);
+  }
+
+  // Strips spaces/dashes/+977 etc and keeps the last 10 digits, so "9801204448",
+  // "980-120-4448", "+977 9801204448", "09801204448" all match the same record
+  // regardless of how the number was typed in or saved in the sheet/table.
+  function custNormalizePhone(raw) {
+    const digits = (raw || '').replace(/\D/g, '');
+    return digits.length > 10 ? digits.slice(-10) : digits;
+  }
+
+  async function custRunSearch() {
+    const rawPhone = document.getElementById('custSearchPhone').value.trim();
+    const custSearchError = document.getElementById('custSearchError');
+    custSearchError.classList.add('cust-hidden');
+    if (!rawPhone) return;
+
+    const core = custNormalizePhone(rawPhone);
+    if (core.length < 7) {
+      custSearchError.textContent = 'Please enter a valid phone number.';
+      custSearchError.classList.remove('cust-hidden');
+      return;
+    }
+
+    custSearchView.classList.add('cust-hidden');
+    custLoadingState.classList.remove('cust-hidden');
+
+    // Try an exact match first (fast path when the number is stored as typed)...
+    let { data, error } = await custSupabase
+      .from('customers')
+      .select('*')
+      .eq('phone', rawPhone)
+      .maybeSingle();
+
+    // ...then fall back to a flexible match against the last 10 digits, which
+    // catches records saved with spaces, dashes, +977, or a leading 0.
+    if (!data) {
+      ({ data, error } = await custSupabase
+        .from('customers')
+        .select('*')
+        .ilike('phone', `%${core}%`)
+        .limit(1)
+        .maybeSingle());
+    }
+
+    if (error || !data) {
+      custLoadingState.classList.add('cust-hidden');
+      custErrorState.classList.remove('cust-hidden');
+    } else {
+      custShowDetails(data);
+    }
+  }
+
+  document.getElementById('custSearchBtn').addEventListener('click', custRunSearch);
+  document.getElementById('custSearchPhone').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); custRunSearch(); }
+  });
+
+  document.getElementById('custBackToSearchBtn').addEventListener('click', () => {
+    custErrorState.classList.add('cust-hidden');
+    custSearchView.classList.remove('cust-hidden');
+    document.getElementById('custSearchPhone').value = '';
+  });
+
+  document.getElementById('custLogoutBtn').addEventListener('click', () => {
+    custDetails.classList.add('cust-hidden');
+    custSearchView.classList.remove('cust-hidden');
+    window.history.replaceState({}, document.title, window.location.pathname);
+    closeCustomerModal();
+  });
+
+  async function custFetchById(id) {
+    custLoadingState.classList.remove('cust-hidden');
+    const { data, error } = await custSupabase.from('customers').select('*').eq('id', id).single();
+    if (error || !data) {
+      custLoadingState.classList.add('cust-hidden');
+      custErrorState.classList.remove('cust-hidden');
+    } else {
+      custShowDetails(data);
+    }
+  }
+
+  function custShowDetails(cust) {
+    custLoadingState.classList.add('cust-hidden');
+    custErrorState.classList.add('cust-hidden');
+    custDetails.classList.remove('cust-hidden');
+
+    document.getElementById('custName').textContent = cust.full_name;
+    document.getElementById('custPhone').textContent = cust.phone;
+    document.getElementById('custBike').textContent = cust.bike_model || 'N/A';
+
+    // Reset conditional sections so re-searching a new number doesn't stack old state
+    document.getElementById('custBluebookReadySection').classList.add('cust-hidden');
+    document.getElementById('custBluebookPendingSection').classList.add('cust-hidden');
+    document.getElementById('custInsuranceDownloadSection').classList.add('cust-hidden');
+    document.getElementById('custInsurancePendingSection').classList.add('cust-hidden');
+
+    const bbEl = document.getElementById('custBluebook');
+    bbEl.textContent = cust.bluebook_status;
+    bbEl.className = cust.bluebook_status === 'Pending' ? 'cust-badge cust-badge-pending' : 'cust-badge cust-badge-ready';
+
+    if (cust.bluebook_status !== 'Pending') {
+      document.getElementById('custBluebookReadySection').classList.remove('cust-hidden');
+    } else {
+      document.getElementById('custBluebookPendingSection').classList.remove('cust-hidden');
+    }
+
+    const insEl = document.getElementById('custInsurance');
+    insEl.textContent = cust.insurance_status;
+    insEl.className = cust.insurance_status === 'Pending' ? 'cust-badge cust-badge-pending-orange' : 'cust-badge cust-badge-ready';
+
+    if (cust.insurance_url) {
+      document.getElementById('custInsuranceDownloadSection').classList.remove('cust-hidden');
+      document.getElementById('custDownloadInsuranceBtn').href = cust.insurance_url;
+    } else {
+      document.getElementById('custInsurancePendingSection').classList.remove('cust-hidden');
+    }
+  }
+</script>
+
+<script>
+// GLYPH RAIN, SCRAMBLE DECODE, TYPEWRITER, INTERSECTION OBSERVER, WORD RING CODE
+(function() {
+  const cvs = document.querySelector('.hero-canvas');
+  if (!cvs) return;
+  const ctx = cvs.getContext('2d');
+  const heroSection = document.querySelector('.hero');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+  function resize() { cvs.width = heroSection.offsetWidth; cvs.height = heroSection.offsetHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const COL_W = 22;
+  const CHARS = 'BAJAJ0123456789PULSARDOMINARchetakCTAVENGERPLATINA';
+  let cols, drops;
+  function setupCols() { cols = Math.floor(cvs.width / COL_W); drops = Array.from({length: cols}, () => Math.random() * -cvs.height); }
+  setupCols(); window.addEventListener('resize', setupCols);
+  const ripples = [];
+  heroSection.addEventListener('click', e => {
+    const rect = heroSection.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    if (y > rect.height * 0.3) { ripples.push({ x: e.clientX - rect.left, y: y, r: 0, life: 0 }); }
+  });
+  let running = true;
+  const io = new IntersectionObserver(entries => { entries.forEach(en => running = en.isIntersecting); });
+  io.observe(heroSection);
+  function frame() {
+    if (running) {
+      ctx.fillStyle = 'rgba(5, 16, 48, 0.10)';
+      ctx.fillRect(0,0, cvs.width, cvs.height);
+      ctx.font = '13px "JetBrains Mono", monospace';
+      for (let i = 0; i < cols; i++) {
+        const x = i * COL_W;
+        const y = drops[i];
+        const bright = Math.random() < 0.025;
+        ctx.fillStyle = bright ? 'rgba(255,230,180,0.95)' : 'rgba(230, 180, 50, 0.55)';
+        ctx.fillText(CHARS[Math.floor(Math.random() * CHARS.length)], x, y);
+        drops[i] = y > cvs.height && Math.random() > 0.975 ? 0 : y + 11;
+      }
+      for (let p of ripples) {
+        p.r += 1.6; p.life += 0.012;
+        ctx.strokeStyle = `rgba(230, 180, 50, ${0.45 * (1 - p.life)})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.stroke();
+      }
+      for (let i = ripples.length - 1; i >= 0; i--) { if (ripples[i].life > 1) ripples.splice(i, 1); }
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+(function() {
+  const TARGET = 'DIVYA AUTO HUB';
+  const CHARS = '!<>-_\\/[]{}—=+*^?#________0123456789BAJAJDIVYA';
+  const el = document.getElementById('hero-title');
+  if (!el) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { el.textContent = TARGET; document.getElementById('hero-cta').classList.add('is-shown'); return; }
+  let iter = 0;
+  const max = TARGET.length * 8;
+  el.classList.add('is-decoding');
+  el.textContent = '';
+  (function tick() {
+    el.textContent = TARGET.split('').map((ch, i) => {
+      if (ch === ' ') return ' ';
+      return i < iter / 8 ? TARGET[i] : CHARS[Math.floor(Math.random() * CHARS.length)];
+    }).join('');
+    iter += 1;
+    if (iter >= max) {
+      el.textContent = TARGET;
+      el.classList.remove('is-decoding');
+      setTimeout(initTypewriter, 400);
+      return;
+    }
+    setTimeout(tick, 42);
+  })();
+})();
+
+function initTypewriter() {
+  const host = document.getElementById('hero-subtitle');
+  const ctaWrap = document.getElementById('hero-cta');
+  if (!host) return;
+  const SRC = `Authorised Bajaj dealership.\nMaharajgunj, Kathmandu — Nepal.\n\nPulsar · Dominar · Platina ·\nAvenger · Chetak electric.\n\nFinance. Exchange. Service. Parts.`;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { host.textContent = SRC; ctaWrap.classList.add('is-shown'); return; }
+  const caret = document.createElement('span');
+  caret.className = 'caret';
+  host.appendChild(caret);
+  let i = 0;
+  const textNode = document.createTextNode('');
+  host.insertBefore(textNode, caret);
+  (function tick() {
+    if (i < SRC.length) {
+      textNode.data += SRC[i];
+      i++;
+      const ch = SRC[i - 1];
+      let delay = 38;
+      if (ch === '\n') delay = 280;
+      else if (ch === '.') delay = 180;
+      else if (ch === '·') delay = 120;
+      setTimeout(tick, delay);
+    } else {
+      let n = 0, on = true;
+      const blink = setInterval(() => {
+        caret.classList.toggle('is-hidden', !(on = !on));
+        if (++n >= 6) {
+          clearInterval(blink);
+          caret.classList.add('is-hidden');
+          ctaWrap.classList.add('is-shown');
         }
+      }, 400);
+    }
+  })();
+}
 
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btnText = document.getElementById('btnText');
-            const btnSpinner = document.getElementById('btnSpinner');
-            const loginBtn = document.getElementById('loginBtn');
-            const errorMsg = document.getElementById('errorMsg');
-            
-            btnText.textContent = 'Signing In...';
-            btnSpinner.classList.remove('hidden');
-            loginBtn.disabled = true;
-            errorMsg.classList.add('hidden');
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            try {
-                const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-                if (error) throw error;
-                showDashboard(data.user);
-            } catch (error) {
-                errorMsg.textContent = error.message;
-                errorMsg.classList.remove('hidden');
-                btnText.textContent = 'Secure Sign In';
-                btnSpinner.classList.add('hidden');
-                loginBtn.disabled = false;
-            }
+(function() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-in');
+        en.target.querySelectorAll('.fade-up').forEach((el, i) => {
+          setTimeout(() => el.classList.add('is-in'), i * 80);
         });
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('[data-observe]').forEach(el => io.observe(el));
 
-        logoutBtn.addEventListener('click', async () => { await supabase.auth.signOut(); showLogin(); });
-        function showLogin() { loginView.classList.remove('hidden'); dashboardView.classList.add('hidden'); }
+  const io2 = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-in');
+        io2.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => {
+    if (!el.closest('[data-observe]')) io2.observe(el);
+  });
+})();
 
-        async function showDashboard(user) {
-            loginView.classList.add('hidden');
-            dashboardView.classList.remove('hidden');
-            document.getElementById('userName').textContent = user.email;
-            fetchCustomers();
-        }
+(function() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.registerPlugin(ScrollTrigger);
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ring = document.getElementById('word-ring');
+  if (!ring) return;
+  const WORDS = [
+    { text: 'PERFORMANCE', accent: false }, { text: 'PRECISION', accent: true },
+    { text: 'RELIABILITY', accent: false }, { text: 'HERITAGE', accent: true },
+    { text: 'CRAFT', accent: false }, { text: 'TRUST', accent: true },
+    { text: 'SERVICE', accent: false }, { text: 'COMMUNITY', accent: true }
+  ];
+  const allWords = [...WORDS, ...WORDS];
+  const step = 360 / allWords.length;
+  const radius = 240;
+  allWords.forEach((w, i) => {
+    const d = document.createElement('div');
+    d.className = 'ring-item' + (w.accent ? ' accent' : '');
+    d.style.transform = `rotateX(${i * step}deg) translateZ(${radius}px) translateY(-50%)`;
+    d.innerHTML = `<span>${w.text}</span>`;
+    ring.appendChild(d);
+  });
+  if (reduced) return;
+  const rot = { v: 0 };
+  let currentRot = 0, currentSpd = 0, targetSpd = 0;
+  gsap.to(rot, {
+    v: 540, ease: 'none',
+    scrollTrigger: { trigger: '#philosophy', start: 'top bottom', end: 'bottom top', scrub: 1.2, onUpdate: (self) => { targetSpd = self.getVelocity() * 0.0004; } }
+  });
+  const items = ring.querySelectorAll('.ring-item');
+  function tick() {
+    currentRot += (rot.v - currentRot) * 0.08; currentSpd += (targetSpd - currentSpd) * 0.1; targetSpd *= 0.92;
+    const absSpd = Math.abs(currentSpd); const skew = Math.min(absSpd * 14, 10); const sx = 1 + Math.min(absSpd * 0.2, 0.12);
+    ring.style.transform = `rotateX(${currentRot}deg)`;
+    items.forEach(it => { const blur = Math.min(absSpd * 1.5, 2.5); const span = it.querySelector('span'); it.style.filter = blur > 0.1 ? `blur(${blur}px)` : 'none'; span.style.transform = `skewX(${currentSpd > 0 ? skew : -skew}deg) scaleX(${sx})`; });
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
 
-        function openAddCustomerModal() {
-            customerForm.reset();
-            custEditIdInput.value = '';
-            customerModalTitle.textContent = 'Add New Customer';
-            customerFormSubmitBtn.textContent = 'Save Customer';
-            addCustomerModal.classList.remove('hidden');
-        }
-        function closeAddCustomerModal() {
-            addCustomerModal.classList.add('hidden');
-            customerForm.reset();
-            custEditIdInput.value = '';
-        }
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id.length > 1) { const target = document.querySelector(id); if (target) { e.preventDefault(); const top = target.getBoundingClientRect().top + window.scrollY - 60; window.scrollTo({ top, behavior: 'smooth' }); } }
+  });
+});
 
-        addCustomerBtn.addEventListener('click', openAddCustomerModal);
-        closeModalBtn.addEventListener('click', closeAddCustomerModal);
-        closeQrModalBtn.addEventListener('click', () => qrModal.classList.add('hidden'));
-        closeViewModalBtn.addEventListener('click', () => viewCustomerModal.classList.add('hidden'));
-        closeViewModalBtn2.addEventListener('click', () => viewCustomerModal.classList.add('hidden'));
+// ENQUIRY FORM LOGIC
+document.querySelectorAll('.range-row').forEach(row => {
+  row.addEventListener('click', () => {
+    const bikeName = row.querySelector('h3').innerText;
+    const modelSelect = document.getElementById('modelSelect');
+    for (let i = 0; i < modelSelect.options.length; i++) { if (modelSelect.options[i].text === bikeName) { modelSelect.selectedIndex = i; modelSelect.value = bikeName; break; } }
+    document.getElementById('testride').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
 
-        customerForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const bike = document.getElementById('custBike').value;
-            const bikeNumber = document.getElementById('custBikeNumber').value;
-            const editId = custEditIdInput.value;
+const paymentMode = document.getElementById('paymentMode');
+const exchangeFields = document.getElementById('exchangeFields');
+paymentMode.addEventListener('change', function() {
+  const selectedValue = this.value;
+  if (selectedValue.includes('Exchange')) {
+    exchangeFields.classList.add('is-visible'); exchangeFields.querySelectorAll('input, select').forEach(el => el.required = true);
+  } else {
+    exchangeFields.classList.remove('is-visible'); exchangeFields.querySelectorAll('input, select').forEach(el => { el.required = false; el.value = ''; });
+  }
+});
 
-            if (editId) {
-                // EDIT MODE: update the existing record
-                const { error } = await supabase.from('customers')
-                    .update({ full_name: name, phone: phone, bike_model: bike, bike_number: bikeNumber })
-                    .eq('id', editId);
-                if (error) { alert("Error updating customer: " + error.message); }
-                else { closeAddCustomerModal(); fetchCustomers(); }
-            } else {
-                // ADD MODE: insert a new record
-                const { error } = await supabase.from('customers').insert([{ full_name: name, phone: phone, bike_model: bike, bike_number: bikeNumber }]);
-                if (error) { alert("Error saving customer: " + error.message); }
-                else { closeAddCustomerModal(); fetchCustomers(); }
-            }
-        });
+document.getElementById('enquiryForm').addEventListener('submit', function() {
+  const btn = document.getElementById('submitBtn'); const originalText = btn.textContent;
+  btn.textContent = 'Sending...'; btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Enquiry Sent ✓'; this.reset(); exchangeFields.classList.remove('is-visible');
+    setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 4000);
+  }, 2500);
+});
 
-        // --- VIEW ---
-        window.viewCustomer = (id) => {
-            const cust = customerCache[id];
-            if (!cust) return;
-            document.getElementById('viewName').textContent = cust.full_name;
-            document.getElementById('viewPhone').textContent = cust.phone;
-            document.getElementById('viewBike').textContent = cust.bike_model || 'N/A';
-            document.getElementById('viewBikeNumber').textContent = cust.bike_number || 'N/A';
+// ─────────── AI AGENT "DIVYA" (NEPALI REPLY LOGIC) ────
+const divyaFab = document.getElementById('divyaFab');
+const divyaChatWindow = document.getElementById('divyaChatWindow');
+const divyaMessages = document.getElementById('divyaMessages');
+const divyaInput = document.getElementById('divyaInput');
 
-            const bbEl = document.getElementById('viewBluebook');
-            bbEl.textContent = cust.bluebook_status;
-            bbEl.className = cust.bluebook_status === 'Pending' ? 'font-bold text-sm px-2 py-1 rounded-full bg-yellow-100 text-yellow-700' : 'font-bold text-sm px-2 py-1 rounded-full bg-green-100 text-green-700';
-            const bbLinkWrap = document.getElementById('viewBluebookLinkWrap');
-            if (cust.bluebook_url) { bbLinkWrap.classList.remove('hidden'); document.getElementById('viewBluebookLink').href = cust.bluebook_url; }
-            else { bbLinkWrap.classList.add('hidden'); }
+divyaFab.addEventListener('click', () => {
+  divyaChatWindow.classList.toggle('is-open');
+  if (divyaChatWindow.classList.contains('is-open') && divyaMessages.children.length === 0) {
+    addDivyaMessage("नमस्ते! म दिव्या AI हुँ। बजाज मोटरसाइकलको मूल्य, Hulas Fin Serv को EMI, वा अन्य कुनै जानकारी चाहिएमा मलाई सोध्नुहोस्।", 'bot');
+  }
+});
 
-            const insEl = document.getElementById('viewInsurance');
-            insEl.textContent = cust.insurance_status;
-            insEl.className = cust.insurance_status === 'Pending' ? 'font-bold text-sm px-2 py-1 rounded-full bg-orange-100 text-orange-700' : 'font-bold text-sm px-2 py-1 rounded-full bg-green-100 text-green-700';
-            const insLinkWrap = document.getElementById('viewInsuranceLinkWrap');
-            if (cust.insurance_url) { insLinkWrap.classList.remove('hidden'); document.getElementById('viewInsuranceLink').href = cust.insurance_url; }
-            else { insLinkWrap.classList.add('hidden'); }
+function handleDivyaKeyPress(e) { if (e.key === 'Enter') { sendDivyaMessage(); } }
 
-            document.getElementById('viewCreated').textContent = cust.created_at ? new Date(cust.created_at).toLocaleString() : 'N/A';
-            viewCustomerModal.classList.remove('hidden');
-        }
+function sendDivyaMessage() {
+  const text = divyaInput.value.trim();
+  if (!text) return;
+  addDivyaMessage(text, 'user');
+  divyaInput.value = '';
+  const typingIndicator = document.createElement('div');
+  typingIndicator.className = 'divya-msg bot typing';
+  typingIndicator.textContent = "Divya ले सोचिरहेको छ...";
+  divyaMessages.appendChild(typingIndicator);
+  divyaMessages.scrollTop = divyaMessages.scrollHeight;
+  setTimeout(() => {
+    typingIndicator.remove();
+    const response = getDivyaResponse(text.toLowerCase());
+    addDivyaMessage(response, 'bot');
+  }, 800);
+}
 
-        // --- EDIT ---
-        window.editCustomer = (id) => {
-            const cust = customerCache[id];
-            if (!cust) return;
-            custEditIdInput.value = cust.id;
-            document.getElementById('custName').value = cust.full_name || '';
-            document.getElementById('custPhone').value = cust.phone || '';
-            document.getElementById('custBike').value = cust.bike_model || '';
-            document.getElementById('custBikeNumber').value = cust.bike_number || '';
-            customerModalTitle.textContent = 'Edit Customer';
-            customerFormSubmitBtn.textContent = 'Update Customer';
-            addCustomerModal.classList.remove('hidden');
-        }
+function addDivyaMessage(text, sender) {
+  const msg = document.createElement('div');
+  msg.className = `divya-msg ${sender}`;
+  msg.textContent = text;
+  divyaMessages.appendChild(msg);
+  divyaMessages.scrollTop = divyaMessages.scrollHeight;
+}
 
-        // --- DELETE ---
-        window.deleteCustomer = async (id, name) => {
-            if (!confirm(`Delete ${name}'s record? This cannot be undone.`)) return;
-            const { error } = await supabase.from('customers').delete().eq('id', id);
-            if (error) { alert("Error deleting customer: " + error.message); }
-            else { fetchCustomers(); }
-        }
+function getDivyaResponse(query) {
+  // Booking & Payment
+  if (query.includes('booking') || query.includes('advance') || query.includes('payment') || query.includes('qr') || query.includes('buking') || query.includes('teso')) {
+    return "तपाईंले अनलाइन बुकिङ गर्न सक्नुहुन्छ! वेबसाइटको 'Online Booking' सेक्सनमा गएर राष्ट्रिय वाणिज्य बैंकको QR स्क्यान गर्नुहोस् वा खाता नम्बर ११६०१००००२०६७००१ मा रकम पठाउनुहोस्। भुक्तानी गरेपछि रसिद हाम्रो WhatsApp (९८०१२०४४४८) मा पठाउनुहोस्।";
+  }
+  // Finance
+  if (query.includes('finance') || query.includes('emi') || query.includes('loan') || query.includes('installment') || query.includes('hulas') || query.includes('hire purchase') || query.includes('downpayment') || query.includes('down payment') || query.includes('byaj') || query.includes('kista')) {
+    const modelFound = findModelInQuery(query);
+    let dpKey = "dp40", dpPlan = "४०% डाउनपेमेन्ट (१२.९९% ब्याज)";
+    if (query.includes('50') || query.includes('50%')) { dpKey = "dp50"; dpPlan = "५०% डाउनपेमेन्ट (१०.९९% ब्याज)"; }
+    if (query.includes('60') || query.includes('60%')) { dpKey = "dp60"; dpPlan = "६०% डाउनपेमेन्ट (८.९९% ब्याज)"; }
+    let tenure = "24";
+    if (query.includes('12 month') || query.includes('12 mahina') || query.includes('1 year')) tenure = "12";
+    if (query.includes('36 month') || query.includes('36 mahina') || query.includes('3 year')) tenure = "36";
+    if (query.includes('60 month') || query.includes('60 mahina') || query.includes('5 year')) tenure = "60";
+    const emiData = {
+      "pulsar 150 sd": { dp40: { "12": "12,869", "24": "10,493", "36": "7,437", "60": "5,021" }, dp50: { "12": "16,257", "24": "8,573", "36": "6,021", "60": "3,999" }, dp60: { "12": "12,869", "24": "6,722", "36": "4,679", "60": "4,581" } },
+      "pulsar 220 f": { dp40: { "12": "15,912", "24": "12,975", "36": "9,195", "60": "6,209" }, dp50: { "12": "20,101", "24": "10,600", "36": "7,445", "60": "4,944" }, dp60: { "12": "15,912", "24": "8,312", "36": "5,785", "60": "5,664" } },
+      "dominar 400": { dp40: { "12": "22,628", "24": "18,451", "36": "13,076", "60": "8,829" }, dp50: { "12": "28,586", "24": "15,074", "36": "10,588", "60": "7,031" }, dp60: { "12": "22,628", "24": "11,820", "36": "8,227", "60": "8,055" } },
+      "pulsar 400": { dp40: { "12": "21,334", "24": "17,396", "36": "12,328", "60": "8,324" }, dp50: { "12": "26,951", "24": "14,212", "36": "9,982", "60": "6,629" }, dp60: { "12": "21,334", "24": "11,144", "36": "7,757", "60": "7,595" } },
+      "pulsar 200": { dp40: { "12": "16,402", "24": "13,374", "36": "9,478", "60": "6,400" }, dp50: { "12": "20,720", "24": "10,926", "36": "7,674", "60": "5,096" }, dp60: { "12": "16,402", "24": "8,568", "36": "5,963", "60": "5,839" } },
+      "platina": { dp40: { "12": "8,951", "24": "7,299", "36": "5,173", "60": "3,493" }, dp50: { "12": "11,308", "24": "5,963", "36": "4,188", "60": "2,781" }, dp60: { "12": "8,951", "24": "4,676", "36": "3,255", "60": "3,186" } }
+    };
+    if (modelFound) {
+      const key = Object.keys(emiData).find(k => modelFound.name.toLowerCase().includes(k));
+      if (key) {
+        const data = emiData[key][dpKey]; const emiVal = data[tenure] ? data[tenure] : data["24"]; const finalTenure = data[tenure] ? tenure : "24";
+        return `Hulas Fin Serv मार्फत ${modelFound.name} को लागि:\n- योजना: ${dpPlan}\n- अवधि: ${finalTenure} महिना\n- मासिक EMI: रु ${emiVal}\n\nकृपया सटीक डकुमेन्टेसन र अन्तिम मूल्याङ्कनको लागि हाम्रो शोरूममा आउनुहोस्।`;
+      }
+      return `${modelFound.name} को लागि हामी Hulas Fin Serv मार्फत Hire Purchase उपलब्ध गराउँछौं। तपाईं ४०% DP (१२.९९% ब्याज), ५०% DP (१०.९९%), वा ६०% DP (८.९९%) छान्न सक्नुहुन्छ। अवधि १२, २४, ३६, वा ६० महिनाको हुन्छ।`;
+    }
+    return "हामी Hulas Fin Serv मार्फत Hire Purchase सुविधा उपलब्ध गराउँछौं। उपलब्ध योजनाहरू:\n१. ४०% डाउनपेमेन्ट (१२.९९% ब्याज)\n२. ५०% डाउनपेमेन्ट (१०.९९% ब्याज)\n३. ६०% डाउनपेमेन्ट (८.९९% ब्याज)\nअवधि: १२, २४, ३६, वा ६० महिना।\n\nविशेष EMI विवरणको लागि कुन मोडेलमा रुचि छ भन्नुहोस्।";
+  }
+  // Price
+  if (query.includes('price') || query.includes('daam') || query.includes('rate') || query.includes('cost') || query.includes('kati') || query.includes('kati ko')) {
+    const modelFound = findModelInQuery(query);
+    if (modelFound) return `${modelFound.name} को मूल्य ${modelFound.price} हो।`;
+    return "हाम्रो मोटरसाइकलको मूल्य रु २,५५,९०० (Platina 100) देखि रु ६,४६,९०० (Dominar 400) सम्म छ। कुन मोडेलमा रुचि छ भन्नुहोस्।";
+  }
+  // Model mentioned
+  const modelFound = findModelInQuery(query);
+  if (modelFound) return `${modelFound.name} को मूल्य ${modelFound.price} हो। ${modelFound.desc} के तपाईं यो मोडेलको EMI विवरण जान्न चाहनुहुन्छ?`;
+  
+  // Location
+  if (query.includes('address') || query.includes('location') || query.includes('kaha') || query.includes('where') || query.includes('kaha cha')) return "हामी महाराजगन्ज, काठमाडौंमा अवस्थित छौं। शोरूम समय: आइतबार देखि शुक्रबार, बिहान ९:३० देखि साँझ ६:०० बजेसम्म। तल 'Google Maps' मा क्लिक गरेर लोकेसन हेर्न सक्नुहुन्छ।";
+  
+  // Contact
+  if (query.includes('phone') || query.includes('contact') || query.includes('number') || query.includes('call')) return "तपाईं हामीलाई ९८०१२०४४४८ वा ०१-४५३३१३३ मा सम्पर्क गर्न सक्नुहुन्छ। इमेल: divyautohub@gmail.com";
+  
+  // Service
+  if (query.includes('service') || query.includes('repair') || query.includes('maintain') || query.includes('parts') || query.includes('saruwa')) return "हामी फ्याक्ट्री-प्रशिक्षित मेकानिक, नयाँ बाइकको ३ निःशुल्क सर्भिस, र १००% जेनुइन बजाज स्पेयर पार्ट्स उपलब्ध गराउँछौं।";
+  
+  // Test Ride
+  if (query.includes('test ride') || query.includes('try') || query.includes('demo') || query.includes('chalaune')) return "हो, टेस्ट राइड उपलब्ध छ! तपाईंले वेबसाइटको तल 'Book a test ride' फर्म भरेर हामीलाई सम्पर्क गर्न सक्नुहुन्छ।";
+  
+  // Greetings
+  if (query.includes('namaste') || query.includes('hello') || query.includes('hi') || query.includes('namaskar')) return "नमस्ते! बजाज मोटरसाइकलको बारेमा कसरी सहयोग गर्न सक्छु? तपाईं मूल्य, मोडेल, वा Hulas Fin Serv EMI को बारेमा सोध्न सक्नुहुन्छ।";
+  
+  // Fallback
+  return "म अहिले Divya Auto Hub को मोटरसाइकल मूल्य, Hulas Fin Serv EMI, स्थान, र सेवाहरूको बारेमा प्रश्नहरूको उत्तर दिन अनुकूलित छु। विशेष प्राविधिक प्रश्नको लागि कृपया हामीलाई ९८०१२०४४४८ मा फोन गर्नुहोस्।";
+}
 
-        async function fetchCustomers() {
-            const { data, error } = await supabase.from('customers').select('*').order('created_at', { ascending: false }).limit(10);
-            if (error) { console.error("Error fetching customers:", error); return; }
+function findModelInQuery(query) {
+  const rows = document.querySelectorAll('.range-row');
+  for (let row of rows) {
+    const name = row.querySelector('h3').innerText;
+    const priceNode = row.querySelector('.range-row-price');
+    const price = priceNode.childNodes[0].nodeValue.trim();
+    const desc = row.querySelector('.range-row-desc').innerText;
+    const keywords = name.toLowerCase().split(/\s+/);
+    if (query.includes(name.toLowerCase()) || (keywords.length > 1 && query.includes(keywords[0]) && query.includes(keywords[1]))) {
+      return { name: name, price: price, desc: desc };
+    }
+  }
+  return null;
+}
+</script>
 
-            customerTableBody.innerHTML = '';
-            let pendingBluebook = 0;
-            let pendingInsurance = 0;
-            customerCache = {};
+<script>
+// ===== FINANCE ELIGIBILITY CHECKER (MODAL) =====
 
-            data.forEach(cust => {
-                customerCache[cust.id] = cust;
-                if (cust.bluebook_status === 'Pending') pendingBluebook++;
-                if (cust.insurance_status === 'Pending') pendingInsurance++;
+// --- MODAL OPEN / CLOSE ---
+function openFinanceModal() {
+  const overlay = document.getElementById('finModalOverlay');
+  overlay.classList.add('fin-is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeFinanceModal() {
+  const overlay = document.getElementById('finModalOverlay');
+  overlay.classList.remove('fin-is-open');
+  document.body.style.overflow = '';
+}
+document.getElementById('finModalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeFinanceModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('finModalOverlay').classList.contains('fin-is-open')) {
+    closeFinanceModal();
+  }
+});
 
-                const row = `
-                    <tr class="border-b border-gray-100 hover:bg-gray-50">
-                        <td class="py-3 px-4 text-gray-800 text-sm font-medium">${cust.full_name}</td>
-                        <td class="py-3 px-4 text-gray-600 text-sm">${cust.phone}</td>
-                        <td class="py-3 px-4 text-gray-600 text-sm">${cust.bike_model || 'N/A'}</td>
-                        <td class="py-3 px-4 text-gray-600 text-sm">${cust.bike_number || 'N/A'}</td>
-                        <td class="py-3 px-4 text-sm"><span class="px-2 py-1 rounded-full text-xs ${cust.bluebook_status === 'Pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'}">${cust.bluebook_status}</span></td>
-                        <td class="py-3 px-4 text-sm"><span class="px-2 py-1 rounded-full text-xs ${cust.insurance_status === 'Pending' ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'}">${cust.insurance_status}</span></td>
-                        <td class="py-3 px-4 text-sm flex flex-wrap gap-2">
-                            <button onclick="viewCustomer('${cust.id}')" class="bg-gray-100 text-gray-700 px-3 py-1 rounded hover:bg-gray-200 font-medium">View</button>
-                            <button onclick="editCustomer('${cust.id}')" class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded hover:bg-yellow-200 font-medium">Edit</button>
-                            <button onclick="generateQR('${cust.id}', '${cust.full_name}')" class="bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200 font-medium">QR</button>
-                            <button onclick="sendWhatsApp('${cust.phone}', '${cust.full_name}', '${cust.id}')" class="bg-green-100 text-green-700 px-3 py-1 rounded hover:bg-green-200 font-medium">Notify</button>
-                            <button onclick="triggerUpload('${cust.id}', 'bluebook')" class="bg-purple-100 text-purple-700 px-3 py-1 rounded hover:bg-purple-200 font-medium">BB PDF</button>
-                            <button onclick="triggerUpload('${cust.id}', 'insurance')" class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded hover:bg-indigo-200 font-medium">Ins PDF</button>
-                            <button onclick="deleteCustomer('${cust.id}', '${cust.full_name.replace(/'/g, "\\'")}')" class="bg-red-100 text-red-700 px-3 py-1 rounded hover:bg-red-200 font-medium">Delete</button>
-                        </td>
-                    </tr>
-                `;
-                customerTableBody.innerHTML += row;
-            });
+// --- WIZARD NAVIGATION ---
+function finNextStep(step) {
+  const current = document.querySelector('.fin-step.fin-is-active');
+  current.classList.remove('fin-is-active');
+  document.querySelector(`.fin-step[data-step="${step}"]`).classList.add('fin-is-active');
+  finUpdateProgress(step);
+  document.querySelector('.fin-body').scrollTop = 0;
+}
+function finPrevStep(step) {
+  const current = document.querySelector('.fin-step.fin-is-active');
+  current.classList.remove('fin-is-active');
+  document.querySelector(`.fin-step[data-step="${step}"]`).classList.add('fin-is-active');
+  finUpdateProgress(step);
+  document.querySelector('.fin-body').scrollTop = 0;
+}
+function finUpdateProgress(step) {
+  const totalSteps = 5; // Step 6 is result
+  const progress = (step / totalSteps) * 100;
+  document.getElementById('finProgressFill').style.width = progress + '%';
+}
 
-            document.getElementById('statTotal').textContent = data.length;
-            document.getElementById('statBluebook').textContent = pendingBluebook;
-            document.getElementById('statInsurance').textContent = pendingInsurance;
-        }
+// --- UI LOGIC ---
+function finCalcAge() {
+  const dob = document.getElementById('finDobInput').value;
+  if(!dob) return;
+  const diff = Date.now() - new Date(dob).getTime();
+  document.getElementById('finAgeInput').value = Math.abs(new Date(diff).getUTCFullYear() - 1970);
+}
+function finToggleIncome(hasIncome) {
+  document.getElementById('finIncomeYesDiv').style.display = hasIncome ? 'block' : 'none';
+  document.getElementById('finIncomeNoDiv').style.display = hasIncome ? 'none' : 'block';
+}
+function finToggleDL(hasDL) {
+  document.getElementById('finDlYesDiv').style.display = hasDL ? 'block' : 'none';
+}
+document.querySelectorAll('.fin-doc-upload input').forEach(input => {
+  input.addEventListener('change', function() {
+    const fileName = this.files[0] ? this.files[0].name : '';
+    this.closest('.fin-doc-upload').querySelector('.fin-doc-name').textContent = fileName;
+  });
+});
 
-        window.generateQR = (id, name) => {
-            qrcodeDiv.innerHTML = ''; 
-            const customerUrl = `https://portal.divyaautohub.com/customer.html?id=${id}`;
-            new QRCode(qrcodeDiv, { text: customerUrl, width: 200, height: 200, colorDark : "#000000", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H });
-            document.getElementById('qrCustomerName').textContent = name;
-            qrModal.classList.remove('hidden');
-        }
+// --- AI ELIGIBILITY RULES & FORM SUBMISSION ---
+document.getElementById('finForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Show loading state on button
+  const submitBtn = this.querySelector('button[type="submit"]');
+  submitBtn.textContent = 'Checking...';
+  submitBtn.disabled = true;
 
-        window.sendWhatsApp = (phone, name, id) => {
-            let cleanPhone = phone.replace(/\s/g, '');
-            if (!cleanPhone.startsWith('977')) { cleanPhone = '977' + cleanPhone; }
-            const custUrl = `https://portal.divyaautohub.com/customer.html?id=${id}`;
-            const message = `Dear ${name},\n\nYour Blue Book has arrived.\nPlease visit Divya Auto Hub.\n\nTrack your status online:\n${custUrl}\n\n9801204448`;
-            const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
-            window.open(waUrl, '_blank');
-        }
+  // Gather Data
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+  let resultHTML = '', eligibility = 'RED';
 
-        window.triggerUpload = (customerId, type) => {
-            currentUploadCustomerId = customerId;
-            currentUploadType = type;
-            if(type === 'bluebook') {
-                document.getElementById('pdfUploadBluebook').click();
-            } else {
-                document.getElementById('pdfUploadInsurance').click();
-            }
-        }
+  // Rule Validations
+  const finDlExpiry = data.DLExpiry ? new Date(data.DLExpiry) : null;
+  const isDLValid = finDlExpiry ? finDlExpiry > new Date() : false;
+  const isSIMValid = data.SIMOwn === 'Yes';
 
-        // Handle Bluebook Upload
-        document.getElementById('pdfUploadBluebook').addEventListener('change', async (event) => {
-            await handlePdfUpload(event, 'bluebook');
-        });
+  // Rule A: DP >= 50% + Valid DL + Valid SIM
+  if ((data.DownPayment === '50%-59%' || data.DownPayment === '60% or Above') && isDLValid && isSIMValid) {
+    eligibility = 'GREEN';
+  } 
+  // Rule B: DP 40%-49% + Income Verified + Valid DL + Valid SIM
+  else if (data.DownPayment === '40%-49%' && data.HasIncome === 'Yes' && isDLValid && isSIMValid) {
+    eligibility = 'YELLOW'; // Needs manual verification of income docs
+  } 
+  // Rule C: No Income -> Guarantor Required (Age 25+, KTM) + Valid DL + Valid SIM
+  else if (data.HasIncome === 'No') {
+    const gAge = parseInt(data.GuarantorAge || 0);
+    const gKTM = data.GuarantorKTM === 'Yes';
+    if (gAge >= 25 && gKTM && isDLValid && isSIMValid) {
+      eligibility = 'YELLOW'; // Conditionally eligible
+    } else {
+      eligibility = 'RED';
+    }
+  } else {
+    eligibility = 'RED'; // Default reject (e.g., DL expired, SIM not in name, DP < 40%)
+  }
 
-        // Handle Insurance Upload
-        document.getElementById('pdfUploadInsurance').addEventListener('change', async (event) => {
-            await handlePdfUpload(event, 'insurance');
-        });
+  // Generate Result UI
+  if (eligibility === 'GREEN') {
+    resultHTML = `<div class="fin-result-card fin-result-green">
+      <div class="icon">🎉</div>
+      <h3>Congratulations!</h3>
+      <p>You are preliminarily <strong>ELIGIBLE</strong> for Bajaj Motorcycle Finance.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">Our finance team will contact you shortly.</p>
+    </div>`;
+    formData.append('AI_Decision', 'ELIGIBLE (GREEN)');
+  } else if (eligibility === 'YELLOW') {
+    resultHTML = `<div class="fin-result-card fin-result-yellow">
+      <div class="icon">⚠️</div>
+      <h3>Conditionally Eligible</h3>
+      <p>Some additional verification or documents are required.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">Our finance officer will review your application.</p>
+    </div>`;
+    formData.append('AI_Decision', 'CONDITIONALLY ELIGIBLE (YELLOW)');
+  } else {
+    resultHTML = `<div class="fin-result-card fin-result-red">
+      <div class="icon">❌</div>
+      <h3>Currently Not Eligible</h3>
+      <p>Please review the missing requirements or contact our finance department.</p>
+    </div>`;
+    formData.append('AI_Decision', 'NOT ELIGIBLE (RED)');
+  }
 
-        async function handlePdfUpload(event, type) {
-            const file = event.target.files[0];
-            if (!file || !currentUploadCustomerId) return;
+  // Move to Result Step
+  finNextStep(6);
+  document.getElementById('finResultContainer').innerHTML = resultHTML;
 
-            const fileName = `${type}_${currentUploadCustomerId}_${Date.now()}.pdf`;
-            const { data: uploadData, error: uploadError } = await supabase.storage
-                .from('documents')
-                .upload(fileName, file);
+  // Send Data to Admin Email (FormSubmit)
+  fetch('https://formsubmit.co/ajax/divyautohub@gmail.com', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: formData
+  }).then(response => response.json())
+    .then(data => { console.log('Application submitted successfully'); })
+    .catch(error => { console.error('Error:', error); })
+    .finally(() => {
+      submitBtn.textContent = 'Check Eligibility';
+      submitBtn.disabled = false;
+    });
+});
 
-            if (uploadError) {
-                alert("Error uploading PDF: " + uploadError.message);
-                return;
-            }
-
-            const { data: urlData } = supabase.storage.from('documents').getPublicUrl(fileName);
-            const publicUrl = urlData.publicUrl;
-
-            const updateData = type === 'bluebook' 
-                ? { bluebook_url: publicUrl, bluebook_status: 'Ready' }
-                : { insurance_url: publicUrl, insurance_status: 'Ready' };
-
-            const { error: updateError } = await supabase
-                .from('customers')
-                .update(updateData)
-                .eq('id', currentUploadCustomerId);
-
-            if (updateError) {
-                alert("Error updating record: " + updateError.message);
-            } else {
-                alert(`${type === 'bluebook' ? 'Bluebook' : 'Insurance'} PDF Uploaded Successfully!`);
-                fetchCustomers();
-            }
-
-            event.target.value = '';
-            currentUploadCustomerId = null;
-            currentUploadType = null;
-        }
-
-        initApp();
-    </script>
+</script>
 </body>
 </html>

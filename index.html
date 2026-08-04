@@ -408,6 +408,81 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
   .fin-btn-prev { flex: 1; }
 }
 
+/* ===== CUSTOMER PORTAL (MODAL) ===== */
+
+.cust-modal-overlay {
+  --cust-bg: #f3f4f6; --cust-card: rgba(255,255,255,0.97); --cust-accent: #e11d48; --cust-accent-dark: #be123c;
+  --cust-blue: #2563eb; --cust-blue-dark: #1d4ed8;
+  display: none; position: fixed; inset: 0; z-index: 2100;
+  background: rgba(2,4,10,0.82); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 2rem; overflow-y: auto;
+}
+.cust-modal-overlay.cust-is-open { display: flex; }
+.cust-modal-overlay, .cust-modal-overlay input, .cust-modal-overlay button {
+  font-family: 'Inter', system-ui, sans-serif; box-sizing: border-box;
+}
+.cust-close-btn {
+  position: absolute; top: 1.2rem; right: 1.2rem; width: 36px; height: 36px;
+  border-radius: 50%; background: rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.1);
+  color: #111; font-size: 1.1rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: background 0.3s;
+  z-index: 5;
+}
+.cust-close-btn:hover { background: rgba(0,0,0,0.16); }
+.cust-container {
+  position: relative; background: var(--cust-card); backdrop-filter: blur(10px);
+  width: 100%; max-width: 420px; border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2);
+  padding: 1.5rem; color: #111827;
+}
+.cust-header { text-align: center; margin-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 1rem; }
+.cust-header h1 { font-size: 1.3rem; font-weight: 800; color: #1f2937; }
+.cust-header p { color: #6b7280; font-size: 0.85rem; margin-top: 0.2rem; }
+.cust-hidden { display: none; }
+.cust-search-hint { color: #4b5563; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; }
+.cust-search-row { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.cust-search-row input {
+  flex: 1; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid #d1d5db; outline: none;
+  font-size: 0.95rem; transition: border-color 0.3s;
+}
+.cust-search-row input:focus { border-color: var(--cust-accent); box-shadow: 0 0 0 2px rgba(225,29,72,0.15); }
+.cust-search-row button {
+  background: var(--cust-accent); color: #fff; border: none; padding: 0.75rem 1rem; border-radius: 8px;
+  font-weight: 500; cursor: pointer; transition: background 0.3s;
+}
+.cust-search-row button:hover { background: var(--cust-accent-dark); }
+.cust-error-box { background: #fef2f2; color: var(--cust-accent-dark); padding: 0.75rem; border-radius: 8px; font-size: 0.85rem; text-align: center; }
+.cust-loading { text-align: center; padding: 2rem 0; }
+.cust-loading svg { height: 2.5rem; width: 2.5rem; color: var(--cust-accent); margin: 0 auto; animation: cust-spin 1s linear infinite; }
+@keyframes cust-spin { to { transform: rotate(360deg); } }
+.cust-loading p { color: #6b7280; margin-top: 1rem; }
+.cust-error-state { text-align: center; padding: 2rem 0; }
+.cust-error-state p:first-child { color: var(--cust-accent-dark); font-weight: 600; }
+.cust-error-state p:last-child { color: #6b7280; font-size: 0.85rem; margin-top: 0.5rem; }
+.cust-btn-secondary { margin-top: 1rem; width: 100%; background: #e5e7eb; color: #1f2937; border: none; padding: 0.65rem; border-radius: 8px; font-weight: 500; cursor: pointer; transition: background 0.3s; }
+.cust-btn-secondary:hover { background: #d1d5db; }
+.cust-profile { display: flex; flex-direction: column; align-items: center; margin-bottom: 1.5rem; }
+.cust-profile img { width: 6rem; height: 6rem; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-bottom: 0.75rem; }
+.cust-profile h2 { font-size: 1.2rem; font-weight: 700; color: #1f2937; }
+.cust-profile p { color: #6b7280; font-size: 0.85rem; }
+.cust-info-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.cust-info-row { background: #f9fafb; padding: 0.75rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+.cust-info-row span:first-child { color: #6b7280; font-size: 0.85rem; }
+.cust-info-row span:last-child { font-weight: 500; color: #1f2937; }
+.cust-badge { font-weight: 700; font-size: 0.8rem; padding: 0.25rem 0.6rem; border-radius: 999px; }
+.cust-badge-pending { background: #fef9c3; color: #a16207; }
+.cust-badge-pending-orange { background: #ffedd5; color: #c2410c; }
+.cust-badge-ready { background: #dcfce7; color: #15803d; }
+.cust-download-section { margin-top: 1.5rem; }
+.cust-download-btn {
+  width: 100%; color: #fff; padding: 0.85rem; border-radius: 8px; font-weight: 700; text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; transition: opacity 0.3s;
+}
+.cust-download-btn:hover { opacity: 0.9; }
+.cust-download-btn.cust-bb { background: var(--cust-accent); }
+.cust-download-btn.cust-ins { background: var(--cust-blue); }
+.cust-pending-note { background: #fefce8; border: 1px solid #fde68a; color: #a16207; padding: 0.75rem; border-radius: 8px; font-size: 0.85rem; text-align: center; margin-bottom: 0.75rem; }
+
 </style>
 </head>
 <body>
@@ -424,6 +499,7 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
     <li><a href="#services">Services</a></li>
     <li><a href="#showroom">Showroom</a></li>
     <li><a href="#" onclick="openFinanceModal(); return false;">Check Finance Eligibility</a></li>
+    <li><a href="#" onclick="openCustomerModal(); return false;">Customer Portal</a></li>
   </ul>
   <a href="#testride" class="nav-cta">Book a test ride</a>
 </nav>
@@ -661,7 +737,7 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
     </div>
     <div class="footer-col">
       <h5>Services</h5>
-      <ul><li><a href="#services">Finance</a></li><li><a href="#" onclick="openFinanceModal(); return false;">Check Finance Eligibility</a></li><li><a href="#services">Exchange</a></li><li><a href="#services">Servicing</a></li><li><a href="#booking">Online Booking</a></li></ul>
+      <ul><li><a href="#services">Finance</a></li><li><a href="#" onclick="openFinanceModal(); return false;">Check Finance Eligibility</a></li><li><a href="#" onclick="openCustomerModal(); return false;">Customer Portal</a></li><li><a href="#services">Exchange</a></li><li><a href="#services">Servicing</a></li><li><a href="#booking">Online Booking</a></li></ul>
     </div>
     <div class="footer-col">
       <h5>Connect</h5>
@@ -872,6 +948,225 @@ elevenlabs-convai { position: fixed !important; bottom: 24px !important; right: 
   </div>
 </div>
 </div>
+
+<!-- ===== CUSTOMER PORTAL (MODAL) ===== -->
+<div class="cust-modal-overlay" id="custModalOverlay">
+<div class="cust-container">
+  <button type="button" class="cust-close-btn" onclick="closeCustomerModal()" aria-label="Close">✕</button>
+
+  <div class="cust-header">
+    <h1>Divya Auto Hub</h1>
+    <p>Customer Service Portal</p>
+  </div>
+
+  <!-- SEARCH VIEW -->
+  <div id="custSearchView">
+    <p class="cust-search-hint">Enter your registered phone number to check your Bluebook and Insurance status.</p>
+    <div class="cust-search-row">
+      <input type="tel" id="custSearchPhone" placeholder="98XXXXXXXX" required>
+      <button id="custSearchBtn">Search</button>
+    </div>
+    <div id="custSearchError" class="cust-hidden cust-error-box"></div>
+  </div>
+
+  <!-- LOADING STATE -->
+  <div id="custLoadingState" class="cust-hidden cust-loading">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle style="opacity:0.25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path style="opacity:0.75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+    <p>Loading your details...</p>
+  </div>
+
+  <!-- ERROR STATE -->
+  <div id="custErrorState" class="cust-hidden cust-error-state">
+    <p>Customer not found.</p>
+    <p>Please check your number or contact Divya Auto Hub.</p>
+    <button id="custBackToSearchBtn" class="cust-btn-secondary">Search Again</button>
+  </div>
+
+  <!-- CUSTOMER DETAILS -->
+  <div id="custDetails" class="cust-hidden">
+    <div class="cust-profile">
+      <img src="https://ui-avatars.com/api/?background=e11d48&color=fff&size=128" alt="Profile">
+      <h2 id="custName"></h2>
+      <p id="custPhone"></p>
+    </div>
+
+    <div class="cust-info-list">
+      <div class="cust-info-row"><span>Bike Model</span><span id="custBike"></span></div>
+      <div class="cust-info-row"><span>Bluebook Status</span><span id="custBluebook" class="cust-badge"></span></div>
+      <div class="cust-info-row"><span>Insurance Status</span><span id="custInsurance" class="cust-badge"></span></div>
+    </div>
+
+    <div id="custBluebookDownloadSection" class="cust-download-section cust-hidden">
+      <a id="custDownloadBluebookBtn" href="#" target="_blank" class="cust-download-btn cust-bb">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+        Download Bluebook PDF
+      </a>
+    </div>
+    <div id="custBluebookPendingSection" class="cust-hidden">
+      <div class="cust-pending-note">Your Bluebook is being processed. Please check back later.</div>
+    </div>
+
+    <div id="custInsuranceDownloadSection" class="cust-download-section cust-hidden" style="margin-top: -0.5rem;">
+      <a id="custDownloadInsuranceBtn" href="#" target="_blank" class="cust-download-btn cust-ins">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+        Download Insurance PDF
+      </a>
+    </div>
+    <div id="custInsurancePendingSection" class="cust-hidden">
+      <div class="cust-pending-note">Your Insurance is being processed. Please check back later.</div>
+    </div>
+
+    <button id="custLogoutBtn" class="cust-btn-secondary" style="margin-top: 1rem;">Close</button>
+  </div>
+</div>
+</div>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+  const CUST_SUPABASE_URL = 'https://acrbfhtyswdtscjofvrh.supabase.co';
+  const CUST_SUPABASE_ANON_KEY = 'sb_publishable_g9XKC1WTa5noMqG2Q1Cs3Q_-79iZW1z';
+  const custSupabase = createClient(CUST_SUPABASE_URL, CUST_SUPABASE_ANON_KEY);
+
+  const custModalOverlay = document.getElementById('custModalOverlay');
+  const custSearchView = document.getElementById('custSearchView');
+  const custLoadingState = document.getElementById('custLoadingState');
+  const custErrorState = document.getElementById('custErrorState');
+  const custDetails = document.getElementById('custDetails');
+
+  window.openCustomerModal = function() {
+    custModalOverlay.classList.add('cust-is-open');
+  };
+  window.closeCustomerModal = function() {
+    custModalOverlay.classList.remove('cust-is-open');
+  };
+  custModalOverlay.addEventListener('click', function(e) {
+    if (e.target === this) closeCustomerModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && custModalOverlay.classList.contains('cust-is-open')) closeCustomerModal();
+  });
+
+  // Auto-open via QR code (?id=uuid or ?customer=uuid)
+  const custUrlParams = new URLSearchParams(window.location.search);
+  const custIdParam = custUrlParams.get('id') || custUrlParams.get('customer');
+  if (custIdParam) {
+    openCustomerModal();
+    custSearchView.classList.add('cust-hidden');
+    custFetchById(custIdParam);
+  }
+
+  // Strips spaces/dashes/+977 etc and keeps the last 10 digits, so "9801204448",
+  // "980-120-4448", "+977 9801204448", "09801204448" all match the same record
+  // regardless of how the number was typed in or saved in the sheet/table.
+  function custNormalizePhone(raw) {
+    const digits = (raw || '').replace(/\D/g, '');
+    return digits.length > 10 ? digits.slice(-10) : digits;
+  }
+
+  async function custRunSearch() {
+    const rawPhone = document.getElementById('custSearchPhone').value.trim();
+    const custSearchError = document.getElementById('custSearchError');
+    custSearchError.classList.add('cust-hidden');
+    if (!rawPhone) return;
+
+    const core = custNormalizePhone(rawPhone);
+    if (core.length < 7) {
+      custSearchError.textContent = 'Please enter a valid phone number.';
+      custSearchError.classList.remove('cust-hidden');
+      return;
+    }
+
+    custSearchView.classList.add('cust-hidden');
+    custLoadingState.classList.remove('cust-hidden');
+
+    // Try an exact match first (fast path when the number is stored as typed)...
+    let { data, error } = await custSupabase
+      .from('customers')
+      .select('*')
+      .eq('phone', rawPhone)
+      .maybeSingle();
+
+    // ...then fall back to a flexible match against the last 10 digits, which
+    // catches records saved with spaces, dashes, +977, or a leading 0.
+    if (!data) {
+      ({ data, error } = await custSupabase
+        .from('customers')
+        .select('*')
+        .ilike('phone', `%${core}%`)
+        .limit(1)
+        .maybeSingle());
+    }
+
+    if (error || !data) {
+      custLoadingState.classList.add('cust-hidden');
+      custErrorState.classList.remove('cust-hidden');
+    } else {
+      custShowDetails(data);
+    }
+  }
+
+  document.getElementById('custSearchBtn').addEventListener('click', custRunSearch);
+  document.getElementById('custSearchPhone').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); custRunSearch(); }
+  });
+
+  document.getElementById('custBackToSearchBtn').addEventListener('click', () => {
+    custErrorState.classList.add('cust-hidden');
+    custSearchView.classList.remove('cust-hidden');
+    document.getElementById('custSearchPhone').value = '';
+  });
+
+  document.getElementById('custLogoutBtn').addEventListener('click', () => {
+    custDetails.classList.add('cust-hidden');
+    custSearchView.classList.remove('cust-hidden');
+    window.history.replaceState({}, document.title, window.location.pathname);
+    closeCustomerModal();
+  });
+
+  async function custFetchById(id) {
+    custLoadingState.classList.remove('cust-hidden');
+    const { data, error } = await custSupabase.from('customers').select('*').eq('id', id).single();
+    if (error || !data) {
+      custLoadingState.classList.add('cust-hidden');
+      custErrorState.classList.remove('cust-hidden');
+    } else {
+      custShowDetails(data);
+    }
+  }
+
+  function custShowDetails(cust) {
+    custLoadingState.classList.add('cust-hidden');
+    custErrorState.classList.add('cust-hidden');
+    custDetails.classList.remove('cust-hidden');
+
+    document.getElementById('custName').textContent = cust.full_name;
+    document.getElementById('custPhone').textContent = cust.phone;
+    document.getElementById('custBike').textContent = cust.bike_model || 'N/A';
+
+    const bbEl = document.getElementById('custBluebook');
+    bbEl.textContent = cust.bluebook_status;
+    bbEl.className = cust.bluebook_status === 'Pending' ? 'cust-badge cust-badge-pending' : 'cust-badge cust-badge-ready';
+
+    if (cust.bluebook_url) {
+      document.getElementById('custBluebookDownloadSection').classList.remove('cust-hidden');
+      document.getElementById('custDownloadBluebookBtn').href = cust.bluebook_url;
+    } else {
+      document.getElementById('custBluebookPendingSection').classList.remove('cust-hidden');
+    }
+
+    const insEl = document.getElementById('custInsurance');
+    insEl.textContent = cust.insurance_status;
+    insEl.className = cust.insurance_status === 'Pending' ? 'cust-badge cust-badge-pending-orange' : 'cust-badge cust-badge-ready';
+
+    if (cust.insurance_url) {
+      document.getElementById('custInsuranceDownloadSection').classList.remove('cust-hidden');
+      document.getElementById('custDownloadInsuranceBtn').href = cust.insurance_url;
+    } else {
+      document.getElementById('custInsurancePendingSection').classList.remove('cust-hidden');
+    }
+  }
+</script>
 
 <script>
 // GLYPH RAIN, SCRAMBLE DECODE, TYPEWRITER, INTERSECTION OBSERVER, WORD RING CODE
